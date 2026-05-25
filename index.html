@@ -431,15 +431,18 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      padding: 9px 10px;
+      padding: 9px 6px;
       border-radius: 10px;
       font-family: 'Nunito', sans-serif;
       font-weight: 800;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       text-decoration: none;
       border: none;
       cursor: pointer;
       transition: filter 0.18s, transform 0.15s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
@@ -636,13 +639,11 @@
     return `
       <div class="card ${c.universe}" data-universe="${c.universe}">
         <div class="card-img-wrap">
-          <span class="univ-tag ${c.universe === 'poke' ? 'univ-poke' : 'univ-op'}">
-            ${c.universe === 'poke' ? '⚡ Pokémon' : '☠ One Piece'}
-          </span>
           ${imgHtml}
           ${c.gradingService ? `<span class="grade-badge ${gradeClass(c.gradingService)}">${c.gradingService}</span>` : ''}
         </div>
         <div class="card-body">
+          <div class="univ-tag ${c.universe === 'poke' ? 'univ-poke' : 'univ-op'}" style="display:inline-block;margin-bottom:2px;">${c.universe === 'poke' ? '⚡ Pokémon' : '☠ One Piece'}</div>
           <div class="card-name">${c.name}</div>
           <div class="card-meta">
             <span class="meta-pill">${c.set}</span>
