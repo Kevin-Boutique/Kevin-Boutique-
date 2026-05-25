@@ -465,6 +465,50 @@
 
     .btn svg { width: 13px; height: 13px; flex-shrink: 0; }
 
+    /* ── SOLD STATE ── */
+    .card.sold-card {
+      opacity: 0.75;
+      filter: grayscale(40%);
+    }
+
+    .sold-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0;
+      z-index: 2;
+    }
+
+    .sold-stamp {
+      font-family: 'Bangers', cursive;
+      font-size: 2.2rem;
+      letter-spacing: 4px;
+      color: #fff;
+      background: var(--red);
+      padding: 6px 20px;
+      border-radius: 8px;
+      transform: rotate(-15deg);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      border: 3px solid #fff;
+    }
+
+    .sold-actions-label {
+      grid-column: span 2;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--muted);
+      padding: 8px;
+      background: var(--gray);
+      border-radius: 10px;
+    }
+
+    .sold-title { color: var(--muted); }
+    .sold-title::after { background: linear-gradient(90deg, #ccc, transparent); }
+
     /* ── EMPTY STATE ── */
     .empty {
       text-align: center;
@@ -668,7 +712,37 @@
       condition: "Neuf sans étiquette",
       price: 45,
       image: "",
+      sold: false,
       vinted: "", ebay: "", leboncoin: "", cardmarket: "",
+    },
+    // ── CARTES VENDUES (exemples) ──
+    {
+      id: 8,
+      universe: "poke",
+      name: "Dracaufeu VMAX",
+      set: "Darkness Ablaze",
+      number: "020/189",
+      gradingService: "PSA",
+      grade: 10,
+      condition: "",
+      price: 280,
+      image: "https://images.pokemontcg.io/swsh3/20_hires.png",
+      sold: true,
+      vinted: "https://vinted.fr", ebay: "https://ebay.fr", leboncoin: "https://leboncoin.fr", cardmarket: "https://cardmarket.com",
+    },
+    {
+      id: 9,
+      universe: "op",
+      name: "Portgas D. Ace",
+      set: "Paramount War",
+      number: "OP02-013 SR",
+      gradingService: "PSA",
+      grade: 9,
+      condition: "",
+      price: 95,
+      image: "",
+      sold: true,
+      vinted: "https://vinted.fr", ebay: "https://ebay.fr", leboncoin: "https://leboncoin.fr", cardmarket: "https://cardmarket.com",
     },
   ];
 
@@ -691,7 +765,8 @@
     return 'grade-cgc';
   }
 
-  function mkBtn(url, cls, label) {
+  function mkBtn(url, cls, label, sold) {
+    if (sold) return `<span class="btn btn-sold-platform ${cls}-muted">${label}</span>`;
     if (url && url !== '#' && url !== '') {
       return `<a class="btn ${cls}" href="${url}" target="_blank" rel="noopener">${label}</a>`;
     }
@@ -703,17 +778,22 @@
       ? `<img src="${c.image}" alt="${c.name}" loading="lazy" />`
       : `<div class="placeholder-art">${c.universe === 'poke' ? '🃏' : '⚔️'}<span>${c.universe === 'poke' ? 'Pokémon' : 'One Piece'}</span></div>`;
 
-    const actions = `
-      ${mkBtn(c.vinted,     'btn-vinted',     'Vinted')}
-      ${mkBtn(c.ebay,       'btn-ebay',       'eBay')}
-      ${mkBtn(c.leboncoin,  'btn-leboncoin',  'Le Bon Coin')}
-      ${mkBtn(c.cardmarket, 'btn-cardmarket', 'CardMarket')}
-    `;
+    const soldOverlay = c.sold ? `<div class="sold-overlay"><span class="sold-stamp">VENDU</span></div>` : '';
+
+    const actions = c.sold
+      ? `<div class="sold-actions-label">Cette carte a été vendue 🎉</div>`
+      : `
+        ${mkBtn(c.vinted,     'btn-vinted',     'Vinted',      false)}
+        ${mkBtn(c.ebay,       'btn-ebay',        'eBay',        false)}
+        ${mkBtn(c.leboncoin,  'btn-leboncoin',  'Le Bon Coin', false)}
+        ${mkBtn(c.cardmarket, 'btn-cardmarket', 'CardMarket',  false)}
+      `;
 
     return `
-      <div class="card ${c.universe}" data-universe="${c.universe}">
+      <div class="card ${c.universe} ${c.sold ? 'sold-card' : ''}" data-universe="${c.universe}">
         <div class="card-img-wrap">
           ${imgHtml}
+          ${soldOverlay}
           ${c.gradingService ? `<span class="grade-badge ${gradeClass(c.gradingService)}">${c.gradingService}</span>` : ''}
         </div>
         <div class="card-body">
@@ -735,24 +815,31 @@
     currentFilter = filter;
     const catalog = document.getElementById('catalog');
     const universes = filter === 'all' ? ['poke', 'op'] : [filter];
-
     const labels = { poke: '⚡ Pokémon', op: '☠️ One Piece' };
 
     let html = '';
+    // Available cards by universe
     universes.forEach(u => {
-      const cards = CARDS.filter(c => c.universe === u);
+      const cards = CARDS.filter(c => c.universe === u && !c.sold);
       if (!cards.length) return;
       html += `<h2 class="section-title">${labels[u]}</h2>`;
       html += `<div class="grid">${cards.map(renderCard).join('')}</div>`;
     });
 
+    // Sold section
+    const soldCards = CARDS.filter(c => c.sold && (filter === 'all' || c.universe === filter));
+    if (soldCards.length) {
+      html += `<h2 class="section-title sold-title">✅ Déjà Vendus</h2>`;
+      html += `<div class="grid">${soldCards.map(renderCard).join('')}</div>`;
+    }
+
     if (!html) html = `<div class="grid"><div class="empty"><div class="icon">📦</div><p>Aucune carte dans cette catégorie pour l'instant.</p></div></div>`;
     catalog.innerHTML = html;
 
     // update stats
-    const total = CARDS.length;
-    const pokeN = CARDS.filter(c => c.universe === 'poke').length;
-    const opN   = CARDS.filter(c => c.universe === 'op').length;
+    const total = CARDS.filter(c => !c.sold).length;
+    const pokeN = CARDS.filter(c => c.universe === 'poke' && !c.sold).length;
+    const opN   = CARDS.filter(c => c.universe === 'op' && !c.sold).length;
     document.getElementById('stat-total').textContent = total;
     document.getElementById('stat-poke').textContent  = pokeN;
     document.getElementById('stat-op').textContent    = opN;
