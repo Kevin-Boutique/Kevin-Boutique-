@@ -587,6 +587,10 @@
       <span class="num" id="stat-op">0</span>
       <span class="label">One Piece</span>
     </div>
+    <div class="stat">
+      <span class="num" id="stat-sold">0</span>
+      <span class="label">🏆 Déjà vendus</span>
+    </div>
   </div>
 </section>
 
@@ -837,12 +841,14 @@
     catalog.innerHTML = html;
 
     // update stats
-    const total = CARDS.filter(c => !c.sold).length;
-    const pokeN = CARDS.filter(c => c.universe === 'poke' && !c.sold).length;
-    const opN   = CARDS.filter(c => c.universe === 'op' && !c.sold).length;
+    const total  = CARDS.filter(c => !c.sold).length;
+    const pokeN  = CARDS.filter(c => c.universe === 'poke' && !c.sold).length;
+    const opN    = CARDS.filter(c => c.universe === 'op'   && !c.sold).length;
+    const soldN  = CARDS.filter(c => c.sold).length;
     document.getElementById('stat-total').textContent = total;
     document.getElementById('stat-poke').textContent  = pokeN;
     document.getElementById('stat-op').textContent    = opN;
+    document.getElementById('stat-sold').textContent  = soldN;
     document.getElementById('btn-all').textContent  = `Tout (${total})`;
     document.getElementById('btn-poke').innerHTML   = `<span class="dot-poke"></span> Pokémon (${pokeN})`;
     document.getElementById('btn-op').innerHTML     = `<span class="dot-op"></span> One Piece (${opN})`;
