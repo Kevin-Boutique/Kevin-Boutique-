@@ -49,14 +49,15 @@
     .logo {
       font-family: 'Bangers', cursive;
       font-size: 2rem;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
       color: var(--white);
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 0px;
     }
 
-    .logo span.k { color: var(--yellow); }
+    .logo span.k { color: var(--yellow); letter-spacing: 0; }
+    .logo span.rest { letter-spacing: 1px; }
     .logo span.dot { color: var(--red); font-size: 1.4rem; }
 
     nav {
@@ -360,6 +361,9 @@
       font-size: 1.05rem;
       color: var(--dark);
       line-height: 1.25;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .card-meta {
@@ -509,7 +513,7 @@
 <!-- HEADER -->
 <header>
   <div class="logo">
-    <span class="k">K</span>evin<span class="dot">●</span>Boutique
+    <span class="k">K</span><span class="rest">evin</span><span class="dot"> ● </span><span class="rest">Boutique</span>
   </div>
   <nav>
     <button class="active" onclick="filterCards('all', this)">Tout voir</button>
