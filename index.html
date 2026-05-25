@@ -95,6 +95,25 @@
       overflow: hidden;
     }
 
+    .trust-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 30px;
+      padding: 8px 20px;
+      margin-bottom: 20px;
+      font-size: 0.82rem;
+      color: #e0eaff;
+      backdrop-filter: blur(4px);
+    }
+
+    .trust-item strong { color: var(--yellow); }
+    .trust-sep { color: rgba(255,255,255,0.25); font-size: 1rem; }
+
     .hero::before {
       content: '';
       position: absolute;
@@ -572,6 +591,13 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-badge">✦ Cartes Gradées Certifiées ✦</div>
+  <div class="trust-bar">
+    <span class="trust-item">⭐⭐⭐⭐⭐ <strong>5/5 sur Vinted</strong></span>
+    <span class="trust-sep">·</span>
+    <span class="trust-item">✅ Vendeur vérifié</span>
+    <span class="trust-sep">·</span>
+    <span class="trust-item">📦 Envoi soigné sleeve + top loader</span>
+  </div>
   <h1>Kevin<br/><em>Boutique</em></h1>
   <p>Cartes Pokémon & One Piece — gradées PSA, BGS, CGC ou en état parfait. Achetez en toute confiance via Vinted ou eBay.</p>
   <div class="hero-stats">
