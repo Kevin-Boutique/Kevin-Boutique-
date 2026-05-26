@@ -469,6 +469,8 @@
     .grade-psa  { background: var(--red);   color: #fff; }
     .grade-bgs  { background: #6a0dad;      color: #fff; }
     .grade-cgc  { background: var(--green); color: #fff; }
+    .grade-gold { background: linear-gradient(135deg, #f5c518, #e0a800); color: var(--dark); font-weight: 900; }
+    .grade-black { background: #111; color: #fff; border: 1px solid #444; }
 
     /* universe tag */
     .univ-tag {
@@ -790,7 +792,7 @@
   //  DONNÉES — Modifie ici pour ajouter tes cartes
   // ─────────────────────────────────────────────
   const CARDS = [
-    // ── TES CARTES — Ajoute les suivantes ici ──
+    // ── TES CARTES POKÉMON ──
     {
       id: 1,
       universe: "poke",
@@ -875,6 +877,138 @@
       vinted: "https://www.vinted.fr/items/8351126864-carte-pokemon-vitalite-de-la-professeure-olim-alt-256182-par-faille-paradoxe",
       ebay: "", leboncoin: "", cardmarket: "",
     },
+    // ── CARTES GRADÉES DÉMO POKÉMON ──
+    {
+      id: 10,
+      universe: "poke",
+      name: "Dracaufeu ex",
+      set: "Écarlate et Violet",
+      number: "006/198",
+      gradingService: "PSA", grade: 10,
+      condition: "",
+      price: 349,
+      image: "https://images.pokemontcg.io/sv1/6_hires.png",
+      sold: false,
+      vinted: "", ebay: "", leboncoin: "", cardmarket: "",
+    },
+    {
+      id: 11,
+      universe: "poke",
+      name: "Pikachu VMAX Arc-en-ciel",
+      set: "Vivid Voltage",
+      number: "188/185",
+      gradingService: "PSA", grade: 9,
+      condition: "",
+      price: 89,
+      image: "https://images.pokemontcg.io/swsh4/188_hires.png",
+      sold: false,
+      vinted: "", ebay: "", leboncoin: "", cardmarket: "",
+    },
+    {
+      id: 12,
+      universe: "poke",
+      name: "Méwtwo V Étoile",
+      set: "Pokémon GO",
+      number: "079/078",
+      gradingService: "BGS", grade: 9.5,
+      condition: "",
+      price: 120,
+      image: "https://images.pokemontcg.io/pgo/79_hires.png",
+      sold: false,
+      vinted: "", ebay: "", leboncoin: "", cardmarket: "",
+    },
+    {
+      id: 13,
+      universe: "poke",
+      name: "Lugia V Alt Art",
+      set: "Silver Tempest",
+      number: "211/195",
+      gradingService: "PSA", grade: "10gold",
+      condition: "",
+      price: 520,
+      image: "https://images.pokemontcg.io/swsh12/211_hires.png",
+      sold: false,
+      vinted: "", ebay: "", leboncoin: "", cardmarket: "",
+    },
+    {
+      id: 14,
+      universe: "poke",
+      name: "Dracaufeu VMAX",
+      set: "Darkness Ablaze",
+      number: "020/189",
+      gradingService: "BGS", grade: "10black",
+      condition: "",
+      price: 680,
+      image: "https://images.pokemontcg.io/swsh3/20_hires.png",
+      sold: false,
+      vinted: "", ebay: "", leboncoin: "", cardmarket: "",
+    },
+    // ── CARTES GRADÉES DÉMO ONE PIECE ──
+    {
+      id: 20,
+      universe: "op",
+      name: "Monkey D. Luffy",
+      set: "Romance Dawn",
+      number: "OP01-003 SR",
+      gradingService: "PSA", grade: 10,
+      condition: "",
+      price: 180,
+      image: "",
+      sold: false,
+      vinted: "", ebay: "", leboncoin: "", cardmarket: "",
+    },
+    {
+      id: 21,
+      universe: "op",
+      name: "Roronoa Zoro",
+      set: "Romance Dawn",
+      number: "OP01-001 SR",
+      gradingService: "CGC", grade: 9,
+      condition: "",
+      price: 65,
+      image: "",
+      sold: false,
+      vinted: "", ebay: "", leboncoin: "", cardmarket: "",
+    },
+    {
+      id: 22,
+      universe: "op",
+      name: "Shanks le Roux",
+      set: "Paramount War",
+      number: "OP02-120 SEC",
+      gradingService: "PSA", grade: 9.5,
+      condition: "",
+      price: 210,
+      image: "",
+      sold: false,
+      vinted: "", ebay: "", leboncoin: "", cardmarket: "",
+    },
+    {
+      id: 23,
+      universe: "op",
+      name: "Portgas D. Ace",
+      set: "Paramount War",
+      number: "OP02-013 SR",
+      gradingService: "PSA", grade: "10gold",
+      condition: "",
+      price: 310,
+      image: "",
+      sold: false,
+      vinted: "", ebay: "", leboncoin: "", cardmarket: "",
+    },
+    {
+      id: 24,
+      universe: "op",
+      name: "Boa Hancock",
+      set: "Pillars of Strength",
+      number: "OP03-099 SR",
+      gradingService: "BGS", grade: "10black",
+      condition: "",
+      price: 420,
+      image: "",
+      sold: false,
+      vinted: "", ebay: "", leboncoin: "", cardmarket: "",
+    },
   ];
 
   // ─────────────────────────────────────────────
@@ -894,6 +1028,19 @@
     if (s === 'psa') return 'grade-psa';
     if (s === 'bgs') return 'grade-bgs';
     return 'grade-cgc';
+  }
+
+  function gradeLabel(service, grade) {
+    if (grade === '10gold')  return `${service} 10 ✨`;
+    if (grade === '10black') return `${service} 10 ⚫`;
+    if (grade === null || grade === '') return '';
+    return `${service} ${grade}`;
+  }
+
+  function scoreLabel(grade) {
+    if (grade === '10gold')  return '10 ✨ Gold';
+    if (grade === '10black') return '10 ⚫ Black';
+    return grade;
   }
 
   function mkBtn(url, cls, label, sold) {
@@ -925,7 +1072,7 @@
         <div class="card-img-wrap">
           ${imgHtml}
           ${soldOverlay}
-          ${c.gradingService ? `<span class="grade-badge ${gradeClass(c.gradingService)}">${c.gradingService}</span>` : ''}
+          ${c.gradingService ? `<span class="grade-badge ${c.grade === '10gold' ? 'grade-gold' : c.grade === '10black' ? 'grade-black' : gradeClass(c.gradingService)}">${gradeLabel(c.gradingService, c.grade)}</span>` : ''}
         </div>
         <div class="card-body">
           <div class="univ-tag ${c.universe === 'poke' ? 'univ-poke' : 'univ-op'}" style="display:inline-block;margin-bottom:2px;">${c.universe === 'poke' ? '⚡ Pokémon' : '☠ One Piece'}</div>
@@ -934,7 +1081,7 @@
             <span class="meta-pill">${c.set}</span>
             <span class="meta-pill">#${c.number}</span>
           </div>
-          ${c.gradingService && c.grade ? `<div class="card-score ${scoreClass(c.grade)}">${c.gradingService} ${c.grade}</div>` : `<div style="display:inline-block;background:var(--yellow-light);color:#a07800;border-radius:20px;padding:4px 12px;font-size:0.82rem;font-weight:800;">✨ ${c.condition || 'Non gradée'}</div>`}
+          ${c.gradingService && c.grade ? `<div class="card-score ${c.grade === '10gold' ? 'score-10' : c.grade === '10black' ? 'score-10' : scoreClass(c.grade)}">${c.gradingService} ${scoreLabel(c.grade)}</div>` : `<div style="display:inline-block;background:var(--yellow-light);color:#a07800;border-radius:20px;padding:4px 12px;font-size:0.82rem;font-weight:800;">✨ ${c.condition || 'Non gradée'}</div>`}
           <div class="card-price"><span class="currency">€ </span>${c.price.toLocaleString('fr-FR')}</div>
           <div class="card-actions">${actions}</div>
         </div>
