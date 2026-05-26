@@ -1178,9 +1178,10 @@
   }
 
   function filterCards(f, btn) {
-    // Show grade filters only when Pokémon or all is selected
-    const gradeBar = document.getElementById('grade-filters');
-    if (gradeBar) gradeBar.style.display = (f === 'poke' || f === 'all') ? 'flex' : 'none';
+    gradeFilter = 'all';
+    document.querySelectorAll('.grade-btn').forEach(b => b.classList.remove('active'));
+    const firstBtn = document.querySelector('.grade-btn');
+    if (firstBtn) firstBtn.classList.add('active');
     document.querySelectorAll('.tag-btn').forEach(b => b.className = 'tag-btn');
     document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
     if (btn) {
