@@ -284,6 +284,21 @@
       border-color: #000;
     }
 
+    .grade-separator {
+      width: 1px;
+      height: 24px;
+      background: #dde3eb;
+      margin: 0 6px;
+      flex-shrink: 0;
+    }
+
+    .grader-btn { font-size: 0.78rem; }
+    .psa-btn.active-grader, .psa-btn:hover  { background: #c8102e; border-color: #c8102e; color: #fff; }
+    .cgc-btn:hover, .cgc-btn.active-grader  { background: #1a1a2e; border-color: #f5c518; color: #f5c518; }
+    .pca-btn:hover, .pca-btn.active-grader  { background: #0057a8; border-color: #0057a8; color: #fff; }
+    .collectura-btn:hover, .collectura-btn.active-grader { background: linear-gradient(135deg,#7b2ff7,#4a90e2); border-color: #7b2ff7; color: #fff; }
+    .beckett-btn:hover, .beckett-btn.active-grader { background: #1d6fe8; border-color: #1d6fe8; color: #fff; }
+
     /* ── SEARCH BAR ── */
     .search-wrap {
       background: var(--dark);
@@ -818,6 +833,14 @@
   <button class="grade-btn" onclick="filterGrade('10', this)">10</button>
   <button class="grade-btn gold" onclick="filterGrade('10gold', this)">✨ Gold</button>
   <button class="grade-btn black" onclick="filterGrade('10black', this)">⚫ Black</button>
+  <div class="grade-separator"></div>
+  <span class="filter-label">Gradeur :</span>
+  <button class="grade-btn grader-btn psa-btn active-grader" onclick="filterGrader('all', this)">Tous</button>
+  <button class="grade-btn grader-btn beckett-btn" onclick="filterGrader('BGS', this)">Beckett</button>
+  <button class="grade-btn grader-btn collectura-btn" onclick="filterGrader('Collectura', this)">Collectura</button>
+  <button class="grade-btn grader-btn pca-btn" onclick="filterGrader('PCA', this)">PCA</button>
+  <button class="grade-btn grader-btn cgc-btn" onclick="filterGrader('CGC', this)">CGC</button>
+  <button class="grade-btn grader-btn psa-btn" onclick="filterGrader('PSA', this)">PSA</button>
 </div>
 
 <!-- CATALOG -->
@@ -982,19 +1005,10 @@
 
     return `
       <div class="card ${c.universe} ${c.sold ? 'sold-card' : ''}" data-universe="${c.universe}">
-        <div class="card-img-outer">
-          <div class="card-img-wrap" style="flex:1;">
-            ${imgHtml}
-            ${soldOverlay}
-            ${c.gradingService ? `<span class="grade-badge ${c.grade === '10gold' ? 'grade-gold' : c.grade === '10black' ? 'grade-black' : gradeClass(c.gradingService)}">${gradeLabel(c.gradingService, c.grade)}</span>` : ''}
-          </div>
-          <div class="grading-sidebar">
-            <div class="grade-logo psa" title="PSA">PSA</div>
-            <div class="grade-logo cgc" title="CGC">CGC</div>
-            <div class="grade-logo pca" title="PCA">PCA</div>
-            <div class="grade-logo collectura" title="Collectura">COL<br/>LEC</div>
-            <div class="grade-logo beckett" title="Beckett BGS">BGS</div>
-          </div>
+        <div class="card-img-wrap">
+          ${imgHtml}
+          ${soldOverlay}
+          ${c.gradingService ? `<span class="grade-badge ${c.grade === '10gold' ? 'grade-gold' : c.grade === '10black' ? 'grade-black' : gradeClass(c.gradingService)}">${gradeLabel(c.gradingService, c.grade)}</span>` : ''}
         </div>
         <div class="card-body">
           <div class="univ-tag ${c.universe === 'poke' ? 'univ-poke' : 'univ-op'}" style="display:inline-block;margin-bottom:2px;">${c.universe === 'poke' ? '⚡ Pokémon' : '☠ One Piece'}</div>
@@ -1013,6 +1027,20 @@
 
   let searchQuery = '';
   let gradeFilter = 'all';
+
+  let graderFilter = 'all';
+
+  function filterGrader(g, btn) {
+    graderFilter = g;
+    document.querySelectorAll('.grader-btn').forEach(b => b.classList.remove('active-grader'));
+    if (btn) btn.classList.add('active-grader');
+    renderAll(currentFilter);
+  }
+
+  function cardMatchesGrader(c) {
+    if (graderFilter === 'all') return true;
+    return c.gradingService === graderFilter;
+  }
 
   function filterGrade(g, btn) {
     gradeFilter = g;
@@ -1063,7 +1091,7 @@
     let html = '';
     // Available cards by universe
     universes.forEach(u => {
-      const cards = CARDS.filter(c => c.universe === u && !c.sold && cardMatchesSearch(c) && cardMatchesGrade(c));
+      const cards = CARDS.filter(c => c.universe === u && !c.sold && cardMatchesSearch(c) && cardMatchesGrade(c) && cardMatchesGrader(c));
       if (!cards.length) return;
       html += `<h2 class="section-title">${labels[u]}</h2>`;
       html += `<div class="grid">${cards.map(renderCard).join('')}</div>`;
