@@ -184,10 +184,128 @@
       letter-spacing: 1px;
     }
 
+    /* ── GRADE FILTERS ── */
+    .grade-filters {
+      background: var(--gray);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #e8ecf0;
+    }
+
+    .grade-btn {
+      padding: 5px 14px;
+      border-radius: 30px;
+      border: 2px solid #dde3eb;
+      background: var(--white);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.18s;
+      color: var(--text);
+    }
+
+    .grade-btn:hover { border-color: var(--green); color: var(--green); }
+
+    .grade-btn.active {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+
+    .grade-btn.gold {
+      background: linear-gradient(135deg, #f5c518, #e0a800);
+      border-color: #e0a800;
+      color: var(--dark);
+    }
+
+    .grade-btn.gold:hover, .grade-btn.gold.active {
+      background: linear-gradient(135deg, #e0a800, #c8960a);
+      border-color: #c8960a;
+      color: #fff;
+    }
+
+    .grade-btn.black {
+      background: var(--dark);
+      border-color: var(--dark);
+      color: #fff;
+    }
+
+    .grade-btn.black:hover, .grade-btn.black.active {
+      background: #000;
+      border-color: #000;
+    }
+
+    /* ── SEARCH BAR ── */
+    .search-wrap {
+      background: var(--dark);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.08);
+      border: 2px solid rgba(255,255,255,0.12);
+      border-radius: 50px;
+      padding: 0 20px;
+      gap: 10px;
+      width: 100%;
+      max-width: 520px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .search-box:focus-within {
+      border-color: var(--yellow);
+      background: rgba(255,255,255,0.12);
+    }
+
+    .search-icon { font-size: 1.1rem; color: #7a90a8; flex-shrink: 0; }
+
+    .search-box input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 12px 0;
+    }
+
+    .search-box input::placeholder { color: #7a90a8; }
+
+    .search-clear {
+      background: none;
+      border: none;
+      color: #7a90a8;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0;
+      display: none;
+      line-height: 1;
+    }
+
+    .search-clear.visible { display: block; }
+    .search-clear:hover { color: var(--yellow); }
+
+    .search-count {
+      font-size: 0.8rem;
+      color: #7a90a8;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
     /* ── TABS / FILTERS ── */
     .controls {
       background: var(--gray);
-      padding: 16px 24px;
+      padding: 20px 24px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -240,89 +358,8 @@
       color: var(--white);
     }
 
-    .dot-poke { width: 10px; height: 10px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
-    .dot-op   { width: 10px; height: 10px; border-radius: 50%; background: var(--red);  flex-shrink: 0; }
-
-    /* ── SEARCH BAR ── */
-    .search-wrap {
-      background: var(--gray);
-      padding: 0 24px 16px;
-      border-bottom: 2px solid #e8ecf0;
-    }
-
-    .search-inner {
-      max-width: 560px;
-      position: relative;
-    }
-
-    .search-inner svg {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--muted);
-      pointer-events: none;
-      width: 18px;
-      height: 18px;
-    }
-
-    #search-input {
-      width: 100%;
-      padding: 12px 44px 12px 44px;
-      border-radius: 30px;
-      border: 2px solid #dde3eb;
-      background: var(--white);
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    }
-
-    #search-input::placeholder {
-      color: #aab;
-      font-weight: 600;
-    }
-
-    #search-input:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(29,111,232,0.12);
-    }
-
-    #search-clear {
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #e8ecf0;
-      border: none;
-      border-radius: 50%;
-      width: 26px;
-      height: 26px;
-      cursor: pointer;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-size: 1rem;
-      font-weight: 900;
-      line-height: 1;
-      transition: background 0.15s, color 0.15s;
-    }
-
-    #search-clear:hover { background: var(--red); color: #fff; }
-    #search-clear.visible { display: flex; }
-
-    .search-hint {
-      margin-top: 8px;
-      font-size: 0.78rem;
-      color: var(--muted);
-      padding-left: 4px;
-    }
-
-    .search-hint strong { color: var(--blue); }
+    .dot-poke { width: 10px; height: 10px; border-radius: 50%; background: var(--blue); }
+    .dot-op   { width: 10px; height: 10px; border-radius: 50%; background: var(--red); }
 
     /* ── GRID ── */
     .section-title {
@@ -466,14 +503,6 @@
       white-space: nowrap;
     }
 
-    /* highlight search match */
-    .card-name mark, .meta-pill mark {
-      background: rgba(245,197,24,0.45);
-      color: inherit;
-      border-radius: 3px;
-      padding: 0 2px;
-    }
-
     .card-meta {
       display: flex;
       align-items: center;
@@ -519,6 +548,21 @@
       margin-top: 4px;
     }
 
+    .btn-vinted     { background: #09b1ba; color: #fff; }
+    .btn-ebay       { background: var(--yellow); color: var(--dark); }
+    .btn-leboncoin  { background: #f56b2a; color: #fff; }
+    .btn-cardmarket { background: #1a6bb5; color: #fff; }
+
+    .btn-disabled {
+      background: #f0f2f5;
+      color: #bbb;
+      cursor: not-allowed;
+      border: 2px dashed #dde3eb;
+      font-style: italic;
+      font-size: 0.72rem;
+    }
+    .btn-disabled:hover { filter: none; transform: none; }
+
     .btn {
       display: flex;
       align-items: center;
@@ -556,6 +600,8 @@
     }
     .btn-disabled:hover { filter: none; transform: none; }
 
+    .btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
     /* ── SOLD STATE ── */
     .card.sold-card {
       opacity: 0.75;
@@ -569,6 +615,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      border-radius: 0;
       z-index: 2;
     }
 
@@ -609,21 +656,6 @@
 
     .empty .icon { font-size: 3rem; margin-bottom: 12px; }
     .empty p { font-size: 1.05rem; }
-    .empty .reset-link {
-      display: inline-block;
-      margin-top: 14px;
-      background: var(--blue);
-      color: #fff;
-      font-weight: 800;
-      padding: 8px 22px;
-      border-radius: 30px;
-      cursor: pointer;
-      border: none;
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.9rem;
-      transition: filter 0.15s;
-    }
-    .empty .reset-link:hover { filter: brightness(1.1); }
 
     /* ── FOOTER ── */
     footer {
@@ -642,7 +674,6 @@
       .hero h1 { font-size: 2.4rem; }
       .hero-stats { gap: 20px; }
       .controls { padding: 14px 16px; }
-      .search-wrap { padding: 0 16px 14px; }
       .grid { padding: 16px 14px 40px; gap: 16px; }
       nav { display: none; }
     }
@@ -707,6 +738,27 @@
   </div>
 </section>
 
+<!-- GRADE FILTERS -->
+<div class="grade-filters" id="grade-filters" style="display:none;">
+  <span class="filter-label">Note :</span>
+  <button class="grade-btn active" onclick="filterGrade('all', this)">Toutes</button>
+  <button class="grade-btn" onclick="filterGrade('9', this)">PSA 9</button>
+  <button class="grade-btn" onclick="filterGrade('9.5', this)">BGS 9.5</button>
+  <button class="grade-btn" onclick="filterGrade('10', this)">PSA 10</button>
+  <button class="grade-btn gold" onclick="filterGrade('10gold', this)">✨ 10 Gold</button>
+  <button class="grade-btn black" onclick="filterGrade('10black', this)">⚫ 10 Black</button>
+</div>
+
+<!-- SEARCH -->
+<div class="search-wrap">
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Rechercher une carte... ex: Dracaufeu, PSA 10, Écarlate..." autocomplete="off" />
+    <span class="search-count" id="search-count"></span>
+    <button class="search-clear" id="search-clear" onclick="clearSearch()" title="Effacer">✕</button>
+  </div>
+</div>
+
 <!-- FILTERS -->
 <div class="controls">
   <span class="filter-label">Filtrer :</span>
@@ -719,24 +771,6 @@
   <button class="tag-btn" id="btn-op" onclick="filterCards('op', this)">
     <span class="dot-op"></span> One Piece (0)
   </button>
-</div>
-
-<!-- SEARCH BAR -->
-<div class="search-wrap">
-  <div class="search-inner">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-    </svg>
-    <input
-      type="search"
-      id="search-input"
-      placeholder="Rechercher une carte, un set, un numéro…"
-      autocomplete="off"
-      spellcheck="false"
-    />
-    <button id="search-clear" title="Effacer la recherche">✕</button>
-  </div>
-  <div class="search-hint" id="search-hint"></div>
 </div>
 
 <!-- CATALOG -->
@@ -756,6 +790,7 @@
   //  DONNÉES — Modifie ici pour ajouter tes cartes
   // ─────────────────────────────────────────────
   const CARDS = [
+    // ── TES CARTES — Ajoute les suivantes ici ──
     {
       id: 1,
       universe: "poke",
@@ -843,42 +878,14 @@
   ];
 
   // ─────────────────────────────────────────────
-  //  STATE
+  //  RENDU
   // ─────────────────────────────────────────────
   let currentFilter = 'all';
-  let currentSearch = '';
-
-  // ─────────────────────────────────────────────
-  //  HELPERS
-  // ─────────────────────────────────────────────
-  function normalize(str) {
-    return str.toLowerCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // strip accents
-  }
-
-  function highlight(text, query) {
-    if (!query) return text;
-    const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const re = new RegExp(`(${escaped})`, 'gi');
-    return text.replace(re, '<mark>$1</mark>');
-  }
-
-  function matchesSearch(card, q) {
-    if (!q) return true;
-    const n = normalize(q);
-    return (
-      normalize(card.name).includes(n) ||
-      normalize(card.set).includes(n) ||
-      normalize(card.number).includes(n) ||
-      (card.gradingService && normalize(card.gradingService).includes(n)) ||
-      (card.condition && normalize(card.condition).includes(n))
-    );
-  }
 
   function scoreClass(g) {
-    if (g >= 10) return 'score-10';
-    if (g >= 9)  return 'score-9';
-    if (g >= 8)  return 'score-8';
+    if (g >= 10)  return 'score-10';
+    if (g >= 9)   return 'score-9';
+    if (g >= 8)   return 'score-8';
     return 'score-low';
   }
 
@@ -890,15 +897,14 @@
   }
 
   function mkBtn(url, cls, label, sold) {
-    if (sold) return `<span class="btn ${cls}-muted">${label}</span>`;
+    if (sold) return `<span class="btn btn-sold-platform ${cls}-muted">${label}</span>`;
     if (url && url !== '#' && url !== '') {
       return `<a class="btn ${cls}" href="${url}" target="_blank" rel="noopener">${label}</a>`;
     }
     return `<span class="btn btn-disabled" title="Bientôt disponible">🔒 ${label}</span>`;
   }
 
-  function renderCard(c, searchQuery) {
-    const q = searchQuery || '';
+  function renderCard(c) {
     const imgHtml = c.image
       ? `<img src="${c.image}" alt="${c.name}" loading="lazy" />`
       : `<div class="placeholder-art">${c.universe === 'poke' ? '🃏' : '⚔️'}<span>${c.universe === 'poke' ? 'Pokémon' : 'One Piece'}</span></div>`;
@@ -914,10 +920,6 @@
         ${mkBtn(c.cardmarket, 'btn-cardmarket', 'CardMarket',  false)}
       `;
 
-    const hlName   = highlight(c.name, q);
-    const hlSet    = highlight(c.set, q);
-    const hlNumber = highlight(c.number, q);
-
     return `
       <div class="card ${c.universe} ${c.sold ? 'sold-card' : ''}" data-universe="${c.universe}">
         <div class="card-img-wrap">
@@ -927,14 +929,12 @@
         </div>
         <div class="card-body">
           <div class="univ-tag ${c.universe === 'poke' ? 'univ-poke' : 'univ-op'}" style="display:inline-block;margin-bottom:2px;">${c.universe === 'poke' ? '⚡ Pokémon' : '☠ One Piece'}</div>
-          <div class="card-name">${hlName}</div>
+          <div class="card-name">${c.name}</div>
           <div class="card-meta">
-            <span class="meta-pill">${hlSet}</span>
-            <span class="meta-pill">#${hlNumber}</span>
+            <span class="meta-pill">${c.set}</span>
+            <span class="meta-pill">#${c.number}</span>
           </div>
-          ${c.gradingService && c.grade
-            ? `<div class="card-score ${scoreClass(c.grade)}">${c.gradingService} ${c.grade}</div>`
-            : `<div style="display:inline-block;background:var(--yellow-light);color:#a07800;border-radius:20px;padding:4px 12px;font-size:0.82rem;font-weight:800;">✨ ${c.condition || 'Non gradée'}</div>`}
+          ${c.gradingService && c.grade ? `<div class="card-score ${scoreClass(c.grade)}">${c.gradingService} ${c.grade}</div>` : `<div style="display:inline-block;background:var(--yellow-light);color:#a07800;border-radius:20px;padding:4px 12px;font-size:0.82rem;font-weight:800;">✨ ${c.condition || 'Non gradée'}</div>`}
           <div class="card-price"><span class="currency">€ </span>${c.price.toLocaleString('fr-FR')}</div>
           <div class="card-actions">${actions}</div>
         </div>
@@ -942,74 +942,85 @@
     `;
   }
 
-  // ─────────────────────────────────────────────
-  //  RENDER
-  // ─────────────────────────────────────────────
-  function renderAll() {
-    const filter = currentFilter;
-    const q      = currentSearch.trim();
+  let searchQuery = '';
+  let gradeFilter = 'all';
+
+  function filterGrade(g, btn) {
+    gradeFilter = g;
+    document.querySelectorAll('.grade-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    renderAll(currentFilter);
+  }
+
+  function cardMatchesGrade(c) {
+    if (gradeFilter === 'all') return true;
+    if (!c.gradingService || !c.grade) return false;
+    if (gradeFilter === '10gold') return c.grade === '10gold';
+    if (gradeFilter === '10black') return c.grade === '10black';
+    return String(c.grade) === gradeFilter;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('search-input');
+    const clearBtn = document.getElementById('search-clear');
+
+    input.addEventListener('input', () => {
+      searchQuery = input.value.trim().toLowerCase();
+      clearBtn.classList.toggle('visible', searchQuery.length > 0);
+      renderAll(currentFilter);
+    });
+  });
+
+  function clearSearch() {
+    document.getElementById('search-input').value = '';
+    searchQuery = '';
+    document.getElementById('search-clear').classList.remove('visible');
+    renderAll(currentFilter);
+  }
+
+  function cardMatchesSearch(c) {
+    if (!searchQuery) return true;
+    const haystack = [c.name, c.set, c.number, c.gradingService, c.grade, c.condition, c.universe === 'poke' ? 'pokemon' : 'one piece']
+      .filter(Boolean).join(' ').toLowerCase();
+    return searchQuery.split(' ').every(word => haystack.includes(word));
+  }
+
+  function renderAll(filter) {
+    currentFilter = filter;
     const catalog = document.getElementById('catalog');
     const universes = filter === 'all' ? ['poke', 'op'] : [filter];
     const labels = { poke: '⚡ Pokémon', op: '☠️ One Piece' };
 
     let html = '';
-    let totalVisible = 0;
+    // Available cards by universe
+    universes.forEach(u => {
+      const cards = CARDS.filter(c => c.universe === u && !c.sold && cardMatchesSearch(c) && cardMatchesGrade(c));
+      if (!cards.length) return;
+      html += `<h2 class="section-title">${labels[u]}</h2>`;
+      html += `<div class="grid">${cards.map(renderCard).join('')}</div>`;
+    });
 
-    if (q) {
-      // ── SEARCH MODE: flat list across universes ──
-      const results = CARDS.filter(c =>
-        (filter === 'all' || c.universe === filter) &&
-        matchesSearch(c, q)
-      );
-      totalVisible = results.length;
-      if (results.length) {
-        html += `<h2 class="section-title">🔍 Résultats pour « ${q} »</h2>`;
-        html += `<div class="grid">${results.map(c => renderCard(c, q)).join('')}</div>`;
-      } else {
-        html = `<div class="grid"><div class="empty">
-          <div class="icon">🔍</div>
-          <p>Aucune carte trouvée pour <strong>« ${q} »</strong>.</p>
-          <button class="reset-link" onclick="clearSearch()">Effacer la recherche</button>
-        </div></div>`;
-      }
-    } else {
-      // ── NORMAL MODE ──
-      universes.forEach(u => {
-        const cards = CARDS.filter(c => c.universe === u && !c.sold);
-        if (!cards.length) return;
-        totalVisible += cards.length;
-        html += `<h2 class="section-title">${labels[u]}</h2>`;
-        html += `<div class="grid">${cards.map(c => renderCard(c, '')).join('')}</div>`;
-      });
-
-      const soldCards = CARDS.filter(c => c.sold && (filter === 'all' || c.universe === filter));
-      if (soldCards.length) {
-        html += `<h2 class="section-title sold-title">✅ Déjà Vendus</h2>`;
-        html += `<div class="grid">${soldCards.map(c => renderCard(c, '')).join('')}</div>`;
-      }
-
-      if (!html) {
-        html = `<div class="grid"><div class="empty"><div class="icon">📦</div><p>Aucune carte dans cette catégorie pour l'instant.</p></div></div>`;
-      }
+    // Sold section
+    const soldCards = CARDS.filter(c => c.sold && (filter === 'all' || c.universe === filter) && cardMatchesSearch(c));
+    if (soldCards.length) {
+      html += `<h2 class="section-title sold-title">✅ Déjà Vendus</h2>`;
+      html += `<div class="grid">${soldCards.map(renderCard).join('')}</div>`;
     }
 
+    const totalVisible = CARDS.filter(c => (filter === 'all' || c.universe === filter) && cardMatchesSearch(c)).length;
+    const countEl = document.getElementById('search-count');
+    if (countEl) countEl.textContent = searchQuery ? `${totalVisible} résultat${totalVisible !== 1 ? 's' : ''}` : '';
+
+    if (!html) html = searchQuery
+      ? `<div class="grid"><div class="empty"><div class="icon">🔍</div><p>Aucune carte trouvée pour "<strong>${searchQuery}</strong>".</p></div></div>`
+      : `<div class="grid"><div class="empty"><div class="icon">📦</div><p>Aucune carte dans cette catégorie pour l'instant.</p></div></div>`;
     catalog.innerHTML = html;
 
-    // update hint
-    const hint = document.getElementById('search-hint');
-    if (q && totalVisible > 0) {
-      hint.innerHTML = `<strong>${totalVisible}</strong> carte${totalVisible > 1 ? 's' : ''} trouvée${totalVisible > 1 ? 's' : ''}`;
-    } else if (q && totalVisible === 0) {
-      hint.innerHTML = `Aucun résultat — essaie un autre mot-clé.`;
-    } else {
-      hint.innerHTML = `Cherche par nom, set, numéro, état…`;
-    }
-
     // update stats
-    const total = CARDS.filter(c => !c.sold).length;
-    const pokeN = CARDS.filter(c => c.universe === 'poke' && !c.sold).length;
-    const opN   = CARDS.filter(c => c.universe === 'op'   && !c.sold).length;
-    const soldN = CARDS.filter(c => c.sold).length;
+    const total  = CARDS.filter(c => !c.sold).length;
+    const pokeN  = CARDS.filter(c => c.universe === 'poke' && !c.sold).length;
+    const opN    = CARDS.filter(c => c.universe === 'op'   && !c.sold).length;
+    const soldN  = CARDS.filter(c => c.sold).length;
     document.getElementById('stat-total').textContent = total;
     document.getElementById('stat-poke').textContent  = pokeN;
     document.getElementById('stat-op').textContent    = opN;
@@ -1019,47 +1030,21 @@
     document.getElementById('btn-op').innerHTML     = `<span class="dot-op"></span> One Piece (${opN})`;
   }
 
-  // ─────────────────────────────────────────────
-  //  EVENT HANDLERS
-  // ─────────────────────────────────────────────
   function filterCards(f, btn) {
-    currentFilter = f;
+    // Show grade filters only when Pokémon or all is selected
+    const gradeBar = document.getElementById('grade-filters');
+    if (gradeBar) gradeBar.style.display = (f === 'poke' || f === 'all') ? 'flex' : 'none';
     document.querySelectorAll('.tag-btn').forEach(b => b.className = 'tag-btn');
     document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
     if (btn) {
       btn.classList.add(f === 'all' ? 'active-all' : f === 'poke' ? 'active-poke' : 'active-op');
       btn.classList.add('active');
     }
-    renderAll();
+    renderAll(f);
   }
 
-  function clearSearch() {
-    const input = document.getElementById('search-input');
-    input.value = '';
-    currentSearch = '';
-    document.getElementById('search-clear').classList.remove('visible');
-    renderAll();
-    input.focus();
-  }
-
-  // Search input wiring
-  let searchTimer;
-  document.getElementById('search-input').addEventListener('input', function () {
-    const q = this.value;
-    document.getElementById('search-clear').classList.toggle('visible', q.length > 0);
-    clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => {
-      currentSearch = q;
-      renderAll();
-    }, 180); // slight debounce for smooth typing
-  });
-
-  document.getElementById('search-clear').addEventListener('click', clearSearch);
-
-  // ─────────────────────────────────────────────
-  //  INIT
-  // ─────────────────────────────────────────────
-  renderAll();
+  // Init
+  renderAll('all');
 </script>
 </body>
 </html>
