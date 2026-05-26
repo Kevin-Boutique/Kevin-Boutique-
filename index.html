@@ -297,8 +297,8 @@
     .cgc-btn:hover, .cgc-btn.active-grader  { background: #1a1a2e; border-color: #f5c518; color: #f5c518; }
     .pca-btn:hover, .pca-btn.active-grader  { background: #0057a8; border-color: #0057a8; color: #fff; }
     .collectura-btn:hover, .collectura-btn.active-grader { background: linear-gradient(135deg,#7b2ff7,#4a90e2); border-color: #7b2ff7; color: #fff; }
-    .beckett-btn:hover, .beckett-btn.active-grader { background: #1d6fe8; border-color: #1d6fe8; color: #fff; }
-    .ccc-btn:hover, .ccc-btn.active-grader { background: #e8271d; border-color: #e8271d; color: #fff; }
+    .beckett-btn:hover, .beckett-btn.active-grader { background: #f5c518; border-color: #f5c518; color: #1a1a2e; }
+    .ccc-btn:hover, .ccc-btn.active-grader { background: #1a1a2e; border-color: #1a1a2e; color: #fff; }
 
     /* ── SEARCH BAR ── */
     .search-wrap {
@@ -746,12 +746,64 @@
     footer strong { color: var(--yellow); }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 2.4rem; }
-      .hero-stats { gap: 20px; }
-      .controls { padding: 14px 16px; }
-      .grid { padding: 16px 14px 40px; gap: 16px; }
+    @media (max-width: 768px) {
+      /* HEADER */
       nav { display: none; }
+      .logo { font-size: 1.5rem; }
+      header { height: 52px; padding: 0 16px; }
+
+      /* HERO */
+      .hero { padding: 36px 16px 32px; }
+      .hero h1 { font-size: 2.8rem; }
+      .hero p { font-size: 0.92rem; }
+      .hero-stats { gap: 16px; }
+      .stat .num { font-size: 1.6rem; }
+      .trust-bar { font-size: 0.75rem; gap: 6px; padding: 6px 12px; }
+      .trust-sep { display: none; }
+      .trust-item { display: block; text-align: center; }
+
+      /* SEARCH */
+      .search-wrap { padding: 12px 16px; }
+
+      /* FILTERS */
+      .controls { padding: 12px 16px; gap: 8px; }
+      .tag-btn { font-size: 0.78rem; padding: 6px 12px; }
+
+      /* GRADE FILTERS */
+      .grade-filters {
+        padding: 10px 16px;
+        gap: 6px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+      .grade-btn { font-size: 0.75rem; padding: 5px 10px; white-space: nowrap; }
+      .grade-separator { display: none; }
+      .filter-label { display: none; }
+
+      /* GRID — 2 colonnes sur mobile */
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 12px 12px 36px;
+        gap: 12px;
+      }
+
+      /* CARDS */
+      .card-name { font-size: 0.9rem; }
+      .card-price { font-size: 1.3rem; }
+      .card-actions { gap: 5px; }
+      .btn { font-size: 0.68rem; padding: 7px 4px; }
+      .card-img-wrap { min-height: 150px; padding: 14px; }
+      .card-img-wrap img { max-height: 140px; }
+
+      /* SECTION TITLE */
+      .section-title { font-size: 1.4rem; padding: 24px 16px 4px; }
+    }
+
+    @media (max-width: 380px) {
+      .hero h1 { font-size: 2.2rem; }
+      .grid { grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 10px 30px; }
+      .btn { font-size: 0.62rem; }
     }
 
     /* ── ANIMATIONS ── */
@@ -793,7 +845,7 @@
     <span class="trust-item">📦 Envoi soigné sleeve + top loader · 🎥 Préparation filmée</span>
   </div>
   <h1>Kevin<br/><em>Boutique</em></h1>
-  <p>Cartes Pokémon & One Piece — gradées PSA, BGS, CGC ou en état parfait. Disponibles sur toutes les grandes plateformes. Achetez en toute confiance, chaque commande est soigneusement préparée et filmée.</p>
+  <p>Cartes à collectionner gradées — certifiées par les meilleurs gradeurs du marché. Disponibles sur toutes les grandes plateformes. Chaque commande soigneusement préparée et filmée.</p>
   <div class="hero-stats">
     <div class="stat">
       <span class="num" id="stat-total">0</span>
