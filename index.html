@@ -298,6 +298,7 @@
     .pca-btn:hover, .pca-btn.active-grader  { background: #0057a8; border-color: #0057a8; color: #fff; }
     .collectura-btn:hover, .collectura-btn.active-grader { background: linear-gradient(135deg,#7b2ff7,#4a90e2); border-color: #7b2ff7; color: #fff; }
     .beckett-btn:hover, .beckett-btn.active-grader { background: #1d6fe8; border-color: #1d6fe8; color: #fff; }
+    .ccc-btn:hover, .ccc-btn.active-grader { background: #e8271d; border-color: #e8271d; color: #fff; }
 
     /* ── SEARCH BAR ── */
     .search-wrap {
@@ -553,6 +554,19 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
+    }
+
+    .card-type-tag {
+      display: inline-block;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 4px;
     }
 
     .card-name {
@@ -839,7 +853,7 @@
   <button class="grade-btn grader-btn beckett-btn" onclick="filterGrader('BGS', this)">Beckett</button>
   <button class="grade-btn grader-btn collectura-btn" onclick="filterGrader('Collectura', this)">Collectura</button>
   <button class="grade-btn grader-btn pca-btn" onclick="filterGrader('PCA', this)">PCA</button>
-  <button class="grade-btn grader-btn cgc-btn" onclick="filterGrader('CGC', this)">CGC</button>
+  <button class="grade-btn grader-btn ccc-btn" onclick="filterGrader('CCC', this)">CCC</button>
   <button class="grade-btn grader-btn psa-btn" onclick="filterGrader('PSA', this)">PSA</button>
 </div>
 
@@ -861,90 +875,6 @@
   // ─────────────────────────────────────────────
   const CARDS = [
     // ── TES CARTES — Ajoute les suivantes ici ──
-    {
-      id: 1,
-      universe: "poke",
-      name: "Lamantine AR",
-      set: "Flammes Fantasmagoriques",
-      number: "097/094",
-      gradingService: "", grade: null,
-      condition: "Neuf sans étiquette",
-      price: 5.99,
-      image: "https://images1.vinted.net/t/05_01f17_omgWP5MMNoPaKqLBRR8Y5PUp/f800/1773056940.webp?s=d7e33c9377070f9f00bf7f5fba6c88ad53350e03",
-      sold: false,
-      vinted: "https://www.vinted.fr/items/8351419673-carte-pokemon-lamantine-ar-097094-pfl-flammes-fantasmagorique",
-      ebay: "", leboncoin: "", cardmarket: "",
-    },
-    {
-      id: 2,
-      universe: "poke",
-      name: "Kyurem Noir FA",
-      set: "Étincelles Déferlantes",
-      number: "218/191",
-      gradingService: "", grade: null,
-      condition: "Neuf sans étiquette",
-      price: 6.99,
-      image: "https://images1.vinted.net/t/01_01883_m3Wwr6GowcT9iQtVqYLcuooV/f800/1773056703.webp?s=3668d67fc0d7bf97f86736fe7f1be4d0498d34c0",
-      sold: false,
-      vinted: "https://www.vinted.fr/items/8351384742-carte-pokemon-kyurem-noir-fa-218191-ssp-etincelles-deferlantes",
-      ebay: "", leboncoin: "", cardmarket: "",
-    },
-    {
-      id: 3,
-      universe: "poke",
-      name: "Caratroc AR",
-      set: "Méga Évolution",
-      number: "136/132",
-      gradingService: "", grade: null,
-      condition: "Neuf sans étiquette",
-      price: 4.99,
-      image: "https://images1.vinted.net/t/01_00b07_TaESq7eRBFyiL59AQxAKxChV/f800/1773056304.webp?s=e9058f0fc6f85e4458e2d37ac7f0e8461a8044ab",
-      sold: false,
-      vinted: "https://www.vinted.fr/items/8351326713-carte-pokemon-caratroc-ar-136132-meg-mega-evolution",
-      ebay: "", leboncoin: "", cardmarket: "",
-    },
-    {
-      id: 4,
-      universe: "poke",
-      name: "Lanssorien EX FA",
-      set: "Mascarade Crépusculaire",
-      number: "200/167",
-      gradingService: "", grade: null,
-      condition: "Neuf sans étiquette",
-      price: 6.99,
-      image: "https://images1.vinted.net/t/01_021e1_HazMZKvMPn3L52dFRsViBptx/f800/1773055917.webp?s=71bf57f6266cf2fcca2efbf9510d593d8d4671a5",
-      sold: false,
-      vinted: "https://www.vinted.fr/items/8351271361-carte-pokemon-lanssorien-ex-fa-200167-twm-mascarade-crepusculaires",
-      ebay: "", leboncoin: "", cardmarket: "",
-    },
-    {
-      id: 5,
-      universe: "poke",
-      name: "Scalpereur AR",
-      set: "Écarlate et Violet",
-      number: "220/198",
-      gradingService: "", grade: null,
-      condition: "Petit défaut de coupe",
-      price: 8.99,
-      image: "https://images1.vinted.net/t/05_0124d_D5xmBbRv82v2B3f6R1HqpqAo/f800/1773055526.webp?s=eb1b118098964ad13105721918e7e9ece6a4ecc1",
-      sold: false,
-      vinted: "https://www.vinted.fr/items/8351216457-carte-pokemon-scalpereur-ar-220198-svi-ecarlate-et-violet",
-      ebay: "", leboncoin: "", cardmarket: "",
-    },
-    {
-      id: 6,
-      universe: "poke",
-      name: "Vitalité Prof. Olim ALT",
-      set: "Faille Paradoxe",
-      number: "256/182",
-      gradingService: "", grade: null,
-      condition: "Neuf sans étiquette",
-      price: 16.99,
-      image: "https://images1.vinted.net/t/05_0077f_X82js42bmjW3fmbty6hdSgE3/f800/1773054885.webp?s=45cf141f63544820231f0c2201216ce16fb50724",
-      sold: false,
-      vinted: "https://www.vinted.fr/items/8351126864-carte-pokemon-vitalite-de-la-professeure-olim-alt-256182-par-faille-paradoxe",
-      ebay: "", leboncoin: "", cardmarket: "",
-    },
   ];
 
   // ─────────────────────────────────────────────
@@ -1011,7 +941,7 @@
           ${c.gradingService ? `<span class="grade-badge ${c.grade === '10gold' ? 'grade-gold' : c.grade === '10black' ? 'grade-black' : gradeClass(c.gradingService)}">${gradeLabel(c.gradingService, c.grade)}</span>` : ''}
         </div>
         <div class="card-body">
-          <div class="univ-tag ${c.universe === 'poke' ? 'univ-poke' : 'univ-op'}" style="display:inline-block;margin-bottom:2px;">${c.universe === 'poke' ? '⚡ Pokémon' : '☠ One Piece'}</div>
+          ${c.cardType ? `<span class="card-type-tag">${c.cardType}</span>` : ''}
           <div class="card-name">${c.name}</div>
           <div class="card-meta">
             <span class="meta-pill">${c.set}</span>
