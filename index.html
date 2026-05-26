@@ -738,17 +738,6 @@
   </div>
 </section>
 
-<!-- GRADE FILTERS -->
-<div class="grade-filters" id="grade-filters" style="display:none;">
-  <span class="filter-label">Note :</span>
-  <button class="grade-btn active" onclick="filterGrade('all', this)">Toutes</button>
-  <button class="grade-btn" onclick="filterGrade('9', this)">PSA 9</button>
-  <button class="grade-btn" onclick="filterGrade('9.5', this)">BGS 9.5</button>
-  <button class="grade-btn" onclick="filterGrade('10', this)">PSA 10</button>
-  <button class="grade-btn gold" onclick="filterGrade('10gold', this)">✨ 10 Gold</button>
-  <button class="grade-btn black" onclick="filterGrade('10black', this)">⚫ 10 Black</button>
-</div>
-
 <!-- SEARCH -->
 <div class="search-wrap">
   <div class="search-box">
@@ -771,6 +760,17 @@
   <button class="tag-btn" id="btn-op" onclick="filterCards('op', this)">
     <span class="dot-op"></span> One Piece (0)
   </button>
+</div>
+
+<!-- GRADE FILTERS -->
+<div class="grade-filters" id="grade-filters" style="display:flex;">
+  <span class="filter-label">Note :</span>
+  <button class="grade-btn active" onclick="filterGrade('all', this)">Toutes</button>
+  <button class="grade-btn" onclick="filterGrade('9', this)">9</button>
+  <button class="grade-btn" onclick="filterGrade('9.5', this)">9.5</button>
+  <button class="grade-btn" onclick="filterGrade('10', this)">10</button>
+  <button class="grade-btn gold" onclick="filterGrade('10gold', this)">✨ Gold</button>
+  <button class="grade-btn black" onclick="filterGrade('10black', this)">⚫ Black</button>
 </div>
 
 <!-- CATALOG -->
