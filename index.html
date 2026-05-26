@@ -926,7 +926,147 @@
   //  DONNÉES — Modifie ici pour ajouter tes cartes
   // ─────────────────────────────────────────────
   const CARDS = [
-    // ── TES CARTES — Ajoute les suivantes ici ──
+
+    // ══════════════════════════════════════
+    // POKÉMON — PSA
+    // ══════════════════════════════════════
+    { id:1, universe:"poke", name:"Dracaufeu EX", set:"Flammes Écarlates", number:"006/198", gradingService:"PSA", grade:9, cardType:"EX", condition:"", price:89, image:"https://images.pokemontcg.io/sv1/6_hires.png", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:2, universe:"poke", name:"Pikachu VMAX", set:"Vivid Voltage", number:"188/185", gradingService:"PSA", grade:9, cardType:"VMAX", condition:"", price:75, image:"https://images.pokemontcg.io/swsh4/188_hires.png", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:3, universe:"poke", name:"Méwtwo V Alt Art", set:"Pokémon GO", number:"079/078", gradingService:"PSA", grade:9.5, cardType:"Alt Art", condition:"", price:130, image:"https://images.pokemontcg.io/pgo/79_hires.png", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:4, universe:"poke", name:"Lugia V Star", set:"Silver Tempest", number:"139/195", gradingService:"PSA", grade:9.5, cardType:"V Star", condition:"", price:110, image:"https://images.pokemontcg.io/swsh12/139_hires.png", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:5, universe:"poke", name:"Dracaufeu VMAX", set:"Darkness Ablaze", number:"020/189", gradingService:"PSA", grade:10, cardType:"VMAX", condition:"", price:349, image:"https://images.pokemontcg.io/swsh3/20_hires.png", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:6, universe:"poke", name:"Ronflex VMAX", set:"Vivid Voltage", number:"142/185", gradingService:"PSA", grade:10, cardType:"VMAX", condition:"", price:210, image:"https://images.pokemontcg.io/swsh4/142_hires.png", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:7, universe:"poke", name:"Lugia VSTAR Alt Art", set:"Silver Tempest", number:"211/195", gradingService:"PSA", grade:"10gold", cardType:"Alt Art", condition:"", price:520, image:"https://images.pokemontcg.io/swsh12/211_hires.png", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:8, universe:"poke", name:"Dracaufeu Cristal", set:"Aquapolis", number:"146/147", gradingService:"PSA", grade:"10gold", cardType:"Secret Rare", condition:"", price:890, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:9, universe:"poke", name:"Mew VMAX Alt Art", set:"Fusion Strike", number:"269/264", gradingService:"PSA", grade:"10black", cardType:"Alt Art", condition:"", price:1200, image:"https://images.pokemontcg.io/swsh8/269_hires.png", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:10, universe:"poke", name:"Rayquaza VMAX Alt Art", set:"Evolving Skies", number:"218/203", gradingService:"PSA", grade:"10black", cardType:"Alt Art", condition:"", price:950, image:"https://images.pokemontcg.io/swsh7/218_hires.png", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+
+    // ══════════════════════════════════════
+    // POKÉMON — BECKETT
+    // ══════════════════════════════════════
+    { id:11, universe:"poke", name:"Tortank EX FA", set:"Générations", number:"122/122", gradingService:"BGS", grade:9, cardType:"FA", condition:"", price:65, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:12, universe:"poke", name:"Florizarre EX FA", set:"Générations", number:"123/122", gradingService:"BGS", grade:9, cardType:"FA", condition:"", price:70, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:13, universe:"poke", name:"Mackogneur GX Alt", set:"Cosmic Eclipse", number:"235/236", gradingService:"BGS", grade:9.5, cardType:"Alt Art", condition:"", price:180, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:14, universe:"poke", name:"Dracaufeu GX Arc", set:"Burning Shadows", number:"150/147", gradingService:"BGS", grade:9.5, cardType:"Secret Rare", condition:"", price:220, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:15, universe:"poke", name:"Evoli VMAX Alt Art", set:"Evolving Skies", number:"205/203", gradingService:"BGS", grade:10, cardType:"Alt Art", condition:"", price:410, image:"https://images.pokemontcg.io/swsh7/205_hires.png", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:16, universe:"poke", name:"Sylveon VMAX AR", set:"Evolving Skies", number:"212/203", gradingService:"BGS", grade:10, cardType:"AR", condition:"", price:380, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:17, universe:"poke", name:"Pikachu Illustrateur", set:"Promo", number:"Promo", gradingService:"BGS", grade:"10gold", cardType:"Promo", condition:"", price:2500, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:18, universe:"poke", name:"Ronflex EX FA", set:"XY Évolutions", number:"109/108", gradingService:"BGS", grade:"10gold", cardType:"FA", condition:"", price:650, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:19, universe:"poke", name:"Dracaufeu Base Set", set:"Base Set", number:"4/102", gradingService:"BGS", grade:"10black", cardType:"Holo Rare", condition:"", price:3200, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:20, universe:"poke", name:"Mewtwo Base Set", set:"Base Set", number:"10/102", gradingService:"BGS", grade:"10black", cardType:"Holo Rare", condition:"", price:1800, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+
+    // ══════════════════════════════════════
+    // POKÉMON — PCA
+    // ══════════════════════════════════════
+    { id:21, universe:"poke", name:"Parasect AR", set:"Mascarade Crépusculaire", number:"197/167", gradingService:"PCA", grade:9, cardType:"AR", condition:"", price:45, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:22, universe:"poke", name:"Noctali VMAX FA", set:"Evolving Skies", number:"197/203", gradingService:"PCA", grade:9, cardType:"FA", condition:"", price:55, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:23, universe:"poke", name:"Kyogre EX FA", set:"Double Crisis", number:"027/034", gradingService:"PCA", grade:9.5, cardType:"FA", condition:"", price:95, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:24, universe:"poke", name:"Groudon EX FA", set:"Double Crisis", number:"026/034", gradingService:"PCA", grade:9.5, cardType:"FA", condition:"", price:90, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:25, universe:"poke", name:"Lugia EX FA", set:"Plasma Storm", number:"134/135", gradingService:"PCA", grade:10, cardType:"FA", condition:"", price:280, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:26, universe:"poke", name:"Ho-Oh EX FA", set:"Dragons Exalted", number:"120/124", gradingService:"PCA", grade:10, cardType:"FA", condition:"", price:260, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:27, universe:"poke", name:"Suicune V Alt Art", set:"Evolving Skies", number:"210/203", gradingService:"PCA", grade:"10gold", cardType:"Alt Art", condition:"", price:480, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:28, universe:"poke", name:"Umbreon VMAX Alt Art", set:"Evolving Skies", number:"215/203", gradingService:"PCA", grade:"10gold", cardType:"Alt Art", condition:"", price:750, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:29, universe:"poke", name:"Gardevoir EX SR", set:"Scarlet & Violet", number:"205/198", gradingService:"PCA", grade:"10black", cardType:"Secret Rare", condition:"", price:900, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:30, universe:"poke", name:"Miraidon EX SR", set:"Scarlet & Violet", number:"202/198", gradingService:"PCA", grade:"10black", cardType:"Secret Rare", condition:"", price:820, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+
+    // ══════════════════════════════════════
+    // POKÉMON — COLLECTURA
+    // ══════════════════════════════════════
+    { id:31, universe:"poke", name:"Caratroc AR", set:"Méga Évolution", number:"136/132", gradingService:"Collectura", grade:9, cardType:"AR", condition:"", price:38, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:32, universe:"poke", name:"Tortank AR", set:"Méga Évolution", number:"122/122", gradingService:"Collectura", grade:9, cardType:"AR", condition:"", price:42, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:33, universe:"poke", name:"Lanssorien EX FA", set:"Mascarade Crépusculaire", number:"200/167", gradingService:"Collectura", grade:9.5, cardType:"FA", condition:"", price:78, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:34, universe:"poke", name:"Kyurem Noir FA", set:"Étincelles Déferlantes", number:"218/191", gradingService:"Collectura", grade:9.5, cardType:"FA", condition:"", price:82, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:35, universe:"poke", name:"Lamantine AR", set:"Flammes Fantasmagoriques", number:"097/094", gradingService:"Collectura", grade:10, cardType:"AR", condition:"", price:120, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:36, universe:"poke", name:"Scalpereur AR", set:"Écarlate et Violet", number:"220/198", gradingService:"Collectura", grade:10, cardType:"AR", condition:"", price:135, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:37, universe:"poke", name:"Vitalité Prof. Olim", set:"Faille Paradoxe", number:"256/182", gradingService:"Collectura", grade:"10gold", cardType:"Alt Art", condition:"", price:320, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:38, universe:"poke", name:"Dracaufeu ex SAR", set:"Obsidian Flames", number:"228/197", gradingService:"Collectura", grade:"10gold", cardType:"SAR", condition:"", price:550, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:39, universe:"poke", name:"Miraidon ex SAR", set:"Scarlet & Violet", number:"253/198", gradingService:"Collectura", grade:"10black", cardType:"SAR", condition:"", price:720, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:40, universe:"poke", name:"Koraidon ex SAR", set:"Scarlet & Violet", number:"254/198", gradingService:"Collectura", grade:"10black", cardType:"SAR", condition:"", price:680, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+
+    // ══════════════════════════════════════
+    // POKÉMON — CCC
+    // ══════════════════════════════════════
+    { id:41, universe:"poke", name:"Pikachu V Alt Art", set:"Vivid Voltage", number:"170/185", gradingService:"CCC", grade:9, cardType:"Alt Art", condition:"", price:58, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:42, universe:"poke", name:"Evoli V Alt Art", set:"Evolving Skies", number:"203/203", gradingService:"CCC", grade:9, cardType:"Alt Art", condition:"", price:62, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:43, universe:"poke", name:"Ursaring VMAX Alt Art", set:"Astral Radiance", number:"217/189", gradingService:"CCC", grade:9.5, cardType:"Alt Art", condition:"", price:98, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:44, universe:"poke", name:"Hisuian Goodra VSTAR", set:"Astral Radiance", number:"214/189", gradingService:"CCC", grade:9.5, cardType:"VSTAR", condition:"", price:88, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:45, universe:"poke", name:"Giratine VSTAR Alt Art", set:"Lost Origin", number:"201/196", gradingService:"CCC", grade:10, cardType:"Alt Art", condition:"", price:290, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:46, universe:"poke", name:"Darkrai VSTAR Alt Art", set:"Astral Radiance", number:"220/189", gradingService:"CCC", grade:10, cardType:"Alt Art", condition:"", price:310, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:47, universe:"poke", name:"Pikachu VMAX Rainbow", set:"Vivid Voltage", number:"188/185", gradingService:"CCC", grade:"10gold", cardType:"Secret Rare", condition:"", price:480, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:48, universe:"poke", name:"Zacian V Alt Art", set:"Champion's Path", number:"074/073", gradingService:"CCC", grade:"10gold", cardType:"Alt Art", condition:"", price:560, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:49, universe:"poke", name:"Zamazenta V Alt Art", set:"Champion's Path", number:"075/073", gradingService:"CCC", grade:"10black", cardType:"Alt Art", condition:"", price:820, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:50, universe:"poke", name:"Eternatus VMAX Alt Art", set:"Darkness Ablaze", number:"192/189", gradingService:"CCC", grade:"10black", cardType:"Alt Art", condition:"", price:780, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+
+    // ══════════════════════════════════════
+    // ONE PIECE — PSA
+    // ══════════════════════════════════════
+    { id:51, universe:"op", name:"Monkey D. Luffy", set:"Romance Dawn", number:"OP01-003 SR", gradingService:"PSA", grade:9, cardType:"SR", condition:"", price:95, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:52, universe:"op", name:"Roronoa Zoro", set:"Romance Dawn", number:"OP01-001 SR", gradingService:"PSA", grade:9, cardType:"SR", condition:"", price:80, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:53, universe:"op", name:"Shanks le Roux", set:"Paramount War", number:"OP02-120 SEC", gradingService:"PSA", grade:9.5, cardType:"SEC", condition:"", price:210, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:54, universe:"op", name:"Portgas D. Ace", set:"Paramount War", number:"OP02-013 SR", gradingService:"PSA", grade:9.5, cardType:"SR", condition:"", price:185, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:55, universe:"op", name:"Boa Hancock", set:"Pillars of Strength", number:"OP03-099 SR", gradingService:"PSA", grade:10, cardType:"SR", condition:"", price:320, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:56, universe:"op", name:"Trafalgar Law", set:"Kingdoms of Intrigue", number:"OP04-020 SR", gradingService:"PSA", grade:10, cardType:"SR", condition:"", price:290, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:57, universe:"op", name:"Luffy Gear 5", set:"Awakening of the New Era", number:"OP05-119 SEC", gradingService:"PSA", grade:"10gold", cardType:"SEC", condition:"", price:750, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:58, universe:"op", name:"Nami SEC", set:"Romance Dawn", number:"OP01-016 SEC", gradingService:"PSA", grade:"10gold", cardType:"SEC", condition:"", price:620, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:59, universe:"op", name:"Whitebeard SEC", set:"Paramount War", number:"OP02-099 SEC", gradingService:"PSA", grade:"10black", cardType:"SEC", condition:"", price:980, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:60, universe:"op", name:"Roger SEC", set:"Awakening of the New Era", number:"OP05-001 SEC", gradingService:"PSA", grade:"10black", cardType:"SEC", condition:"", price:1100, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+
+    // ══════════════════════════════════════
+    // ONE PIECE — BECKETT
+    // ══════════════════════════════════════
+    { id:61, universe:"op", name:"Sanji SR", set:"Romance Dawn", number:"OP01-013 SR", gradingService:"BGS", grade:9, cardType:"SR", condition:"", price:72, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:62, universe:"op", name:"Nami SR", set:"Romance Dawn", number:"OP01-016 SR", gradingService:"BGS", grade:9, cardType:"SR", condition:"", price:68, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:63, universe:"op", name:"Robin SR", set:"Paramount War", number:"OP02-040 SR", gradingService:"BGS", grade:9.5, cardType:"SR", condition:"", price:145, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:64, universe:"op", name:"Crocodile SEC", set:"Paramount War", number:"OP02-094 SEC", gradingService:"BGS", grade:9.5, cardType:"SEC", condition:"", price:230, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:65, universe:"op", name:"Jinbe SR", set:"Pillars of Strength", number:"OP03-076 SR", gradingService:"BGS", grade:10, cardType:"SR", condition:"", price:340, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:66, universe:"op", name:"Big Mom SEC", set:"Kingdoms of Intrigue", number:"OP04-083 SEC", gradingService:"BGS", grade:10, cardType:"SEC", condition:"", price:420, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:67, universe:"op", name:"Kaido SEC", set:"Pillars of Strength", number:"OP03-022 SEC", gradingService:"BGS", grade:"10gold", cardType:"SEC", condition:"", price:880, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:68, universe:"op", name:"Doflamingo SEC", set:"Kingdoms of Intrigue", number:"OP04-040 SEC", gradingService:"BGS", grade:"10gold", cardType:"SEC", condition:"", price:760, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:69, universe:"op", name:"Luffy SEC Gear 4", set:"Pillars of Strength", number:"OP03-040 SEC", gradingService:"BGS", grade:"10black", cardType:"SEC", condition:"", price:1250, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:70, universe:"op", name:"Zoro SEC Enma", set:"Kingdoms of Intrigue", number:"OP04-025 SEC", gradingService:"BGS", grade:"10black", cardType:"SEC", condition:"", price:1050, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+
+    // ══════════════════════════════════════
+    // ONE PIECE — PCA
+    // ══════════════════════════════════════
+    { id:71, universe:"op", name:"Usopp SR", set:"Romance Dawn", number:"OP01-014 SR", gradingService:"PCA", grade:9, cardType:"SR", condition:"", price:55, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:72, universe:"op", name:"Chopper SR", set:"Romance Dawn", number:"OP01-015 SR", gradingService:"PCA", grade:9, cardType:"SR", condition:"", price:60, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:73, universe:"op", name:"Franky SR", set:"Paramount War", number:"OP02-070 SR", gradingService:"PCA", grade:9.5, cardType:"SR", condition:"", price:125, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:74, universe:"op", name:"Brook SEC", set:"Paramount War", number:"OP02-071 SEC", gradingService:"PCA", grade:9.5, cardType:"SEC", condition:"", price:198, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:75, universe:"op", name:"Yamato SR", set:"Pillars of Strength", number:"OP03-040 SR", gradingService:"PCA", grade:10, cardType:"SR", condition:"", price:310, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:76, universe:"op", name:"Koby SR", set:"Kingdoms of Intrigue", number:"OP04-099 SR", gradingService:"PCA", grade:10, cardType:"SR", condition:"", price:280, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:77, universe:"op", name:"Sabo SEC", set:"Paramount War", number:"OP02-025 SEC", gradingService:"PCA", grade:"10gold", cardType:"SEC", condition:"", price:690, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:78, universe:"op", name:"Ivankov SEC", set:"Paramount War", number:"OP02-060 SEC", gradingService:"PCA", grade:"10gold", cardType:"SEC", condition:"", price:580, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:79, universe:"op", name:"Garp SEC", set:"Awakening of the New Era", number:"OP05-060 SEC", gradingService:"PCA", grade:"10black", cardType:"SEC", condition:"", price:920, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:80, universe:"op", name:"Rayleigh SEC", set:"Awakening of the New Era", number:"OP05-061 SEC", gradingService:"PCA", grade:"10black", cardType:"SEC", condition:"", price:870, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+
+    // ══════════════════════════════════════
+    // ONE PIECE — COLLECTURA
+    // ══════════════════════════════════════
+    { id:81, universe:"op", name:"Lucci SR", set:"Kingdoms of Intrigue", number:"OP04-013 SR", gradingService:"Collectura", grade:9, cardType:"SR", condition:"", price:48, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:82, universe:"op", name:"Kizaru SR", set:"Awakening of the New Era", number:"OP05-098 SR", gradingService:"Collectura", grade:9, cardType:"SR", condition:"", price:52, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:83, universe:"op", name:"Aokiji SEC", set:"Awakening of the New Era", number:"OP05-099 SEC", gradingService:"Collectura", grade:9.5, cardType:"SEC", condition:"", price:165, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:84, universe:"op", name:"Akainu SEC", set:"Awakening of the New Era", number:"OP05-100 SEC", gradingService:"Collectura", grade:9.5, cardType:"SEC", condition:"", price:175, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:85, universe:"op", name:"Smoker SR", set:"Pillars of Strength", number:"OP03-060 SR", gradingService:"Collectura", grade:10, cardType:"SR", condition:"", price:260, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:86, universe:"op", name:"Tashigi SR", set:"Pillars of Strength", number:"OP03-061 SR", gradingService:"Collectura", grade:10, cardType:"SR", condition:"", price:240, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:87, universe:"op", name:"Buggy SEC", set:"Romance Dawn", number:"OP01-060 SEC", gradingService:"Collectura", grade:"10gold", cardType:"SEC", condition:"", price:520, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:88, universe:"op", name:"Mihawk SEC", set:"Romance Dawn", number:"OP01-002 SEC", gradingService:"Collectura", grade:"10gold", cardType:"SEC", condition:"", price:610, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:89, universe:"op", name:"Luffy SEC Romance", set:"Romance Dawn", number:"OP01-003 SEC", gradingService:"Collectura", grade:"10black", cardType:"SEC", condition:"", price:1050, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:90, universe:"op", name:"Zoro SEC Romance", set:"Romance Dawn", number:"OP01-001 SEC", gradingService:"Collectura", grade:"10black", cardType:"SEC", condition:"", price:980, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+
+    // ══════════════════════════════════════
+    // ONE PIECE — CCC
+    // ══════════════════════════════════════
+    { id:91, universe:"op", name:"Perona SR", set:"Paramount War", number:"OP02-050 SR", gradingService:"CCC", grade:9, cardType:"SR", condition:"", price:44, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:92, universe:"op", name:"Moria SR", set:"Paramount War", number:"OP02-049 SR", gradingService:"CCC", grade:9, cardType:"SR", condition:"", price:46, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:93, universe:"op", name:"Kuma SEC", set:"Paramount War", number:"OP02-098 SEC", gradingService:"CCC", grade:9.5, cardType:"SEC", condition:"", price:155, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:94, universe:"op", name:"Vegapunk SEC", set:"Awakening of the New Era", number:"OP05-020 SEC", gradingService:"CCC", grade:9.5, cardType:"SEC", condition:"", price:168, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:95, universe:"op", name:"Bonney SR", set:"Awakening of the New Era", number:"OP05-040 SR", gradingService:"CCC", grade:10, cardType:"SR", condition:"", price:250, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:96, universe:"op", name:"Kid SR", set:"Kingdoms of Intrigue", number:"OP04-049 SR", gradingService:"CCC", grade:10, cardType:"SR", condition:"", price:235, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:97, universe:"op", name:"Killer SEC", set:"Kingdoms of Intrigue", number:"OP04-050 SEC", gradingService:"CCC", grade:"10gold", cardType:"SEC", condition:"", price:490, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:98, universe:"op", name:"Hawkins SEC", set:"Kingdoms of Intrigue", number:"OP04-051 SEC", gradingService:"CCC", grade:"10gold", cardType:"SEC", condition:"", price:510, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:99, universe:"op", name:"Drake SEC", set:"Awakening of the New Era", number:"OP05-080 SEC", gradingService:"CCC", grade:"10black", cardType:"SEC", condition:"", price:860, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:100, universe:"op", name:"Apoo SEC", set:"Awakening of the New Era", number:"OP05-081 SEC", gradingService:"CCC", grade:"10black", cardType:"SEC", condition:"", price:790, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+
   ];
 
   // ─────────────────────────────────────────────
