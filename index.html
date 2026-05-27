@@ -550,9 +550,9 @@
 <div id="catalog"></div>
 
 <!-- MODAL -->
-<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+<div class="modal-overlay" id="modal-overlay">
   <div class="modal" id="modal-box">
-    <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    <button class="modal-close" id="modal-close-btn">✕</button>
 
     <!-- Images -->
     <div class="modal-images" id="modal-images">
@@ -756,9 +756,9 @@
 
   function mkBtn(url, cls, label) {
     if (url && url !== '#' && url !== '') {
-      return `<a class="btn ${cls}" href="${url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${label}</a>`;
+      return `<a class="btn ${cls} no-modal" href="${url}" target="_blank" rel="noopener">${label}</a>`;
     }
-    return `<span class="btn btn-disabled" onclick="event.stopPropagation()" title="Bientôt disponible">🔒 ${label}</span>`;
+    return `<span class="btn btn-disabled no-modal" title="Bientôt disponible">🔒 ${label}</span>`;
   }
 
   function renderCard(c) {
@@ -791,7 +791,7 @@
     const graderBar = `<div class="grader-bar" style="background:${barColor};"></div>`;
 
     return `
-      <div class="card ${c.universe} ${c.sold ? 'sold-card' : ''}" data-universe="${c.universe}" onclick="openModal(${c.id})" role="button" tabindex="0">
+      <div class="card ${c.universe} ${c.sold ? 'sold-card' : ''}" data-universe="${c.universe}" data-id="${c.id}">
         ${graderBar}
         <div class="card-img-wrap">
           ${imgHtml}
@@ -1035,15 +1035,28 @@
     document.querySelectorAll('.modal-thumb').forEach((t, i) => t.classList.toggle('active', i === idx));
   }
 
-  function closeModal(e) {
-    if (e.target === document.getElementById('modal-overlay')) closeModalDirect();
-  }
   function closeModalDirect() {
     document.getElementById('modal-overlay').classList.remove('open');
     document.body.style.overflow = '';
   }
 
-  // Close with Escape key
+  // ─────────────────────────────────────────────
+  //  DÉLÉGATION D'ÉVÉNEMENTS — clic sur les cartes
+  // ─────────────────────────────────────────────
+  document.getElementById('catalog').addEventListener('click', function(e) {
+    // Ignorer les clics sur les boutons/liens d'achat
+    if (e.target.closest('.no-modal')) return;
+    // Trouver la carte parente
+    const card = e.target.closest('.card[data-id]');
+    if (!card) return;
+    openModal(parseInt(card.dataset.id));
+  });
+
+  // Fermeture modale
+  document.getElementById('modal-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeModalDirect();
+  });
+  document.getElementById('modal-close-btn').addEventListener('click', closeModalDirect);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
 </script>
 </body>
