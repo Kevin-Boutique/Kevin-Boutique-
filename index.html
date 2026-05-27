@@ -244,6 +244,180 @@
     .empty .icon { font-size: 3rem; margin-bottom: 12px; }
     .empty p { font-size: 1.05rem; }
 
+    /* ── CARD CURSOR ── */
+    .card { cursor: pointer; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: var(--white);
+      border-radius: 24px;
+      max-width: 860px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.22s;
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+
+    /* close button */
+    .modal-close {
+      position: absolute;
+      top: 14px; right: 14px;
+      background: var(--gray);
+      border: none;
+      border-radius: 50%;
+      width: 36px; height: 36px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10;
+      transition: background 0.15s;
+      color: var(--text);
+    }
+    .modal-close:hover { background: var(--red); color: #fff; }
+
+    /* image side */
+    .modal-images {
+      background: var(--gray);
+      border-radius: 24px 0 0 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 20px;
+      gap: 16px;
+      min-height: 380px;
+      position: relative;
+    }
+
+    .modal-main-img {
+      width: 100%;
+      max-height: 280px;
+      object-fit: contain;
+      border-radius: 12px;
+      filter: drop-shadow(0 6px 20px rgba(0,0,0,0.2));
+    }
+
+    .modal-thumbs {
+      display: flex;
+      gap: 10px;
+    }
+
+    .modal-thumb {
+      width: 60px; height: 60px;
+      object-fit: contain;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 3px solid transparent;
+      background: #fff;
+      padding: 4px;
+      transition: border-color 0.15s;
+    }
+    .modal-thumb.active { border-color: var(--yellow); }
+    .modal-thumb:hover  { border-color: var(--blue); }
+
+    .modal-no-img {
+      font-size: 5rem;
+      opacity: 0.3;
+    }
+
+    /* info side */
+    .modal-info {
+      padding: 32px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .modal-univ-tag {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+
+    .modal-title {
+      font-family: 'Bangers', cursive;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      color: var(--dark);
+      line-height: 1.1;
+    }
+
+    .modal-divider { height: 2px; background: var(--gray); border-radius: 2px; }
+
+    .modal-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+    }
+    .modal-row .label { color: var(--muted); font-weight: 700; }
+    .modal-row .val   { font-weight: 900; color: var(--dark); }
+
+    .modal-grade-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 30px;
+      font-weight: 900;
+      font-size: 0.88rem;
+    }
+
+    .modal-price {
+      font-family: 'Bangers', cursive;
+      font-size: 2.6rem;
+      color: var(--dark);
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+    .modal-price .currency { font-size: 1.2rem; color: var(--muted); font-family: 'Nunito', sans-serif; font-weight: 900; vertical-align: super; }
+
+    .modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
+
+    .modal-sold-label {
+      text-align: center;
+      background: var(--gray);
+      border-radius: 12px;
+      padding: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      grid-column: span 2;
+    }
+
+    /* responsive modal */
+    @media (max-width: 640px) {
+      .modal { grid-template-columns: 1fr; max-height: 95vh; }
+      .modal-images { border-radius: 24px 24px 0 0; min-height: 240px; }
+      .modal-info { padding: 20px; }
+      .modal-title { font-size: 1.6rem; }
+    }
+
     /* ── FOOTER ── */
     footer { background: var(--dark); color: #7a90a8; text-align: center; padding: 28px 24px; font-size: 0.85rem; line-height: 1.8; }
     footer strong { color: var(--yellow); }
@@ -375,6 +549,34 @@
 <!-- CATALOG -->
 <div id="catalog"></div>
 
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal-box">
+    <button class="modal-close" onclick="closeModalDirect()">✕</button>
+
+    <!-- Images -->
+    <div class="modal-images" id="modal-images">
+      <img class="modal-main-img" id="modal-main-img" src="" alt="" />
+      <div class="modal-thumbs" id="modal-thumbs"></div>
+    </div>
+
+    <!-- Info -->
+    <div class="modal-info" id="modal-info">
+      <div id="modal-univ-tag" class="modal-univ-tag"></div>
+      <div class="modal-title" id="modal-title"></div>
+      <div class="modal-divider"></div>
+      <div class="modal-row"><span class="label">Set</span><span class="val" id="modal-set"></span></div>
+      <div class="modal-row"><span class="label">Numéro</span><span class="val" id="modal-number"></span></div>
+      <div class="modal-row"><span class="label">Type</span><span class="val" id="modal-type"></span></div>
+      <div class="modal-row"><span class="label">Langue</span><span class="val" id="modal-lang"></span></div>
+      <div class="modal-row"><span class="label">Gradeur</span><span class="val" id="modal-grade"></span></div>
+      <div class="modal-divider"></div>
+      <div class="modal-price"><span class="currency">€ </span><span id="modal-price"></span></div>
+      <div class="modal-actions" id="modal-actions"></div>
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <strong>Kevin Boutique</strong> — Cartes Gradées Pokémon, One Piece, League of Legends &amp; Dragon Ball<br/>
@@ -388,7 +590,7 @@
   // ─────────────────────────────────────────────
   const CARDS = [
     // POKÉMON — PSA
-    { id:1,  universe:"poke", name:"Dracaufeu EX",         set:"Flammes Écarlates",      number:"006/198", gradingService:"PSA", grade:9,         cardType:"EX",         language:"FR", price:89,   image:"https://images.pokemontcg.io/sv1/6_hires.png",       sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:1,  universe:"poke", name:"Dracaufeu EX",         set:"Flammes Écarlates",      number:"006/198", gradingService:"PSA", grade:9,         cardType:"EX",         language:"FR", price:89,   image:"https://images.pokemontcg.io/sv1/6_hires.png",      image2:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
     { id:2,  universe:"poke", name:"Pikachu VMAX",         set:"Vivid Voltage",          number:"188/185", gradingService:"PSA", grade:9,         cardType:"VMAX",        language:"EN", price:75,   image:"https://images.pokemontcg.io/swsh4/188_hires.png",   sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
     { id:3,  universe:"poke", name:"Méwtwo V Alt Art",     set:"Pokémon GO",             number:"079/078", gradingService:"PSA", grade:9.5,       cardType:"Alt Art",     language:"FR", price:130,  image:"https://images.pokemontcg.io/pgo/79_hires.png",      sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
     { id:4,  universe:"poke", name:"Lugia V Star",         set:"Silver Tempest",         number:"139/195", gradingService:"PSA", grade:9.5,       cardType:"V Star",      language:"EN", price:110,  image:"https://images.pokemontcg.io/swsh12/139_hires.png",  sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
@@ -587,7 +789,7 @@
     const graderBar = `<div class="grader-bar" style="background:${barColor};"></div>`;
 
     return `
-      <div class="card ${c.universe} ${c.sold ? 'sold-card' : ''}" data-universe="${c.universe}">
+      <div class="card ${c.universe} ${c.sold ? 'sold-card' : ''}" data-universe="${c.universe}" onclick="openModal(${c.id})" role="button" tabindex="0">
         ${graderBar}
         <div class="card-img-wrap">
           ${imgHtml}
@@ -727,6 +929,121 @@
   });
 
   renderAll('all');
+
+  // ─────────────────────────────────────────────
+  //  MODAL
+  // ─────────────────────────────────────────────
+  const UNIV_COLORS_MODAL = { poke:'#1d6fe8', op:'#e8271d', lol:'#1a9e2c', db:'#f97316' };
+  const LANG_FLAGS_MODAL  = { FR:'🇫🇷', EN:'🇬🇧', JP:'🇯🇵', DE:'🇩🇪', ES:'🇪🇸', IT:'🇮🇹' };
+
+  let modalActiveImg = 0;
+  let modalImgs = [];
+
+  function openModal(id) {
+    const c = CARDS.find(x => x.id === id);
+    if (!c) return;
+
+    // Build images list
+    modalImgs = [c.image, c.image2].filter(Boolean);
+    modalActiveImg = 0;
+
+    // Images panel
+    const mainImg = document.getElementById('modal-main-img');
+    const thumbsEl = document.getElementById('modal-thumbs');
+
+    if (modalImgs.length > 0) {
+      mainImg.src = modalImgs[0];
+      mainImg.alt = c.name;
+      mainImg.style.display = 'block';
+      document.querySelector('.modal-no-img')?.remove();
+    } else {
+      mainImg.style.display = 'none';
+      const noImg = document.createElement('div');
+      noImg.className = 'modal-no-img';
+      noImg.textContent = c.universe === 'poke' ? '🃏' : c.universe === 'op' ? '⚔️' : c.universe === 'lol' ? '🎮' : '🐉';
+      document.getElementById('modal-images').insertBefore(noImg, thumbsEl);
+    }
+
+    // Thumbnails (only if 2+ images)
+    thumbsEl.innerHTML = '';
+    if (modalImgs.length > 1) {
+      modalImgs.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.className = 'modal-thumb' + (i === 0 ? ' active' : '');
+        img.onclick = (e) => { e.stopPropagation(); switchModalImg(i); };
+        thumbsEl.appendChild(img);
+      });
+    }
+
+    // Universe tag
+    const univTag = document.getElementById('modal-univ-tag');
+    const univLabel = UNIV_LABEL[c.universe] || c.universe;
+    const univColor = UNIV_COLORS_MODAL[c.universe] || '#ccc';
+    univTag.textContent = univLabel;
+    univTag.style.background = univColor + '20';
+    univTag.style.color = univColor;
+
+    // Top bar color
+    document.getElementById('modal-images').style.borderTop = `5px solid ${univColor}`;
+
+    // Info fields
+    document.getElementById('modal-title').textContent  = c.name;
+    document.getElementById('modal-set').textContent    = c.set;
+    document.getElementById('modal-number').textContent = '#' + c.number;
+    document.getElementById('modal-type').textContent   = c.cardType || '—';
+    document.getElementById('modal-lang').textContent   = (LANG_FLAGS_MODAL[c.language] || '🌐') + ' ' + (c.language || '—');
+
+    // Grade display
+    const gradeEl = document.getElementById('modal-grade');
+    if (c.gradingService && c.grade) {
+      const gradeLabel = c.grade === '10gold' ? '10 ✨ Gold' : c.grade === '10black' ? '10 ⚫ Black' : c.grade;
+      gradeEl.textContent = `${c.gradingService === 'Collectura' ? 'CA' : c.gradingService} — ${gradeLabel}`;
+    } else {
+      gradeEl.textContent = c.condition || 'Non gradée';
+    }
+
+    // Price
+    document.getElementById('modal-price').textContent = c.price.toLocaleString('fr-FR');
+
+    // Actions
+    const actEl = document.getElementById('modal-actions');
+    if (c.sold) {
+      actEl.innerHTML = `<div class="modal-sold-label">Cette carte a été vendue 🎉</div>`;
+    } else {
+      const btns = [
+        { url: c.vinted,     cls: 'btn-vinted',     label: 'Vinted' },
+        { url: c.ebay,       cls: 'btn-ebay',        label: 'eBay' },
+        { url: c.leboncoin,  cls: 'btn-leboncoin',   label: 'Le Bon Coin' },
+        { url: c.cardmarket, cls: 'btn-cardmarket',  label: 'CardMarket' },
+      ].map(b => b.url
+        ? `<a class="btn ${b.cls}" href="${b.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${b.label}</a>`
+        : `<span class="btn btn-disabled">🔒 ${b.label}</span>`
+      ).join('');
+      actEl.innerHTML = btns;
+    }
+
+    // Open
+    document.getElementById('modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function switchModalImg(idx) {
+    modalActiveImg = idx;
+    document.getElementById('modal-main-img').src = modalImgs[idx];
+    document.querySelectorAll('.modal-thumb').forEach((t, i) => t.classList.toggle('active', i === idx));
+  }
+
+  function closeModal(e) {
+    if (e.target === document.getElementById('modal-overlay')) closeModalDirect();
+  }
+  function closeModalDirect() {
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Close with Escape key
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
 </script>
 </body>
 </html>
