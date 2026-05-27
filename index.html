@@ -21,6 +21,11 @@
       --radius: 18px;
       --shadow: 0 4px 24px rgba(0,0,0,0.10);
       --shadow-hover: 0 8px 40px rgba(0,0,0,0.16);
+      /* Universe colors */
+      --lol:        #1a9e2c;
+      --lol-light:  #e6f7e8;
+      --db:         #f97316;
+      --db-light:   #fff3e8;
       /* Grader colors */
       --psa:        #c8102e;
       --bgs:        #a8a9ad;
@@ -121,8 +126,12 @@
     .tag-btn.active-poke { background: var(--blue); border-color: var(--blue); color: var(--white); }
     .tag-btn.active-op   { background: var(--red);  border-color: var(--red);  color: var(--white); }
     .tag-btn.active-all  { background: var(--dark); border-color: var(--dark); color: var(--white); }
+    .tag-btn.active-lol  { background: var(--lol);  border-color: var(--lol);  color: var(--white); }
+    .tag-btn.active-db   { background: var(--db);   border-color: var(--db);   color: var(--white); }
     .dot-poke { width: 10px; height: 10px; border-radius: 50%; background: var(--blue); }
     .dot-op   { width: 10px; height: 10px; border-radius: 50%; background: var(--red); }
+    .dot-lol  { width: 10px; height: 10px; border-radius: 50%; background: var(--lol); }
+    .dot-db   { width: 10px; height: 10px; border-radius: 50%; background: var(--db); }
 
     /* ── GRADE FILTERS ── */
     .grade-filters { background: var(--gray); padding: 10px 24px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; border-bottom: 1px solid #e8ecf0; }
@@ -199,7 +208,9 @@
     /* Universe tag (inside image) */
     .univ-tag { position: absolute; top: 12px; left: 12px; padding: 3px 10px; border-radius: 8px; font-weight: 800; font-size: 0.7rem; letter-spacing: 1px; }
     .univ-poke { background: var(--blue-light); color: var(--blue); }
-    .univ-op   { background: #fdeaea; color: var(--red); }
+    .univ-op   { background: #fdeaea;           color: var(--red); }
+    .univ-lol  { background: var(--lol-light);  color: var(--lol); }
+    .univ-db   { background: var(--db-light);   color: var(--db); }
 
     .card-body { padding: 16px 18px 18px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
     .card-type-tag { display: inline-block; background: var(--blue-light); color: var(--blue); font-size: 0.72rem; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 4px; }
@@ -292,6 +303,8 @@
     <button class="active" onclick="filterCards('all', this)">Tout voir</button>
     <button onclick="filterCards('poke', this)">Pokémon</button>
     <button onclick="filterCards('op', this)">One Piece</button>
+    <button onclick="filterCards('lol', this)">League of Legends</button>
+    <button onclick="filterCards('db', this)">Dragon Ball</button>
   </nav>
 </header>
 
@@ -305,7 +318,7 @@
     <span class="trust-sep">·</span>
     <span class="trust-item">🏆 <strong>64 ventes</strong> réalisées</span>
     <span class="trust-sep">·</span>
-    <span class="trust-item">📦 Envoi sleeve + top loader · 🎥 Préparation filmée</span>
+    <span class="trust-item">📦 Envoi soigné en boîte rigide · 🎥 Préparation filmée</span>
   </div>
   <h1>Kevin<br/><em>Boutique</em></h1>
   <p>Cartes à collectionner gradées — certifiées par les meilleurs gradeurs du marché. Disponibles sur toutes les grandes plateformes. Chaque commande soigneusement préparée et filmée.</p>
@@ -313,6 +326,8 @@
     <div class="stat"><span class="num" id="stat-total">0</span><span class="label">Cartes</span></div>
     <div class="stat"><span class="num" id="stat-poke">0</span><span class="label">Pokémon</span></div>
     <div class="stat"><span class="num" id="stat-op">0</span><span class="label">One Piece</span></div>
+    <div class="stat"><span class="num" id="stat-lol">0</span><span class="label">League of Legends</span></div>
+    <div class="stat"><span class="num" id="stat-db">0</span><span class="label">Dragon Ball</span></div>
     <div class="stat"><span class="num" id="stat-sold">0</span><span class="label">🏆 Déjà vendus</span></div>
   </div>
 </section>
@@ -333,6 +348,8 @@
   <button class="tag-btn active-all" id="btn-all"  onclick="filterCards('all', this)">Tout (0)</button>
   <button class="tag-btn" id="btn-poke" onclick="filterCards('poke', this)"><span class="dot-poke"></span> Pokémon (0)</button>
   <button class="tag-btn" id="btn-op"   onclick="filterCards('op', this)"><span class="dot-op"></span> One Piece (0)</button>
+  <button class="tag-btn" id="btn-lol"  onclick="filterCards('lol', this)"><span class="dot-lol"></span> League of Legends (0)</button>
+  <button class="tag-btn" id="btn-db"   onclick="filterCards('db', this)"><span class="dot-db"></span> Dragon Ball (0)</button>
 </div>
 
 <!-- GRADE FILTERS -->
@@ -360,7 +377,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <strong>Kevin Boutique</strong> — Cartes Gradées Pokémon &amp; One Piece<br/>
+  <strong>Kevin Boutique</strong> — Cartes Gradées Pokémon, One Piece, League of Legends &amp; Dragon Ball<br/>
   Toutes les ventes se font via <strong>Vinted</strong> ou <strong>eBay</strong> pour votre sécurité.<br/>
   <small>© 2025 Kevin Boutique · Fait avec ❤️</small>
 </footer>
@@ -480,6 +497,22 @@
     { id:98,  universe:"op", name:"Hawkins SEC",  set:"Kingdoms of Intrigue",     number:"OP04-051 SEC", gradingService:"CCC", grade:"10gold",  cardType:"SEC", language:"EN", price:510, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
     { id:99,  universe:"op", name:"Drake SEC",    set:"Awakening of the New Era", number:"OP05-080 SEC", gradingService:"CCC", grade:"10black", cardType:"SEC", language:"FR", price:860, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
     { id:100, universe:"op", name:"Apoo SEC",     set:"Awakening of the New Era", number:"OP05-081 SEC", gradingService:"CCC", grade:"10black", cardType:"SEC", language:"FR", price:790, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+
+    // LEAGUE OF LEGENDS
+    { id:101, universe:"lol", name:"Ahri",          set:"Base Set",   number:"001/165", gradingService:"PSA", grade:9,        cardType:"Champion", language:"EN", price:45,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:102, universe:"lol", name:"Jinx",          set:"Base Set",   number:"012/165", gradingService:"PSA", grade:9,        cardType:"Champion", language:"EN", price:40,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:103, universe:"lol", name:"Yasuo",         set:"Base Set",   number:"018/165", gradingService:"PSA", grade:9.5,      cardType:"Champion", language:"FR", price:75,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:104, universe:"lol", name:"Thresh",        set:"Base Set",   number:"024/165", gradingService:"PSA", grade:10,       cardType:"Champion", language:"FR", price:160, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:105, universe:"lol", name:"Lux",           set:"Base Set",   number:"009/165", gradingService:"CCC", grade:9,        cardType:"Champion", language:"FR", price:38,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:106, universe:"lol", name:"Ezreal",        set:"Base Set",   number:"007/165", gradingService:"CCC", grade:9.5,      cardType:"Champion", language:"EN", price:68,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+
+    // DRAGON BALL
+    { id:107, universe:"db", name:"Son Goku SS",    set:"Fusion World", number:"FB01-001 SR",  gradingService:"PSA", grade:9,        cardType:"SR",  language:"FR", price:55,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:108, universe:"db", name:"Vegeta SS",      set:"Fusion World", number:"FB01-002 SR",  gradingService:"PSA", grade:9,        cardType:"SR",  language:"FR", price:50,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:109, universe:"db", name:"Freezer",        set:"Fusion World", number:"FB01-015 SR",  gradingService:"PSA", grade:9.5,      cardType:"SR",  language:"EN", price:85,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:110, universe:"db", name:"Gohan SS2",      set:"Fusion World", number:"FB02-007 SR",  gradingService:"PSA", grade:10,       cardType:"SR",  language:"FR", price:180, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:111, universe:"db", name:"Broly Légendaire",set:"Fusion World",number:"FB01-078 SEC", gradingService:"PSA", grade:"10gold", cardType:"SEC", language:"JP", price:520, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    { id:112, universe:"db", name:"Goku Ultra Instinct",set:"Fusion World",number:"FB03-001 SEC",gradingService:"CCC",grade:9,       cardType:"SEC", language:"FR", price:95,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
   ];
 
   // ─────────────────────────────────────────────
@@ -522,9 +555,11 @@
   }
 
   function renderCard(c) {
+    const UNIV_ICON  = { poke:'🃏', op:'⚔️', lol:'🎮', db:'🐉' };
+    const UNIV_LABEL = { poke:'Pokémon', op:'One Piece', lol:'League of Legends', db:'Dragon Ball' };
     const imgHtml = c.image
       ? `<img src="${c.image}" alt="${c.name}" loading="lazy" />`
-      : `<div class="placeholder-art">${c.universe === 'poke' ? '🃏' : '⚔️'}<span>${c.universe === 'poke' ? 'Pokémon' : 'One Piece'}</span></div>`;
+      : `<div class="placeholder-art">${UNIV_ICON[c.universe] || '🃏'}<span>${UNIV_LABEL[c.universe] || c.universe}</span></div>`;
 
     const soldOverlay = c.sold ? `<div class="sold-overlay"><span class="sold-stamp">VENDU</span></div>` : '';
 
@@ -546,8 +581,10 @@
 
     const langPill = c.language ? `<span class="meta-pill" title="Langue de la carte">${langFlag(c.language)} ${c.language}</span>` : '';
 
-    // Top grader bar (replaces universe border-top)
-    const graderBar = `<div class="${graderBarClass(c.gradingService)}"></div>`;
+    // Top bar = couleur de la licence
+    const UNIV_COLORS = { poke: '#1d6fe8', op: '#e8271d', lol: '#1a9e2c', db: '#f97316' };
+    const barColor = UNIV_COLORS[c.universe] || '#ccc';
+    const graderBar = `<div class="grader-bar" style="background:${barColor};"></div>`;
 
     return `
       <div class="card ${c.universe} ${c.sold ? 'sold-card' : ''}" data-universe="${c.universe}">
@@ -559,6 +596,7 @@
         </div>
         <div class="card-body">
           ${c.cardType ? `<span class="card-type-tag">${c.cardType}</span>` : ''}
+          <div class="univ-tag univ-${c.universe}" style="display:inline-block;margin-bottom:2px;">${UNIV_LABEL[c.universe] || c.universe}</div>
           <div class="card-name">${c.name}</div>
           <div class="card-meta">
             <span class="meta-pill">${c.set}</span>
@@ -614,8 +652,8 @@
   function renderAll(filter) {
     currentFilter = filter;
     const catalog   = document.getElementById('catalog');
-    const universes = filter === 'all' ? ['poke', 'op'] : [filter];
-    const labels    = { poke: '⚡ Pokémon', op: '☠️ One Piece' };
+    const universes = filter === 'all' ? ['poke', 'op', 'lol', 'db'] : [filter];
+    const labels    = { poke: '⚡ Pokémon', op: '☠️ One Piece', lol: '🎮 League of Legends', db: '🐉 Dragon Ball' };
 
     let html = '';
     universes.forEach(u => {
@@ -643,14 +681,20 @@
     const total = CARDS.filter(c => !c.sold).length;
     const pokeN = CARDS.filter(c => c.universe === 'poke' && !c.sold).length;
     const opN   = CARDS.filter(c => c.universe === 'op'   && !c.sold).length;
+    const lolN  = CARDS.filter(c => c.universe === 'lol'  && !c.sold).length;
+    const dbN   = CARDS.filter(c => c.universe === 'db'   && !c.sold).length;
     const soldN = CARDS.filter(c => c.sold).length;
     document.getElementById('stat-total').textContent = total;
     document.getElementById('stat-poke').textContent  = pokeN;
     document.getElementById('stat-op').textContent    = opN;
+    document.getElementById('stat-lol').textContent   = lolN;
+    document.getElementById('stat-db').textContent    = dbN;
     document.getElementById('stat-sold').textContent  = soldN || 64;
     document.getElementById('btn-all').textContent   = `Tout (${total})`;
     document.getElementById('btn-poke').innerHTML    = `<span class="dot-poke"></span> Pokémon (${pokeN})`;
     document.getElementById('btn-op').innerHTML      = `<span class="dot-op"></span> One Piece (${opN})`;
+    document.getElementById('btn-lol').innerHTML     = `<span class="dot-lol"></span> League of Legends (${lolN})`;
+    document.getElementById('btn-db').innerHTML      = `<span class="dot-db"></span> Dragon Ball (${dbN})`;
   }
 
   function filterCards(f, btn) {
@@ -665,7 +709,7 @@
     document.querySelectorAll('.tag-btn').forEach(b => b.className = 'tag-btn');
     document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
     if (btn) {
-      btn.classList.add(f === 'all' ? 'active-all' : f === 'poke' ? 'active-poke' : 'active-op');
+      btn.classList.add(f === 'all' ? 'active-all' : f === 'poke' ? 'active-poke' : f === 'op' ? 'active-op' : f === 'lol' ? 'active-lol' : 'active-db');
       btn.classList.add('active');
     }
     renderAll(f);
