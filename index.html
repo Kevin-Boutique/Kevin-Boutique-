@@ -725,6 +725,11 @@
   let gradeFilter   = 'all';
   let graderFilter  = 'all';
 
+  // Globals partagés par renderCard et openModal
+  const UNIV_ICON   = { poke:'🃏', op:'⚔️', lol:'🎮', db:'🐉' };
+  const UNIV_LABEL  = { poke:'Pokémon', op:'One Piece', lol:'League of Legends', db:'Dragon Ball' };
+  const UNIV_COLORS = { poke:'#1d6fe8', op:'#e8271d', lol:'#1a9e2c', db:'#f97316' };
+
   // ─────────────────────────────────────────────
   //  HELPERS
   // ─────────────────────────────────────────────
@@ -751,14 +756,12 @@
 
   function mkBtn(url, cls, label) {
     if (url && url !== '#' && url !== '') {
-      return `<a class="btn ${cls}" href="${url}" target="_blank" rel="noopener">${label}</a>`;
+      return `<a class="btn ${cls}" href="${url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${label}</a>`;
     }
-    return `<span class="btn btn-disabled" title="Bientôt disponible">🔒 ${label}</span>`;
+    return `<span class="btn btn-disabled" onclick="event.stopPropagation()" title="Bientôt disponible">🔒 ${label}</span>`;
   }
 
   function renderCard(c) {
-    const UNIV_ICON  = { poke:'🃏', op:'⚔️', lol:'🎮', db:'🐉' };
-    const UNIV_LABEL = { poke:'Pokémon', op:'One Piece', lol:'League of Legends', db:'Dragon Ball' };
     const imgHtml = c.image
       ? `<img src="${c.image}" alt="${c.name}" loading="lazy" />`
       : `<div class="placeholder-art">${UNIV_ICON[c.universe] || '🃏'}<span>${UNIV_LABEL[c.universe] || c.universe}</span></div>`;
@@ -784,7 +787,6 @@
     const langPill = c.language ? `<span class="meta-pill" title="Langue de la carte">${langFlag(c.language)} ${c.language}</span>` : '';
 
     // Top bar = couleur de la licence
-    const UNIV_COLORS = { poke: '#1d6fe8', op: '#e8271d', lol: '#1a9e2c', db: '#f97316' };
     const barColor = UNIV_COLORS[c.universe] || '#ccc';
     const graderBar = `<div class="grader-bar" style="background:${barColor};"></div>`;
 
@@ -933,7 +935,6 @@
   // ─────────────────────────────────────────────
   //  MODAL
   // ─────────────────────────────────────────────
-  const UNIV_COLORS_MODAL = { poke:'#1d6fe8', op:'#e8271d', lol:'#1a9e2c', db:'#f97316' };
   const LANG_FLAGS_MODAL  = { FR:'🇫🇷', EN:'🇬🇧', JP:'🇯🇵', DE:'🇩🇪', ES:'🇪🇸', IT:'🇮🇹' };
 
   let modalActiveImg = 0;
@@ -979,7 +980,7 @@
     // Universe tag
     const univTag = document.getElementById('modal-univ-tag');
     const univLabel = UNIV_LABEL[c.universe] || c.universe;
-    const univColor = UNIV_COLORS_MODAL[c.universe] || '#ccc';
+    const univColor = UNIV_COLORS[c.universe] || '#ccc';
     univTag.textContent = univLabel;
     univTag.style.background = univColor + '20';
     univTag.style.color = univColor;
