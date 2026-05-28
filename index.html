@@ -21,80 +21,39 @@
       --radius: 18px;
       --shadow: 0 4px 24px rgba(0,0,0,0.10);
       --shadow-hover: 0 8px 40px rgba(0,0,0,0.16);
-      /* Universe colors */
-      --lol:        #1a9e2c;
-      --lol-light:  #e6f7e8;
-      --db:         #f97316;
-      --db-light:   #fff3e8;
-      /* Grader colors */
-      --psa:        #c8102e;
-      --bgs:        #a8a9ad;
-      --pca:        #111111;
-      --ccc:        #002395;
-      --collectura-a: #ff0000;
-      --collectura-b: #ff8c00;
-      --collectura-c: #ffd700;
-      --collectura-d: #32cd32;
-      --collectura-e: #1e90ff;
-      --collectura-f: #9400d3;
+      --lol:       #1a9e2c;
+      --lol-light: #e6f7e8;
+      --db:        #f97316;
+      --db-light:  #fff3e8;
+      --psa: #c8102e; --bgs: #a8a9ad; --pca: #111111; --ccc: #002395;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Nunito', sans-serif; background: var(--white); color: var(--text); min-height: 100vh; }
 
     /* ── HEADER ── */
-    header {
-      background: var(--dark);
-      padding: 0 24px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.25);
-    }
-    .logo { font-family: 'Bangers', cursive; font-size: 2rem; letter-spacing: 1px; color: var(--white); display: flex; align-items: center; }
-    .logo span.k    { color: var(--yellow); letter-spacing: 0; }
+    header { background: var(--dark); padding: 0 24px; position: sticky; top: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; height: 64px; box-shadow: 0 2px 16px rgba(0,0,0,0.25); }
+    .logo { font-family: 'Bangers', cursive; font-size: 2rem; letter-spacing: 1px; color: var(--white); display: flex; align-items: center; gap: 6px; text-decoration: none; }
+    .logo:hover { opacity: 0.85; }
+    .logo-img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .logo span.k   { color: var(--yellow); letter-spacing: 0; }
     .logo span.rest { letter-spacing: 1px; }
     .logo span.dot  { color: var(--red); font-size: 1.4rem; }
-    nav { display: flex; gap: 8px; }
-    nav button { background: transparent; border: 2px solid transparent; color: #ccc; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.9rem; padding: 6px 16px; border-radius: 30px; cursor: pointer; transition: all 0.2s; }
+    .header-right { display: flex; align-items: center; gap: 6px; }
+    .platform-btn { display: inline-flex; align-items: center; padding: 6px 11px; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.73rem; text-decoration: none; border: none; cursor: pointer; transition: filter 0.18s, transform 0.15s; white-space: nowrap; }
+    .platform-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-vinted-h  { background: #09b1ba; color: #fff; }
+    .btn-ebay-h    { background: var(--yellow); color: var(--dark); }
+    .btn-lbc-h     { background: #f56b2a; color: #fff; }
+    .btn-contact-h { background: transparent; color: var(--yellow); border: 2px solid var(--yellow) !important; font-size: 0.73rem; padding: 4px 10px; border-radius: 8px; }
+    nav { display: flex; gap: 6px; margin-left: 8px; }
+    nav button { background: transparent; border: 2px solid transparent; color: #ccc; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.85rem; padding: 5px 13px; border-radius: 30px; cursor: pointer; transition: all 0.2s; }
     nav button:hover, nav button.active { color: var(--white); border-color: var(--yellow); background: rgba(245,197,24,0.12); }
     nav button.active { color: var(--yellow); }
 
     /* ── HERO ── */
-    .hero {
-      background: linear-gradient(135deg, var(--dark) 0%, #16213e 60%, #0f3460 100%);
-      padding: 60px 24px 48px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 70% 50%, rgba(29,111,232,0.18) 0%, transparent 70%),
-                  radial-gradient(ellipse at 20% 80%, rgba(245,197,24,0.12) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .trust-bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 30px;
-      padding: 8px 20px;
-      margin-bottom: 20px;
-      font-size: 0.82rem;
-      color: #e0eaff;
-      backdrop-filter: blur(4px);
-    }
+    .hero { background: linear-gradient(135deg, var(--dark) 0%, #16213e 60%, #0f3460 100%); padding: 60px 24px 48px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(29,111,232,0.18) 0%, transparent 70%), radial-gradient(ellipse at 20% 80%, rgba(245,197,24,0.12) 0%, transparent 60%); pointer-events: none; }
+    .trust-bar { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 30px; padding: 8px 20px; margin-bottom: 20px; font-size: 0.82rem; color: #e0eaff; backdrop-filter: blur(4px); }
     .trust-item strong { color: var(--yellow); }
     .trust-sep { color: rgba(255,255,255,0.25); font-size: 1rem; }
     .hero-badge { display: inline-block; background: var(--yellow); color: var(--dark); font-weight: 900; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; padding: 4px 14px; border-radius: 30px; margin-bottom: 16px; }
@@ -108,8 +67,8 @@
 
     /* ── SEARCH ── */
     .search-wrap { background: var(--dark); padding: 16px 24px; display: flex; justify-content: center; }
-    .search-box { display: flex; align-items: center; background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.12); border-radius: 50px; padding: 0 20px; gap: 10px; width: 100%; max-width: 520px; transition: border-color 0.2s, background 0.2s; }
-    .search-box:focus-within { border-color: var(--yellow); background: rgba(255,255,255,0.12); }
+    .search-box { display: flex; align-items: center; background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.12); border-radius: 50px; padding: 0 20px; gap: 10px; width: 100%; max-width: 520px; transition: border-color 0.2s; }
+    .search-box:focus-within { border-color: var(--yellow); }
     .search-icon { font-size: 1.1rem; color: #7a90a8; flex-shrink: 0; }
     .search-box input { flex: 1; background: transparent; border: none; outline: none; color: #fff; font-family: 'Nunito', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 12px 0; }
     .search-box input::placeholder { color: #7a90a8; }
@@ -119,7 +78,7 @@
     .search-count { font-size: 0.8rem; color: #7a90a8; white-space: nowrap; font-weight: 600; }
 
     /* ── FILTERS ── */
-    .controls { background: var(--gray); padding: 20px 24px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; border-bottom: 2px solid #e8ecf0; }
+    .controls { background: var(--gray); padding: 16px 24px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; border-bottom: 2px solid #e8ecf0; }
     .filter-label { font-weight: 700; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-right: 4px; }
     .tag-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; border-radius: 30px; border: 2px solid #dde3eb; background: var(--white); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.18s; color: var(--text); }
     .tag-btn:hover { border-color: var(--blue); color: var(--blue); }
@@ -128,47 +87,42 @@
     .tag-btn.active-all  { background: var(--dark); border-color: var(--dark); color: var(--white); }
     .tag-btn.active-lol  { background: var(--lol);  border-color: var(--lol);  color: var(--white); }
     .tag-btn.active-db   { background: var(--db);   border-color: var(--db);   color: var(--white); }
-    .dot-poke { width: 10px; height: 10px; border-radius: 50%; background: var(--blue); }
-    .dot-op   { width: 10px; height: 10px; border-radius: 50%; background: var(--red); }
-    .dot-lol  { width: 10px; height: 10px; border-radius: 50%; background: var(--lol); }
-    .dot-db   { width: 10px; height: 10px; border-radius: 50%; background: var(--db); }
+    .dot-poke { width: 10px; height: 10px; border-radius: 50%; background: var(--blue); flex-shrink:0; }
+    .dot-op   { width: 10px; height: 10px; border-radius: 50%; background: var(--red);  flex-shrink:0; }
+    .dot-lol  { width: 10px; height: 10px; border-radius: 50%; background: var(--lol);  flex-shrink:0; }
+    .dot-db   { width: 10px; height: 10px; border-radius: 50%; background: var(--db);   flex-shrink:0; }
+    .sort-select { margin-left: auto; padding: 7px 12px; border-radius: 30px; border: 2px solid #dde3eb; background: var(--white); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.82rem; color: var(--text); cursor: pointer; outline: none; transition: border-color 0.18s; }
+    .sort-select:hover, .sort-select:focus { border-color: var(--blue); }
 
     /* ── GRADE FILTERS ── */
     .grade-filters { background: var(--gray); padding: 10px 24px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; border-bottom: 1px solid #e8ecf0; }
     .grade-btn { padding: 5px 14px; border-radius: 30px; border: 2px solid #dde3eb; background: var(--white); font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.82rem; cursor: pointer; transition: all 0.18s; color: var(--text); }
     .grade-btn:hover { border-color: var(--green); color: var(--green); }
     .grade-btn.active { background: var(--green); border-color: var(--green); color: #fff; }
-    .grade-btn.gold { background: linear-gradient(135deg, #f5c518, #e0a800); border-color: #e0a800; color: var(--dark); }
+    .grade-btn.gold  { background: linear-gradient(135deg, #f5c518, #e0a800); border-color: #e0a800; color: var(--dark); }
     .grade-btn.gold:hover, .grade-btn.gold.active { background: linear-gradient(135deg, #e0a800, #c8960a); border-color: #c8960a; color: #fff; }
     .grade-btn.black { background: var(--dark); border-color: var(--dark); color: #fff; }
     .grade-btn.black:hover, .grade-btn.black.active { background: #000; border-color: #000; }
     .grade-separator { width: 1px; height: 24px; background: #dde3eb; margin: 0 6px; flex-shrink: 0; }
     .grader-btn { font-size: 0.78rem; }
+    .psa-btn:hover,        .psa-btn.active-grader        { background: var(--psa); border-color: var(--psa); color: #fff; }
+    .bgs-btn:hover,        .bgs-btn.active-grader        { background: linear-gradient(135deg,#c8c8c8,#909090); border-color: #a8a9ad; color: #fff; }
+    .pca-btn:hover,        .pca-btn.active-grader        { background: #111; border-color: #111; color: #fff; }
+    .ccc-btn:hover,        .ccc-btn.active-grader        { background: var(--ccc); border-color: var(--ccc); color: #fff; }
+    .collectura-btn:hover, .collectura-btn.active-grader { background: #4ade80; border-color: #4ade80; color: #14532d; }
 
-    /* Grader button colors */
-    /* PSA — red */
-    .psa-btn:hover, .psa-btn.active-grader { background: var(--psa); border-color: var(--psa); color: #fff; }
-    /* BGS — silver */
-    .bgs-btn:hover, .bgs-btn.active-grader { background: linear-gradient(135deg, #c8c8c8, #909090); border-color: #a8a9ad; color: #fff; }
-    /* PCA — black */
-    .pca-btn:hover, .pca-btn.active-grader { background: #111; border-color: #111; color: #fff; }
-    /* CCC — French blue */
-    .ccc-btn:hover, .ccc-btn.active-grader { background: var(--ccc); border-color: var(--ccc); color: #fff; }
-    /* Collectura — vert clair */
-    .collectura-btn:hover, .collectura-btn.active-grader {
-      background: #4ade80;
-      border-color: #4ade80;
-      color: #14532d;
-    }
-
-    /* ── GRADER TOP BAR on cards ── */
+    /* ── TOP BAR on cards (couleur de la licence) ── */
     .grader-bar { height: 5px; width: 100%; flex-shrink: 0; display: block; }
-    .grader-bar-psa        { background: var(--psa); }
-    .grader-bar-bgs        { background: linear-gradient(90deg, #d4d4d4, #a8a9ad, #d4d4d4); }
-    .grader-bar-pca        { background: var(--pca); }
-    .grader-bar-ccc        { background: var(--ccc); }
-    .grader-bar-collectura { background: #4ade80; }
-    .grader-bar-none       { background: var(--gray); }
+    .grader-bar-poke { background: var(--blue); }
+    .grader-bar-op   { background: var(--red); }
+    .grader-bar-lol  { background: var(--lol); }
+    .grader-bar-db   { background: var(--db); }
+
+    /* ── COUP DE CŒUR section ── */
+    .fav-section { background: var(--yellow-light); border-top: 2px solid rgba(245,197,24,0.35); border-bottom: 2px solid rgba(245,197,24,0.35); padding-bottom: 8px; }
+    .fav-title::after { background: linear-gradient(90deg, var(--yellow), transparent) !important; }
+    .fav-badge { position: absolute; top: 10px; left: 10px; z-index: 3; background: var(--yellow); color: var(--dark); font-weight: 900; font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+    .new-badge { position: absolute; top: 10px; left: 10px; z-index: 3; background: var(--green); color: #fff; font-weight: 900; font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
 
     /* ── GRID ── */
     .section-title { font-family: 'Bangers', cursive; font-size: 1.8rem; letter-spacing: 2px; color: var(--dark); padding: 36px 24px 4px; display: flex; align-items: center; gap: 12px; }
@@ -176,36 +130,25 @@
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; padding: 20px 24px 48px; max-width: 1200px; margin: 0 auto; }
 
     /* ── CARD ── */
-    .card {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      transition: transform 0.22s, box-shadow 0.22s;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      border: 2px solid transparent;
-    }
+    .card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: transform 0.22s, box-shadow 0.22s; display: flex; flex-direction: column; position: relative; border: 2px solid transparent; cursor: pointer; }
     .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
-
     .card-img-wrap { background: var(--gray); display: flex; align-items: center; justify-content: center; padding: 20px; min-height: 200px; position: relative; }
     .card-img-wrap img { max-height: 180px; max-width: 100%; object-fit: contain; border-radius: 10px; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.18)); transition: transform 0.25s; }
     .card:hover .card-img-wrap img { transform: scale(1.05); }
     .placeholder-art { width: 130px; height: 180px; background: linear-gradient(135deg, #dde3eb, #c8d2de); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #aab; font-size: 2.5rem; }
     .placeholder-art span { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* ── GRADE BADGE (corner of image) ── */
+    /* GRADE BADGE */
     .grade-badge { position: absolute; top: 12px; right: 12px; padding: 4px 10px; border-radius: 8px; font-weight: 900; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
     .grade-psa        { background: var(--psa); color: #fff; }
-    .grade-bgs        { background: linear-gradient(135deg, #c8c8c8, #909090); color: #fff; }
+    .grade-bgs        { background: linear-gradient(135deg,#c8c8c8,#909090); color: #fff; }
     .grade-pca        { background: #111; color: #fff; border: 1px solid #444; }
     .grade-ccc        { background: var(--ccc); color: #fff; }
     .grade-collectura { background: #4ade80; color: #14532d; }
-    .grade-gold       { background: linear-gradient(135deg, #f5c518, #e0a800); color: var(--dark); font-weight: 900; }
+    .grade-gold       { background: linear-gradient(135deg,#f5c518,#e0a800); color: var(--dark); font-weight: 900; }
     .grade-black      { background: #111; color: #fff; border: 1px solid #444; }
 
-    /* Universe tag (inside image) */
+    /* UNIV TAG */
     .univ-tag { position: absolute; top: 12px; left: 12px; padding: 3px 10px; border-radius: 8px; font-weight: 800; font-size: 0.7rem; letter-spacing: 1px; }
     .univ-poke { background: var(--blue-light); color: var(--blue); }
     .univ-op   { background: #fdeaea;           color: var(--red); }
@@ -217,21 +160,23 @@
     .card-name { font-weight: 900; font-size: 1.05rem; color: var(--dark); line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .meta-pill { background: var(--gray); border-radius: 20px; padding: 3px 10px; font-size: 0.75rem; font-weight: 700; color: var(--muted); }
-    .card-price { font-family: 'Bangers', cursive; font-size: 1.6rem; letter-spacing: 1px; color: var(--dark); margin-top: 2px; }
-    .card-price .currency { font-size: 1rem; color: var(--muted); vertical-align: super; font-family: 'Nunito', sans-serif; font-weight: 900; }
-    .card-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 4px; }
 
+    /* PRIX — police claire, 1 ≠ 7 */
+    .card-price { font-family: 'Nunito', sans-serif; font-weight: 900; font-variant-numeric: tabular-nums; font-size: 1.55rem; color: var(--dark); margin-top: 2px; letter-spacing: -0.5px; }
+    .card-price .currency { font-size: 0.9rem; color: var(--muted); margin-right: 2px; font-weight: 900; }
+
+    .card-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 4px; }
     .btn { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 9px 6px; border-radius: 10px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.78rem; text-decoration: none; border: none; cursor: pointer; transition: filter 0.18s, transform 0.15s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
     .btn:active { transform: translateY(0); }
-    .btn-vinted     { background: #09b1ba; color: #fff; }
-    .btn-ebay       { background: var(--yellow); color: var(--dark); }
-    .btn-leboncoin  { background: #f56b2a; color: #fff; }
-    .btn-cardmarket { background: #1a6bb5; color: #fff; }
-    .btn-disabled { background: #eef0f3; color: #bbb; cursor: not-allowed; border: 2px dashed #dde3eb; font-style: italic; font-size: 0.75rem; }
+    .btn-vinted    { background: #09b1ba; color: #fff; }
+    .btn-ebay      { background: var(--yellow); color: var(--dark); }
+    .btn-leboncoin { background: #f56b2a; color: #fff; }
+    .btn-contact   { background: var(--dark); color: #fff; }
+    .btn-disabled  { background: #eef0f3; color: #bbb; cursor: not-allowed; border: 2px dashed #dde3eb; font-style: italic; font-size: 0.75rem; }
     .btn-disabled:hover { filter: none; transform: none; }
 
-    /* ── SOLD STATE ── */
+    /* ── SOLD ── */
     .card.sold-card { opacity: 0.75; filter: grayscale(40%); }
     .sold-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center; z-index: 2; }
     .sold-stamp { font-family: 'Bangers', cursive; font-size: 2.2rem; letter-spacing: 4px; color: #fff; background: var(--red); padding: 6px 20px; border-radius: 8px; transform: rotate(-15deg); box-shadow: 0 4px 16px rgba(0,0,0,0.4); border: 3px solid #fff; }
@@ -244,179 +189,32 @@
     .empty .icon { font-size: 3rem; margin-bottom: 12px; }
     .empty p { font-size: 1.05rem; }
 
-    /* ── CARD CURSOR ── */
-    .card { cursor: pointer; }
-
     /* ── MODAL ── */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.75);
-      z-index: 500;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      backdrop-filter: blur(4px);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.22s;
-    }
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 500; display: flex; align-items: center; justify-content: center; padding: 16px; backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.22s; }
     .modal-overlay.open { opacity: 1; pointer-events: all; }
-
-    .modal {
-      background: var(--white);
-      border-radius: 24px;
-      max-width: 860px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.4);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      position: relative;
-      transform: translateY(20px);
-      transition: transform 0.22s;
-    }
+    .modal { background: var(--white); border-radius: 24px; max-width: 860px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 24px 80px rgba(0,0,0,0.4); display: grid; grid-template-columns: 1fr 1fr; position: relative; transform: translateY(20px); transition: transform 0.22s; }
     .modal-overlay.open .modal { transform: translateY(0); }
-
-    /* close button */
-    .modal-close {
-      position: absolute;
-      top: 14px; right: 14px;
-      background: var(--gray);
-      border: none;
-      border-radius: 50%;
-      width: 36px; height: 36px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      z-index: 10;
-      transition: background 0.15s;
-      color: var(--text);
-    }
+    .modal-close { position: absolute; top: 14px; right: 14px; background: var(--gray); border: none; border-radius: 50%; width: 36px; height: 36px; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background 0.15s; color: var(--text); }
     .modal-close:hover { background: var(--red); color: #fff; }
-
-    /* image side */
-    .modal-images {
-      background: var(--gray);
-      border-radius: 24px 0 0 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 28px 20px;
-      gap: 16px;
-      min-height: 380px;
-      position: relative;
-    }
-
-    .modal-main-img {
-      width: 100%;
-      max-height: 280px;
-      object-fit: contain;
-      border-radius: 12px;
-      filter: drop-shadow(0 6px 20px rgba(0,0,0,0.2));
-    }
-
-    .modal-thumbs {
-      display: flex;
-      gap: 10px;
-    }
-
-    .modal-thumb {
-      width: 60px; height: 60px;
-      object-fit: contain;
-      border-radius: 8px;
-      cursor: pointer;
-      border: 3px solid transparent;
-      background: #fff;
-      padding: 4px;
-      transition: border-color 0.15s;
-    }
+    .modal-images { background: var(--gray); border-radius: 24px 0 0 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 28px 20px; gap: 16px; min-height: 380px; position: relative; }
+    .modal-main-img { width: 100%; max-height: 280px; object-fit: contain; border-radius: 12px; filter: drop-shadow(0 6px 20px rgba(0,0,0,0.2)); }
+    .modal-thumbs { display: flex; gap: 10px; }
+    .modal-thumb { width: 60px; height: 60px; object-fit: contain; border-radius: 8px; cursor: pointer; border: 3px solid transparent; background: #fff; padding: 4px; transition: border-color 0.15s; }
     .modal-thumb.active { border-color: var(--yellow); }
     .modal-thumb:hover  { border-color: var(--blue); }
-
-    .modal-no-img {
-      font-size: 5rem;
-      opacity: 0.3;
-    }
-
-    /* info side */
-    .modal-info {
-      padding: 32px 28px 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .modal-univ-tag {
-      display: inline-block;
-      padding: 3px 12px;
-      border-radius: 20px;
-      font-weight: 800;
-      font-size: 0.72rem;
-      letter-spacing: 1px;
-      margin-bottom: 2px;
-    }
-
-    .modal-title {
-      font-family: 'Bangers', cursive;
-      font-size: 2rem;
-      letter-spacing: 2px;
-      color: var(--dark);
-      line-height: 1.1;
-    }
-
+    .modal-no-img { font-size: 5rem; opacity: 0.3; }
+    .modal-info { padding: 32px 28px 28px; display: flex; flex-direction: column; gap: 12px; }
+    .modal-univ-tag { display: inline-block; padding: 3px 12px; border-radius: 20px; font-weight: 800; font-size: 0.72rem; letter-spacing: 1px; margin-bottom: 2px; }
+    .modal-title { font-family: 'Bangers', cursive; font-size: 2rem; letter-spacing: 2px; color: var(--dark); line-height: 1.1; }
     .modal-divider { height: 2px; background: var(--gray); border-radius: 2px; }
-
-    .modal-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.88rem;
-    }
+    .modal-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.88rem; }
     .modal-row .label { color: var(--muted); font-weight: 700; }
     .modal-row .val   { font-weight: 900; color: var(--dark); }
-
-    .modal-grade-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 14px;
-      border-radius: 30px;
-      font-weight: 900;
-      font-size: 0.88rem;
-    }
-
-    .modal-price {
-      font-family: 'Bangers', cursive;
-      font-size: 2.6rem;
-      color: var(--dark);
-      letter-spacing: 2px;
-      line-height: 1;
-    }
-    .modal-price .currency { font-size: 1.2rem; color: var(--muted); font-family: 'Nunito', sans-serif; font-weight: 900; vertical-align: super; }
-
+    .modal-price { font-family: 'Nunito', sans-serif; font-weight: 900; font-variant-numeric: tabular-nums; font-size: 2.4rem; color: var(--dark); letter-spacing: -0.5px; line-height: 1; }
+    .modal-price .currency { font-size: 1.1rem; color: var(--muted); margin-right: 2px; font-weight: 900; }
     .modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
-
-    .modal-sold-label {
-      text-align: center;
-      background: var(--gray);
-      border-radius: 12px;
-      padding: 12px;
-      font-weight: 700;
-      color: var(--muted);
-      grid-column: span 2;
-    }
-
-    /* responsive modal */
-    @media (max-width: 640px) {
-      .modal { grid-template-columns: 1fr; max-height: 95vh; }
-      .modal-images { border-radius: 24px 24px 0 0; min-height: 240px; }
-      .modal-info { padding: 20px; }
-      .modal-title { font-size: 1.6rem; }
-    }
+    .modal-sold-label { text-align: center; background: var(--gray); border-radius: 12px; padding: 12px; font-weight: 700; color: var(--muted); grid-column: span 2; }
+    @media (max-width: 640px) { .modal { grid-template-columns: 1fr; max-height: 95vh; } .modal-images { border-radius: 24px 24px 0 0; min-height: 240px; } .modal-info { padding: 20px; } .modal-title { font-size: 1.6rem; } }
 
     /* ── FOOTER ── */
     footer { background: var(--dark); color: #7a90a8; text-align: center; padding: 28px 24px; font-size: 0.85rem; line-height: 1.8; }
@@ -426,7 +224,9 @@
     @media (max-width: 768px) {
       nav { display: none; }
       .logo { font-size: 1.5rem; }
-      header { height: 52px; padding: 0 16px; }
+      header { height: 52px; padding: 0 14px; }
+      .platform-btn { font-size: 0.65rem; padding: 5px 8px; }
+      .btn-contact-h { display: none; }
       .hero { padding: 36px 16px 32px; }
       .hero h1 { font-size: 2.8rem; }
       .hero p { font-size: 0.92rem; }
@@ -438,24 +238,21 @@
       .search-wrap { padding: 12px 16px; }
       .controls { padding: 12px 16px; gap: 8px; }
       .tag-btn { font-size: 0.78rem; padding: 6px 12px; }
+      .sort-select { margin-left: 0; }
       .grade-filters { padding: 10px 16px; gap: 6px; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
       .grade-btn { font-size: 0.75rem; padding: 5px 10px; white-space: nowrap; }
       .grade-separator { display: none; }
       .filter-label { display: none; }
       .grid { grid-template-columns: repeat(2, 1fr); padding: 12px 12px 36px; gap: 12px; }
       .card-name { font-size: 0.9rem; }
-      .card-price { font-size: 1.3rem; }
+      .card-price { font-size: 1.25rem; }
       .card-actions { gap: 5px; }
       .btn { font-size: 0.68rem; padding: 7px 4px; }
       .card-img-wrap { min-height: 150px; padding: 14px; }
       .card-img-wrap img { max-height: 140px; }
       .section-title { font-size: 1.4rem; padding: 24px 16px 4px; }
     }
-    @media (max-width: 380px) {
-      .hero h1 { font-size: 2.2rem; }
-      .grid { grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 10px 30px; }
-      .btn { font-size: 0.62rem; }
-    }
+    @media (max-width: 380px) { .hero h1 { font-size: 2.2rem; } .grid { grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 10px 30px; } .btn { font-size: 0.62rem; } }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .card { animation: fadeUp 0.4s ease both; }
@@ -470,16 +267,23 @@
 
 <!-- HEADER -->
 <header>
-  <div class="logo">
+  <a href="javascript:location.reload()" class="logo">
+    <img class="logo-img" src="data:image/png;base64,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" alt="Kevin Boutique" />
     <span class="k">K</span><span class="rest">evin</span><span class="dot"> ● </span><span class="rest">Boutique</span>
+  </a>
+  <div class="header-right">
+    <a class="platform-btn btn-vinted-h"  href="https://www.vinted.fr/member/87640273" target="_blank" rel="noopener">Vinted</a>
+    <a class="platform-btn btn-ebay-h"    href="https://www.ebay.fr/usr/kevin-boutique" target="_blank" rel="noopener">eBay</a>
+    <a class="platform-btn btn-lbc-h"     href="https://www.leboncoin.fr/profile/21c66d3e-759e-40fd-a008-a85dad801cb3" target="_blank" rel="noopener">LeBonCoin</a>
+    <a class="platform-btn btn-contact-h" href="https://t.me/kevinboutique" target="_blank" rel="noopener">💬 Contact</a><!-- Remplace par ton vrai lien Telegram -->
+    <nav>
+      <button class="active" onclick="filterCards('all', this)">Tout voir</button>
+      <button onclick="filterCards('poke', this)">Pokémon</button>
+      <button onclick="filterCards('op', this)">One Piece</button>
+      <button onclick="filterCards('lol', this)">League of Legends</button>
+      <button onclick="filterCards('db', this)">Dragon Ball</button>
+    </nav>
   </div>
-  <nav>
-    <button class="active" onclick="filterCards('all', this)">Tout voir</button>
-    <button onclick="filterCards('poke', this)">Pokémon</button>
-    <button onclick="filterCards('op', this)">One Piece</button>
-    <button onclick="filterCards('lol', this)">League of Legends</button>
-    <button onclick="filterCards('db', this)">Dragon Ball</button>
-  </nav>
 </header>
 
 <!-- HERO -->
@@ -512,7 +316,7 @@
     <span class="search-icon">🔍</span>
     <input type="text" id="search-input" placeholder="Rechercher une carte… ex: Dracaufeu, PSA 10, FR…" autocomplete="off" />
     <span class="search-count" id="search-count"></span>
-    <button class="search-clear" id="search-clear" onclick="clearSearch()" title="Effacer">✕</button>
+    <button class="search-clear" id="search-clear" title="Effacer">✕</button>
   </div>
 </div>
 
@@ -524,10 +328,15 @@
   <button class="tag-btn" id="btn-op"   onclick="filterCards('op', this)"><span class="dot-op"></span> One Piece (0)</button>
   <button class="tag-btn" id="btn-lol"  onclick="filterCards('lol', this)"><span class="dot-lol"></span> League of Legends (0)</button>
   <button class="tag-btn" id="btn-db"   onclick="filterCards('db', this)"><span class="dot-db"></span> Dragon Ball (0)</button>
+  <select class="sort-select" id="sort-select">
+    <option value="default">Ordre par défaut</option>
+    <option value="asc">Prix croissant ↑</option>
+    <option value="desc">Prix décroissant ↓</option>
+  </select>
 </div>
 
 <!-- GRADE FILTERS -->
-<div class="grade-filters" id="grade-filters">
+<div class="grade-filters">
   <span class="filter-label">Note :</span>
   <button class="grade-btn active" onclick="filterGrade('all', this)">Toutes</button>
   <button class="grade-btn" onclick="filterGrade('9', this)">9</button>
@@ -537,7 +346,6 @@
   <button class="grade-btn black" onclick="filterGrade('10black', this)">⚫ Black</button>
   <div class="grade-separator"></div>
   <span class="filter-label">Gradeur :</span>
-  <!-- Order: Tous · PSA · CCC · PCA · Collectura · BGS -->
   <button class="grade-btn grader-btn psa-btn active-grader" onclick="filterGrader('all', this)">Tous</button>
   <button class="grade-btn grader-btn psa-btn"         onclick="filterGrader('PSA', this)">PSA</button>
   <button class="grade-btn grader-btn ccc-btn"         onclick="filterGrader('CCC', this)">CCC</button>
@@ -553,15 +361,11 @@
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal" id="modal-box">
     <button class="modal-close" id="modal-close-btn">✕</button>
-
-    <!-- Images -->
     <div class="modal-images" id="modal-images">
       <img class="modal-main-img" id="modal-main-img" src="" alt="" />
       <div class="modal-thumbs" id="modal-thumbs"></div>
     </div>
-
-    <!-- Info -->
-    <div class="modal-info" id="modal-info">
+    <div class="modal-info">
       <div id="modal-univ-tag" class="modal-univ-tag"></div>
       <div class="modal-title" id="modal-title"></div>
       <div class="modal-divider"></div>
@@ -571,7 +375,7 @@
       <div class="modal-row"><span class="label">Langue</span><span class="val" id="modal-lang"></span></div>
       <div class="modal-row"><span class="label">Gradeur</span><span class="val" id="modal-grade"></span></div>
       <div class="modal-divider"></div>
-      <div class="modal-price"><span class="currency">€ </span><span id="modal-price"></span></div>
+      <div class="modal-price"><span class="currency">€</span><span id="modal-price"></span></div>
       <div class="modal-actions" id="modal-actions"></div>
     </div>
   </div>
@@ -580,484 +384,426 @@
 <!-- FOOTER -->
 <footer>
   <strong>Kevin Boutique</strong> — Cartes Gradées Pokémon, One Piece, League of Legends &amp; Dragon Ball<br/>
-  Toutes les ventes se font via <strong>Vinted</strong> ou <strong>eBay</strong> pour votre sécurité.<br/>
+  Toutes les ventes se font via <strong>Vinted</strong>, <strong>eBay</strong> ou <strong>Le Bon Coin</strong> pour votre sécurité.<br/>
   <small>© 2025 Kevin Boutique · Fait avec ❤️</small>
 </footer>
 
 <script>
-  // ─────────────────────────────────────────────
-  //  DONNÉES
-  // ─────────────────────────────────────────────
   const CARDS = [
-    // POKÉMON — PSA
-    { id:1,  universe:"poke", name:"Dracaufeu EX",         set:"Flammes Écarlates",      number:"006/198", gradingService:"PSA", grade:9,         cardType:"EX",         language:"FR", price:89,   image:"https://images.pokemontcg.io/sv1/6_hires.png",      image2:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:2,  universe:"poke", name:"Pikachu VMAX",         set:"Vivid Voltage",          number:"188/185", gradingService:"PSA", grade:9,         cardType:"VMAX",        language:"EN", price:75,   image:"https://images.pokemontcg.io/swsh4/188_hires.png",   sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:3,  universe:"poke", name:"Méwtwo V Alt Art",     set:"Pokémon GO",             number:"079/078", gradingService:"PSA", grade:9.5,       cardType:"Alt Art",     language:"FR", price:130,  image:"https://images.pokemontcg.io/pgo/79_hires.png",      sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:4,  universe:"poke", name:"Lugia V Star",         set:"Silver Tempest",         number:"139/195", gradingService:"PSA", grade:9.5,       cardType:"V Star",      language:"EN", price:110,  image:"https://images.pokemontcg.io/swsh12/139_hires.png",  sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:5,  universe:"poke", name:"Dracaufeu VMAX",       set:"Darkness Ablaze",        number:"020/189", gradingService:"PSA", grade:10,        cardType:"VMAX",        language:"FR", price:349,  image:"https://images.pokemontcg.io/swsh3/20_hires.png",    sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:6,  universe:"poke", name:"Ronflex VMAX",         set:"Vivid Voltage",          number:"142/185", gradingService:"PSA", grade:10,        cardType:"VMAX",        language:"EN", price:210,  image:"https://images.pokemontcg.io/swsh4/142_hires.png",   sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:7,  universe:"poke", name:"Lugia VSTAR Alt Art",  set:"Silver Tempest",         number:"211/195", gradingService:"PSA", grade:"10gold",  cardType:"Alt Art",     language:"JP", price:520,  image:"https://images.pokemontcg.io/swsh12/211_hires.png",  sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:8,  universe:"poke", name:"Dracaufeu Cristal",    set:"Aquapolis",              number:"146/147", gradingService:"PSA", grade:"10gold",  cardType:"Secret Rare", language:"FR", price:890,  image:"",                                                   sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:9,  universe:"poke", name:"Mew VMAX Alt Art",     set:"Fusion Strike",          number:"269/264", gradingService:"PSA", grade:"10black", cardType:"Alt Art",     language:"EN", price:1200, image:"https://images.pokemontcg.io/swsh8/269_hires.png",   sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:10, universe:"poke", name:"Rayquaza VMAX Alt Art",set:"Evolving Skies",         number:"218/203", gradingService:"PSA", grade:"10black", cardType:"Alt Art",     language:"JP", price:950,  image:"https://images.pokemontcg.io/swsh7/218_hires.png",   sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    // POKÉMON — BGS
-    { id:11, universe:"poke", name:"Tortank EX FA",        set:"Générations",            number:"122/122", gradingService:"BGS", grade:9,         cardType:"FA",          language:"EN", price:65,   image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:12, universe:"poke", name:"Florizarre EX FA",     set:"Générations",            number:"123/122", gradingService:"BGS", grade:9,         cardType:"FA",          language:"EN", price:70,   image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:13, universe:"poke", name:"Mackogneur GX Alt",    set:"Cosmic Eclipse",         number:"235/236", gradingService:"BGS", grade:9.5,       cardType:"Alt Art",     language:"FR", price:180,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:14, universe:"poke", name:"Dracaufeu GX Arc",     set:"Burning Shadows",        number:"150/147", gradingService:"BGS", grade:9.5,       cardType:"Secret Rare", language:"FR", price:220,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:15, universe:"poke", name:"Evoli VMAX Alt Art",   set:"Evolving Skies",         number:"205/203", gradingService:"BGS", grade:10,        cardType:"Alt Art",     language:"EN", price:410,  image:"https://images.pokemontcg.io/swsh7/205_hires.png",   sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:16, universe:"poke", name:"Sylveon VMAX AR",      set:"Evolving Skies",         number:"212/203", gradingService:"BGS", grade:10,        cardType:"AR",          language:"JP", price:380,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:17, universe:"poke", name:"Pikachu Illustrateur", set:"Promo",                  number:"Promo",   gradingService:"BGS", grade:"10gold",  cardType:"Promo",       language:"JP", price:2500, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:18, universe:"poke", name:"Ronflex EX FA",        set:"XY Évolutions",          number:"109/108", gradingService:"BGS", grade:"10gold",  cardType:"FA",          language:"FR", price:650,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:19, universe:"poke", name:"Dracaufeu Base Set",   set:"Base Set",               number:"4/102",   gradingService:"BGS", grade:"10black", cardType:"Holo Rare",   language:"EN", price:3200, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:20, universe:"poke", name:"Mewtwo Base Set",      set:"Base Set",               number:"10/102",  gradingService:"BGS", grade:"10black", cardType:"Holo Rare",   language:"EN", price:1800, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    // POKÉMON — PCA
-    { id:21, universe:"poke", name:"Parasect AR",          set:"Mascarade Crépusculaire",number:"197/167", gradingService:"PCA", grade:9,         cardType:"AR",          language:"FR", price:45,   image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:22, universe:"poke", name:"Noctali VMAX FA",      set:"Evolving Skies",         number:"197/203", gradingService:"PCA", grade:9,         cardType:"FA",          language:"EN", price:55,   image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:23, universe:"poke", name:"Kyogre EX FA",         set:"Double Crisis",          number:"027/034", gradingService:"PCA", grade:9.5,       cardType:"FA",          language:"FR", price:95,   image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:24, universe:"poke", name:"Groudon EX FA",        set:"Double Crisis",          number:"026/034", gradingService:"PCA", grade:9.5,       cardType:"FA",          language:"FR", price:90,   image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:25, universe:"poke", name:"Lugia EX FA",          set:"Plasma Storm",           number:"134/135", gradingService:"PCA", grade:10,        cardType:"FA",          language:"EN", price:280,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:26, universe:"poke", name:"Ho-Oh EX FA",          set:"Dragons Exalted",        number:"120/124", gradingService:"PCA", grade:10,        cardType:"FA",          language:"EN", price:260,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:27, universe:"poke", name:"Suicune V Alt Art",    set:"Evolving Skies",         number:"210/203", gradingService:"PCA", grade:"10gold",  cardType:"Alt Art",     language:"JP", price:480,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:28, universe:"poke", name:"Umbreon VMAX Alt Art", set:"Evolving Skies",         number:"215/203", gradingService:"PCA", grade:"10gold",  cardType:"Alt Art",     language:"JP", price:750,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:29, universe:"poke", name:"Gardevoir EX SR",      set:"Scarlet & Violet",       number:"205/198", gradingService:"PCA", grade:"10black", cardType:"Secret Rare", language:"FR", price:900,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:30, universe:"poke", name:"Miraidon EX SR",       set:"Scarlet & Violet",       number:"202/198", gradingService:"PCA", grade:"10black", cardType:"Secret Rare", language:"FR", price:820,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    // POKÉMON — COLLECTURA
-    { id:31, universe:"poke", name:"Caratroc AR",          set:"Méga Évolution",         number:"136/132", gradingService:"Collectura", grade:9,        cardType:"AR",      language:"FR", price:38,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:32, universe:"poke", name:"Tortank AR",           set:"Méga Évolution",         number:"122/122", gradingService:"Collectura", grade:9,        cardType:"AR",      language:"FR", price:42,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:33, universe:"poke", name:"Lanssorien EX FA",     set:"Mascarade Crépusculaire",number:"200/167", gradingService:"Collectura", grade:9.5,      cardType:"FA",      language:"FR", price:78,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:34, universe:"poke", name:"Kyurem Noir FA",       set:"Étincelles Déferlantes", number:"218/191", gradingService:"Collectura", grade:9.5,      cardType:"FA",      language:"FR", price:82,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:35, universe:"poke", name:"Lamantine AR",         set:"Flammes Fantasmagoriques",number:"097/094",gradingService:"Collectura", grade:10,       cardType:"AR",      language:"FR", price:120, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:36, universe:"poke", name:"Scalpereur AR",        set:"Écarlate et Violet",     number:"220/198", gradingService:"Collectura", grade:10,       cardType:"AR",      language:"FR", price:135, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:37, universe:"poke", name:"Vitalité Prof. Olim",  set:"Faille Paradoxe",        number:"256/182", gradingService:"Collectura", grade:"10gold", cardType:"Alt Art", language:"FR", price:320, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:38, universe:"poke", name:"Dracaufeu ex SAR",     set:"Obsidian Flames",        number:"228/197", gradingService:"Collectura", grade:"10gold", cardType:"SAR",     language:"EN", price:550, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:39, universe:"poke", name:"Miraidon ex SAR",      set:"Scarlet & Violet",       number:"253/198", gradingService:"Collectura", grade:"10black",cardType:"SAR",     language:"FR", price:720, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:40, universe:"poke", name:"Koraidon ex SAR",      set:"Scarlet & Violet",       number:"254/198", gradingService:"Collectura", grade:"10black",cardType:"SAR",     language:"FR", price:680, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    // POKÉMON — CCC
-    { id:41, universe:"poke", name:"Pikachu V Alt Art",    set:"Vivid Voltage",          number:"170/185", gradingService:"CCC", grade:9,         cardType:"Alt Art",     language:"FR", price:58,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:42, universe:"poke", name:"Evoli V Alt Art",      set:"Evolving Skies",         number:"203/203", gradingService:"CCC", grade:9,         cardType:"Alt Art",     language:"FR", price:62,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:43, universe:"poke", name:"Ursaring VMAX Alt Art",set:"Astral Radiance",        number:"217/189", gradingService:"CCC", grade:9.5,       cardType:"Alt Art",     language:"EN", price:98,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:44, universe:"poke", name:"Hisuian Goodra VSTAR", set:"Astral Radiance",        number:"214/189", gradingService:"CCC", grade:9.5,       cardType:"VSTAR",       language:"EN", price:88,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:45, universe:"poke", name:"Giratine VSTAR Alt Art",set:"Lost Origin",           number:"201/196", gradingService:"CCC", grade:10,        cardType:"Alt Art",     language:"FR", price:290, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:46, universe:"poke", name:"Darkrai VSTAR Alt Art",set:"Astral Radiance",        number:"220/189", gradingService:"CCC", grade:10,        cardType:"Alt Art",     language:"FR", price:310, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:47, universe:"poke", name:"Pikachu VMAX Rainbow", set:"Vivid Voltage",          number:"188/185", gradingService:"CCC", grade:"10gold",  cardType:"Secret Rare", language:"EN", price:480, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:48, universe:"poke", name:"Zacian V Alt Art",     set:"Champion's Path",        number:"074/073", gradingService:"CCC", grade:"10gold",  cardType:"Alt Art",     language:"EN", price:560, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:49, universe:"poke", name:"Zamazenta V Alt Art",  set:"Champion's Path",        number:"075/073", gradingService:"CCC", grade:"10black", cardType:"Alt Art",     language:"EN", price:820, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:50, universe:"poke", name:"Eternatus VMAX Alt Art",set:"Darkness Ablaze",       number:"192/189", gradingService:"CCC", grade:"10black", cardType:"Alt Art",     language:"FR", price:780, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    // ONE PIECE — PSA
-    { id:51, universe:"op", name:"Monkey D. Luffy",  set:"Romance Dawn",             number:"OP01-003 SR",  gradingService:"PSA", grade:9,         cardType:"SR",  language:"FR", price:95,   image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:52, universe:"op", name:"Roronoa Zoro",     set:"Romance Dawn",             number:"OP01-001 SR",  gradingService:"PSA", grade:9,         cardType:"SR",  language:"FR", price:80,   image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:53, universe:"op", name:"Shanks le Roux",   set:"Paramount War",            number:"OP02-120 SEC", gradingService:"PSA", grade:9.5,       cardType:"SEC", language:"EN", price:210,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:54, universe:"op", name:"Portgas D. Ace",   set:"Paramount War",            number:"OP02-013 SR",  gradingService:"PSA", grade:9.5,       cardType:"SR",  language:"EN", price:185,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:55, universe:"op", name:"Boa Hancock",      set:"Pillars of Strength",      number:"OP03-099 SR",  gradingService:"PSA", grade:10,        cardType:"SR",  language:"FR", price:320,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:56, universe:"op", name:"Trafalgar Law",    set:"Kingdoms of Intrigue",     number:"OP04-020 SR",  gradingService:"PSA", grade:10,        cardType:"SR",  language:"FR", price:290,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:57, universe:"op", name:"Luffy Gear 5",     set:"Awakening of the New Era", number:"OP05-119 SEC", gradingService:"PSA", grade:"10gold",  cardType:"SEC", language:"JP", price:750,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:58, universe:"op", name:"Nami SEC",         set:"Romance Dawn",             number:"OP01-016 SEC", gradingService:"PSA", grade:"10gold",  cardType:"SEC", language:"EN", price:620,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:59, universe:"op", name:"Whitebeard SEC",   set:"Paramount War",            number:"OP02-099 SEC", gradingService:"PSA", grade:"10black", cardType:"SEC", language:"EN", price:980,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:60, universe:"op", name:"Roger SEC",        set:"Awakening of the New Era", number:"OP05-001 SEC", gradingService:"PSA", grade:"10black", cardType:"SEC", language:"JP", price:1100, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    // ONE PIECE — BGS
-    { id:61, universe:"op", name:"Sanji SR",         set:"Romance Dawn",             number:"OP01-013 SR",  gradingService:"BGS", grade:9,         cardType:"SR",  language:"FR", price:72,   image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:62, universe:"op", name:"Nami SR",          set:"Romance Dawn",             number:"OP01-016 SR",  gradingService:"BGS", grade:9,         cardType:"SR",  language:"FR", price:68,   image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:63, universe:"op", name:"Robin SR",         set:"Paramount War",            number:"OP02-040 SR",  gradingService:"BGS", grade:9.5,       cardType:"SR",  language:"EN", price:145,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:64, universe:"op", name:"Crocodile SEC",    set:"Paramount War",            number:"OP02-094 SEC", gradingService:"BGS", grade:9.5,       cardType:"SEC", language:"EN", price:230,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:65, universe:"op", name:"Jinbe SR",         set:"Pillars of Strength",      number:"OP03-076 SR",  gradingService:"BGS", grade:10,        cardType:"SR",  language:"FR", price:340,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:66, universe:"op", name:"Big Mom SEC",      set:"Kingdoms of Intrigue",     number:"OP04-083 SEC", gradingService:"BGS", grade:10,        cardType:"SEC", language:"FR", price:420,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:67, universe:"op", name:"Kaido SEC",        set:"Pillars of Strength",      number:"OP03-022 SEC", gradingService:"BGS", grade:"10gold",  cardType:"SEC", language:"JP", price:880,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:68, universe:"op", name:"Doflamingo SEC",   set:"Kingdoms of Intrigue",     number:"OP04-040 SEC", gradingService:"BGS", grade:"10gold",  cardType:"SEC", language:"EN", price:760,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:69, universe:"op", name:"Luffy SEC Gear 4", set:"Pillars of Strength",      number:"OP03-040 SEC", gradingService:"BGS", grade:"10black", cardType:"SEC", language:"JP", price:1250, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:70, universe:"op", name:"Zoro SEC Enma",    set:"Kingdoms of Intrigue",     number:"OP04-025 SEC", gradingService:"BGS", grade:"10black", cardType:"SEC", language:"JP", price:1050, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    // ONE PIECE — PCA
-    { id:71, universe:"op", name:"Usopp SR",    set:"Romance Dawn",             number:"OP01-014 SR",  gradingService:"PCA", grade:9,         cardType:"SR",  language:"FR", price:55,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:72, universe:"op", name:"Chopper SR",  set:"Romance Dawn",             number:"OP01-015 SR",  gradingService:"PCA", grade:9,         cardType:"SR",  language:"FR", price:60,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:73, universe:"op", name:"Franky SR",   set:"Paramount War",            number:"OP02-070 SR",  gradingService:"PCA", grade:9.5,       cardType:"SR",  language:"EN", price:125, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:74, universe:"op", name:"Brook SEC",   set:"Paramount War",            number:"OP02-071 SEC", gradingService:"PCA", grade:9.5,       cardType:"SEC", language:"EN", price:198, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:75, universe:"op", name:"Yamato SR",   set:"Pillars of Strength",      number:"OP03-040 SR",  gradingService:"PCA", grade:10,        cardType:"SR",  language:"FR", price:310, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:76, universe:"op", name:"Koby SR",     set:"Kingdoms of Intrigue",     number:"OP04-099 SR",  gradingService:"PCA", grade:10,        cardType:"SR",  language:"FR", price:280, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:77, universe:"op", name:"Sabo SEC",    set:"Paramount War",            number:"OP02-025 SEC", gradingService:"PCA", grade:"10gold",  cardType:"SEC", language:"EN", price:690, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:78, universe:"op", name:"Ivankov SEC", set:"Paramount War",            number:"OP02-060 SEC", gradingService:"PCA", grade:"10gold",  cardType:"SEC", language:"EN", price:580, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:79, universe:"op", name:"Garp SEC",    set:"Awakening of the New Era", number:"OP05-060 SEC", gradingService:"PCA", grade:"10black", cardType:"SEC", language:"FR", price:920, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:80, universe:"op", name:"Rayleigh SEC",set:"Awakening of the New Era", number:"OP05-061 SEC", gradingService:"PCA", grade:"10black", cardType:"SEC", language:"FR", price:870, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    // ONE PIECE — COLLECTURA
-    { id:81, universe:"op", name:"Lucci SR",        set:"Kingdoms of Intrigue",     number:"OP04-013 SR",  gradingService:"Collectura", grade:9,         cardType:"SR",  language:"FR", price:48,   image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:82, universe:"op", name:"Kizaru SR",       set:"Awakening of the New Era", number:"OP05-098 SR",  gradingService:"Collectura", grade:9,         cardType:"SR",  language:"FR", price:52,   image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:83, universe:"op", name:"Aokiji SEC",      set:"Awakening of the New Era", number:"OP05-099 SEC", gradingService:"Collectura", grade:9.5,       cardType:"SEC", language:"EN", price:165,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:84, universe:"op", name:"Akainu SEC",      set:"Awakening of the New Era", number:"OP05-100 SEC", gradingService:"Collectura", grade:9.5,       cardType:"SEC", language:"EN", price:175,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:85, universe:"op", name:"Smoker SR",       set:"Pillars of Strength",      number:"OP03-060 SR",  gradingService:"Collectura", grade:10,        cardType:"SR",  language:"FR", price:260,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:86, universe:"op", name:"Tashigi SR",      set:"Pillars of Strength",      number:"OP03-061 SR",  gradingService:"Collectura", grade:10,        cardType:"SR",  language:"FR", price:240,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:87, universe:"op", name:"Buggy SEC",       set:"Romance Dawn",             number:"OP01-060 SEC", gradingService:"Collectura", grade:"10gold",  cardType:"SEC", language:"FR", price:520,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:88, universe:"op", name:"Mihawk SEC",      set:"Romance Dawn",             number:"OP01-002 SEC", gradingService:"Collectura", grade:"10gold",  cardType:"SEC", language:"FR", price:610,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:89, universe:"op", name:"Luffy SEC Romance",set:"Romance Dawn",            number:"OP01-003 SEC", gradingService:"Collectura", grade:"10black", cardType:"SEC", language:"JP", price:1050, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:90, universe:"op", name:"Zoro SEC Romance", set:"Romance Dawn",            number:"OP01-001 SEC", gradingService:"Collectura", grade:"10black", cardType:"SEC", language:"JP", price:980,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    // ONE PIECE — CCC
-    { id:91,  universe:"op", name:"Perona SR",    set:"Paramount War",            number:"OP02-050 SR",  gradingService:"CCC", grade:9,         cardType:"SR",  language:"FR", price:44,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:92,  universe:"op", name:"Moria SR",     set:"Paramount War",            number:"OP02-049 SR",  gradingService:"CCC", grade:9,         cardType:"SR",  language:"FR", price:46,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:93,  universe:"op", name:"Kuma SEC",     set:"Paramount War",            number:"OP02-098 SEC", gradingService:"CCC", grade:9.5,       cardType:"SEC", language:"EN", price:155, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:94,  universe:"op", name:"Vegapunk SEC", set:"Awakening of the New Era", number:"OP05-020 SEC", gradingService:"CCC", grade:9.5,       cardType:"SEC", language:"EN", price:168, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:95,  universe:"op", name:"Bonney SR",    set:"Awakening of the New Era", number:"OP05-040 SR",  gradingService:"CCC", grade:10,        cardType:"SR",  language:"FR", price:250, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:96,  universe:"op", name:"Kid SR",       set:"Kingdoms of Intrigue",     number:"OP04-049 SR",  gradingService:"CCC", grade:10,        cardType:"SR",  language:"FR", price:235, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:97,  universe:"op", name:"Killer SEC",   set:"Kingdoms of Intrigue",     number:"OP04-050 SEC", gradingService:"CCC", grade:"10gold",  cardType:"SEC", language:"EN", price:490, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:98,  universe:"op", name:"Hawkins SEC",  set:"Kingdoms of Intrigue",     number:"OP04-051 SEC", gradingService:"CCC", grade:"10gold",  cardType:"SEC", language:"EN", price:510, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:99,  universe:"op", name:"Drake SEC",    set:"Awakening of the New Era", number:"OP05-080 SEC", gradingService:"CCC", grade:"10black", cardType:"SEC", language:"FR", price:860, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:100, universe:"op", name:"Apoo SEC",     set:"Awakening of the New Era", number:"OP05-081 SEC", gradingService:"CCC", grade:"10black", cardType:"SEC", language:"FR", price:790, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-
-    // LEAGUE OF LEGENDS
-    { id:101, universe:"lol", name:"Ahri",          set:"Base Set",   number:"001/165", gradingService:"PSA", grade:9,        cardType:"Champion", language:"EN", price:45,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:102, universe:"lol", name:"Jinx",          set:"Base Set",   number:"012/165", gradingService:"PSA", grade:9,        cardType:"Champion", language:"EN", price:40,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:103, universe:"lol", name:"Yasuo",         set:"Base Set",   number:"018/165", gradingService:"PSA", grade:9.5,      cardType:"Champion", language:"FR", price:75,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:104, universe:"lol", name:"Thresh",        set:"Base Set",   number:"024/165", gradingService:"PSA", grade:10,       cardType:"Champion", language:"FR", price:160, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:105, universe:"lol", name:"Lux",           set:"Base Set",   number:"009/165", gradingService:"CCC", grade:9,        cardType:"Champion", language:"FR", price:38,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:106, universe:"lol", name:"Ezreal",        set:"Base Set",   number:"007/165", gradingService:"CCC", grade:9.5,      cardType:"Champion", language:"EN", price:68,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-
-    // DRAGON BALL
-    { id:107, universe:"db", name:"Son Goku SS",    set:"Fusion World", number:"FB01-001 SR",  gradingService:"PSA", grade:9,        cardType:"SR",  language:"FR", price:55,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:108, universe:"db", name:"Vegeta SS",      set:"Fusion World", number:"FB01-002 SR",  gradingService:"PSA", grade:9,        cardType:"SR",  language:"FR", price:50,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:109, universe:"db", name:"Freezer",        set:"Fusion World", number:"FB01-015 SR",  gradingService:"PSA", grade:9.5,      cardType:"SR",  language:"EN", price:85,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:110, universe:"db", name:"Gohan SS2",      set:"Fusion World", number:"FB02-007 SR",  gradingService:"PSA", grade:10,       cardType:"SR",  language:"FR", price:180, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:111, universe:"db", name:"Broly Légendaire",set:"Fusion World",number:"FB01-078 SEC", gradingService:"PSA", grade:"10gold", cardType:"SEC", language:"JP", price:520, image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
-    { id:112, universe:"db", name:"Goku Ultra Instinct",set:"Fusion World",number:"FB03-001 SEC",gradingService:"CCC",grade:9,       cardType:"SEC", language:"FR", price:95,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"", cardmarket:"" },
+    // ── POKÉMON PSA ──
+    { id:1,  universe:"poke", name:"Dracaufeu EX",         set:"Flammes Écarlates",       number:"006/198", gradingService:"PSA", grade:9,        cardType:"EX",         language:"FR", price:89,   image:"https://images.pokemontcg.io/sv1/6_hires.png",      image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:2,  universe:"poke", name:"Pikachu VMAX",         set:"Vivid Voltage",           number:"188/185", gradingService:"PSA", grade:9,        cardType:"VMAX",        language:"EN", price:75,   image:"https://images.pokemontcg.io/swsh4/188_hires.png",  image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:3,  universe:"poke", name:"Méwtwo V Alt Art",     set:"Pokémon GO",              number:"079/078", gradingService:"PSA", grade:9.5,      cardType:"Alt Art",     language:"FR", price:130,  image:"https://images.pokemontcg.io/pgo/79_hires.png",     image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:4,  universe:"poke", name:"Lugia V Star",         set:"Silver Tempest",          number:"139/195", gradingService:"PSA", grade:9.5,      cardType:"V Star",      language:"EN", price:110,  image:"https://images.pokemontcg.io/swsh12/139_hires.png", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:5,  universe:"poke", name:"Dracaufeu VMAX",       set:"Darkness Ablaze",         number:"020/189", gradingService:"PSA", grade:10,       cardType:"VMAX",        language:"FR", price:349,  image:"https://images.pokemontcg.io/swsh3/20_hires.png",   image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:6,  universe:"poke", name:"Ronflex VMAX",         set:"Vivid Voltage",           number:"142/185", gradingService:"PSA", grade:10,       cardType:"VMAX",        language:"EN", price:210,  image:"https://images.pokemontcg.io/swsh4/142_hires.png",  image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:7,  universe:"poke", name:"Lugia VSTAR Alt Art",  set:"Silver Tempest",          number:"211/195", gradingService:"PSA", grade:"10gold", cardType:"Alt Art",     language:"JP", price:520,  image:"https://images.pokemontcg.io/swsh12/211_hires.png", image2:"", featured:true,  isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:8,  universe:"poke", name:"Dracaufeu Cristal",    set:"Aquapolis",               number:"146/147", gradingService:"PSA", grade:"10gold", cardType:"Secret Rare", language:"FR", price:890,  image:"",                                                  image2:"", featured:true,  isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:9,  universe:"poke", name:"Mew VMAX Alt Art",     set:"Fusion Strike",           number:"269/264", gradingService:"PSA", grade:"10black",cardType:"Alt Art",     language:"EN", price:1200, image:"https://images.pokemontcg.io/swsh8/269_hires.png",  image2:"", featured:true,  isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:10, universe:"poke", name:"Rayquaza VMAX Alt Art",set:"Evolving Skies",          number:"218/203", gradingService:"PSA", grade:"10black",cardType:"Alt Art",     language:"JP", price:950,  image:"https://images.pokemontcg.io/swsh7/218_hires.png",  image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    // ── POKÉMON BGS ──
+    { id:11, universe:"poke", name:"Tortank EX FA",        set:"Générations",             number:"122/122", gradingService:"BGS", grade:9,        cardType:"FA",          language:"EN", price:65,   image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:12, universe:"poke", name:"Florizarre EX FA",     set:"Générations",             number:"123/122", gradingService:"BGS", grade:9,        cardType:"FA",          language:"EN", price:70,   image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:13, universe:"poke", name:"Mackogneur GX Alt",    set:"Cosmic Eclipse",          number:"235/236", gradingService:"BGS", grade:9.5,      cardType:"Alt Art",     language:"FR", price:180,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:14, universe:"poke", name:"Dracaufeu GX Arc",     set:"Burning Shadows",         number:"150/147", gradingService:"BGS", grade:9.5,      cardType:"Secret Rare", language:"FR", price:220,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:15, universe:"poke", name:"Evoli VMAX Alt Art",   set:"Evolving Skies",          number:"205/203", gradingService:"BGS", grade:10,       cardType:"Alt Art",     language:"EN", price:410,  image:"https://images.pokemontcg.io/swsh7/205_hires.png",  image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:16, universe:"poke", name:"Sylveon VMAX AR",      set:"Evolving Skies",          number:"212/203", gradingService:"BGS", grade:10,       cardType:"AR",          language:"JP", price:380,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:17, universe:"poke", name:"Pikachu Illustrateur", set:"Promo",                   number:"Promo",   gradingService:"BGS", grade:"10gold", cardType:"Promo",       language:"JP", price:2500, image:"", image2:"", featured:true,  isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:18, universe:"poke", name:"Ronflex EX FA",        set:"XY Évolutions",           number:"109/108", gradingService:"BGS", grade:"10gold", cardType:"FA",          language:"FR", price:650,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:19, universe:"poke", name:"Dracaufeu Base Set",   set:"Base Set",                number:"4/102",   gradingService:"BGS", grade:"10black",cardType:"Holo Rare",   language:"EN", price:3200, image:"", image2:"", featured:true,  isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:20, universe:"poke", name:"Mewtwo Base Set",      set:"Base Set",                number:"10/102",  gradingService:"BGS", grade:"10black",cardType:"Holo Rare",   language:"EN", price:1800, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    // ── POKÉMON PCA ──
+    { id:21, universe:"poke", name:"Parasect AR",          set:"Mascarade Crépusculaire", number:"197/167", gradingService:"PCA", grade:9,        cardType:"AR",          language:"FR", price:45,   image:"", image2:"", featured:false, isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:22, universe:"poke", name:"Noctali VMAX FA",      set:"Evolving Skies",          number:"197/203", gradingService:"PCA", grade:9,        cardType:"FA",          language:"EN", price:55,   image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:23, universe:"poke", name:"Kyogre EX FA",         set:"Double Crisis",           number:"027/034", gradingService:"PCA", grade:9.5,      cardType:"FA",          language:"FR", price:95,   image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:24, universe:"poke", name:"Groudon EX FA",        set:"Double Crisis",           number:"026/034", gradingService:"PCA", grade:9.5,      cardType:"FA",          language:"FR", price:90,   image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:25, universe:"poke", name:"Lugia EX FA",          set:"Plasma Storm",            number:"134/135", gradingService:"PCA", grade:10,       cardType:"FA",          language:"EN", price:280,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:26, universe:"poke", name:"Ho-Oh EX FA",          set:"Dragons Exalted",         number:"120/124", gradingService:"PCA", grade:10,       cardType:"FA",          language:"EN", price:260,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:27, universe:"poke", name:"Suicune V Alt Art",    set:"Evolving Skies",          number:"210/203", gradingService:"PCA", grade:"10gold", cardType:"Alt Art",     language:"JP", price:480,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:28, universe:"poke", name:"Umbreon VMAX Alt Art", set:"Evolving Skies",          number:"215/203", gradingService:"PCA", grade:"10gold", cardType:"Alt Art",     language:"JP", price:750,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:29, universe:"poke", name:"Gardevoir EX SR",      set:"Scarlet & Violet",        number:"205/198", gradingService:"PCA", grade:"10black",cardType:"Secret Rare", language:"FR", price:900,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:30, universe:"poke", name:"Miraidon EX SR",       set:"Scarlet & Violet",        number:"202/198", gradingService:"PCA", grade:"10black",cardType:"Secret Rare", language:"FR", price:820,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    // ── POKÉMON COLLECTURA ──
+    { id:31, universe:"poke", name:"Caratroc AR",          set:"Méga Évolution",          number:"136/132", gradingService:"Collectura", grade:9,        cardType:"AR",      language:"FR", price:38,  image:"", image2:"", featured:false, isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:32, universe:"poke", name:"Tortank AR",           set:"Méga Évolution",          number:"122/122", gradingService:"Collectura", grade:9,        cardType:"AR",      language:"FR", price:42,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:33, universe:"poke", name:"Lanssorien EX FA",     set:"Mascarade Crépusculaire", number:"200/167", gradingService:"Collectura", grade:9.5,      cardType:"FA",      language:"FR", price:78,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:34, universe:"poke", name:"Kyurem Noir FA",       set:"Étincelles Déferlantes",  number:"218/191", gradingService:"Collectura", grade:9.5,      cardType:"FA",      language:"FR", price:82,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:35, universe:"poke", name:"Lamantine AR",         set:"Flammes Fantasmagoriques",number:"097/094", gradingService:"Collectura", grade:10,       cardType:"AR",      language:"FR", price:120, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:36, universe:"poke", name:"Scalpereur AR",        set:"Écarlate et Violet",      number:"220/198", gradingService:"Collectura", grade:10,       cardType:"AR",      language:"FR", price:135, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:37, universe:"poke", name:"Vitalité Prof. Olim",  set:"Faille Paradoxe",         number:"256/182", gradingService:"Collectura", grade:"10gold", cardType:"Alt Art", language:"FR", price:320, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:38, universe:"poke", name:"Dracaufeu ex SAR",     set:"Obsidian Flames",         number:"228/197", gradingService:"Collectura", grade:"10gold", cardType:"SAR",     language:"EN", price:550, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:39, universe:"poke", name:"Miraidon ex SAR",      set:"Scarlet & Violet",        number:"253/198", gradingService:"Collectura", grade:"10black",cardType:"SAR",     language:"FR", price:720, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:40, universe:"poke", name:"Koraidon ex SAR",      set:"Scarlet & Violet",        number:"254/198", gradingService:"Collectura", grade:"10black",cardType:"SAR",     language:"FR", price:680, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    // ── POKÉMON CCC ──
+    { id:41, universe:"poke", name:"Pikachu V Alt Art",    set:"Vivid Voltage",           number:"170/185", gradingService:"CCC", grade:9,        cardType:"Alt Art",     language:"FR", price:58,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:42, universe:"poke", name:"Evoli V Alt Art",      set:"Evolving Skies",          number:"203/203", gradingService:"CCC", grade:9,        cardType:"Alt Art",     language:"FR", price:62,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:43, universe:"poke", name:"Ursaring VMAX Alt Art",set:"Astral Radiance",         number:"217/189", gradingService:"CCC", grade:9.5,      cardType:"Alt Art",     language:"EN", price:98,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:44, universe:"poke", name:"Hisuian Goodra VSTAR", set:"Astral Radiance",         number:"214/189", gradingService:"CCC", grade:9.5,      cardType:"VSTAR",       language:"EN", price:88,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:45, universe:"poke", name:"Giratine VSTAR Alt Art",set:"Lost Origin",            number:"201/196", gradingService:"CCC", grade:10,       cardType:"Alt Art",     language:"FR", price:290, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:46, universe:"poke", name:"Darkrai VSTAR Alt Art",set:"Astral Radiance",         number:"220/189", gradingService:"CCC", grade:10,       cardType:"Alt Art",     language:"FR", price:310, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:47, universe:"poke", name:"Pikachu VMAX Rainbow", set:"Vivid Voltage",           number:"188/185", gradingService:"CCC", grade:"10gold", cardType:"Secret Rare", language:"EN", price:480, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:48, universe:"poke", name:"Zacian V Alt Art",     set:"Champion's Path",         number:"074/073", gradingService:"CCC", grade:"10gold", cardType:"Alt Art",     language:"EN", price:560, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:49, universe:"poke", name:"Zamazenta V Alt Art",  set:"Champion's Path",         number:"075/073", gradingService:"CCC", grade:"10black",cardType:"Alt Art",     language:"EN", price:820, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:50, universe:"poke", name:"Eternatus VMAX Alt Art",set:"Darkness Ablaze",        number:"192/189", gradingService:"CCC", grade:"10black",cardType:"Alt Art",     language:"FR", price:780, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    // ── ONE PIECE PSA ──
+    { id:51, universe:"op", name:"Monkey D. Luffy",   set:"Romance Dawn",             number:"OP01-003 SR",  gradingService:"PSA", grade:9,        cardType:"SR",  language:"FR", price:95,   image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:52, universe:"op", name:"Roronoa Zoro",      set:"Romance Dawn",             number:"OP01-001 SR",  gradingService:"PSA", grade:9,        cardType:"SR",  language:"FR", price:80,   image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:53, universe:"op", name:"Shanks le Roux",    set:"Paramount War",            number:"OP02-120 SEC", gradingService:"PSA", grade:9.5,      cardType:"SEC", language:"EN", price:210,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:54, universe:"op", name:"Portgas D. Ace",    set:"Paramount War",            number:"OP02-013 SR",  gradingService:"PSA", grade:9.5,      cardType:"SR",  language:"EN", price:185,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:55, universe:"op", name:"Boa Hancock",       set:"Pillars of Strength",      number:"OP03-099 SR",  gradingService:"PSA", grade:10,       cardType:"SR",  language:"FR", price:320,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:56, universe:"op", name:"Trafalgar Law",     set:"Kingdoms of Intrigue",     number:"OP04-020 SR",  gradingService:"PSA", grade:10,       cardType:"SR",  language:"FR", price:290,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:57, universe:"op", name:"Luffy Gear 5",      set:"Awakening of the New Era", number:"OP05-119 SEC", gradingService:"PSA", grade:"10gold", cardType:"SEC", language:"JP", price:750,  image:"", image2:"", featured:true,  isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:58, universe:"op", name:"Nami SEC",          set:"Romance Dawn",             number:"OP01-016 SEC", gradingService:"PSA", grade:"10gold", cardType:"SEC", language:"EN", price:620,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:59, universe:"op", name:"Whitebeard SEC",    set:"Paramount War",            number:"OP02-099 SEC", gradingService:"PSA", grade:"10black",cardType:"SEC", language:"EN", price:980,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:60, universe:"op", name:"Roger SEC",         set:"Awakening of the New Era", number:"OP05-001 SEC", gradingService:"PSA", grade:"10black",cardType:"SEC", language:"JP", price:1100, image:"", image2:"", featured:true,  isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    // ── ONE PIECE BGS ──
+    { id:61, universe:"op", name:"Sanji SR",          set:"Romance Dawn",             number:"OP01-013 SR",  gradingService:"BGS", grade:9,        cardType:"SR",  language:"FR", price:72,   image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:62, universe:"op", name:"Nami SR",           set:"Romance Dawn",             number:"OP01-016 SR",  gradingService:"BGS", grade:9,        cardType:"SR",  language:"FR", price:68,   image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:63, universe:"op", name:"Robin SR",          set:"Paramount War",            number:"OP02-040 SR",  gradingService:"BGS", grade:9.5,      cardType:"SR",  language:"EN", price:145,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:64, universe:"op", name:"Crocodile SEC",     set:"Paramount War",            number:"OP02-094 SEC", gradingService:"BGS", grade:9.5,      cardType:"SEC", language:"EN", price:230,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:65, universe:"op", name:"Jinbe SR",          set:"Pillars of Strength",      number:"OP03-076 SR",  gradingService:"BGS", grade:10,       cardType:"SR",  language:"FR", price:340,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:66, universe:"op", name:"Big Mom SEC",       set:"Kingdoms of Intrigue",     number:"OP04-083 SEC", gradingService:"BGS", grade:10,       cardType:"SEC", language:"FR", price:420,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:67, universe:"op", name:"Kaido SEC",         set:"Pillars of Strength",      number:"OP03-022 SEC", gradingService:"BGS", grade:"10gold", cardType:"SEC", language:"JP", price:880,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:68, universe:"op", name:"Doflamingo SEC",    set:"Kingdoms of Intrigue",     number:"OP04-040 SEC", gradingService:"BGS", grade:"10gold", cardType:"SEC", language:"EN", price:760,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:69, universe:"op", name:"Luffy SEC Gear 4",  set:"Pillars of Strength",      number:"OP03-040 SEC", gradingService:"BGS", grade:"10black",cardType:"SEC", language:"JP", price:1250, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:70, universe:"op", name:"Zoro SEC Enma",     set:"Kingdoms of Intrigue",     number:"OP04-025 SEC", gradingService:"BGS", grade:"10black",cardType:"SEC", language:"JP", price:1050, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    // ── ONE PIECE PCA ──
+    { id:71, universe:"op", name:"Usopp SR",     set:"Romance Dawn",             number:"OP01-014 SR",  gradingService:"PCA", grade:9,        cardType:"SR",  language:"FR", price:55,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:72, universe:"op", name:"Chopper SR",   set:"Romance Dawn",             number:"OP01-015 SR",  gradingService:"PCA", grade:9,        cardType:"SR",  language:"FR", price:60,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:73, universe:"op", name:"Franky SR",    set:"Paramount War",            number:"OP02-070 SR",  gradingService:"PCA", grade:9.5,      cardType:"SR",  language:"EN", price:125, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:74, universe:"op", name:"Brook SEC",    set:"Paramount War",            number:"OP02-071 SEC", gradingService:"PCA", grade:9.5,      cardType:"SEC", language:"EN", price:198, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:75, universe:"op", name:"Yamato SR",    set:"Pillars of Strength",      number:"OP03-040 SR",  gradingService:"PCA", grade:10,       cardType:"SR",  language:"FR", price:310, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:76, universe:"op", name:"Koby SR",      set:"Kingdoms of Intrigue",     number:"OP04-099 SR",  gradingService:"PCA", grade:10,       cardType:"SR",  language:"FR", price:280, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:77, universe:"op", name:"Sabo SEC",     set:"Paramount War",            number:"OP02-025 SEC", gradingService:"PCA", grade:"10gold", cardType:"SEC", language:"EN", price:690, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:78, universe:"op", name:"Ivankov SEC",  set:"Paramount War",            number:"OP02-060 SEC", gradingService:"PCA", grade:"10gold", cardType:"SEC", language:"EN", price:580, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:79, universe:"op", name:"Garp SEC",     set:"Awakening of the New Era", number:"OP05-060 SEC", gradingService:"PCA", grade:"10black",cardType:"SEC", language:"FR", price:920, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:80, universe:"op", name:"Rayleigh SEC", set:"Awakening of the New Era", number:"OP05-061 SEC", gradingService:"PCA", grade:"10black",cardType:"SEC", language:"FR", price:870, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    // ── ONE PIECE COLLECTURA ──
+    { id:81, universe:"op", name:"Lucci SR",         set:"Kingdoms of Intrigue",     number:"OP04-013 SR",  gradingService:"Collectura", grade:9,        cardType:"SR",  language:"FR", price:48,   image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:82, universe:"op", name:"Kizaru SR",        set:"Awakening of the New Era", number:"OP05-098 SR",  gradingService:"Collectura", grade:9,        cardType:"SR",  language:"FR", price:52,   image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:83, universe:"op", name:"Aokiji SEC",       set:"Awakening of the New Era", number:"OP05-099 SEC", gradingService:"Collectura", grade:9.5,      cardType:"SEC", language:"EN", price:165,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:84, universe:"op", name:"Akainu SEC",       set:"Awakening of the New Era", number:"OP05-100 SEC", gradingService:"Collectura", grade:9.5,      cardType:"SEC", language:"EN", price:175,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:85, universe:"op", name:"Smoker SR",        set:"Pillars of Strength",      number:"OP03-060 SR",  gradingService:"Collectura", grade:10,       cardType:"SR",  language:"FR", price:260,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:86, universe:"op", name:"Tashigi SR",       set:"Pillars of Strength",      number:"OP03-061 SR",  gradingService:"Collectura", grade:10,       cardType:"SR",  language:"FR", price:240,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:87, universe:"op", name:"Buggy SEC",        set:"Romance Dawn",             number:"OP01-060 SEC", gradingService:"Collectura", grade:"10gold", cardType:"SEC", language:"FR", price:520,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:88, universe:"op", name:"Mihawk SEC",       set:"Romance Dawn",             number:"OP01-002 SEC", gradingService:"Collectura", grade:"10gold", cardType:"SEC", language:"FR", price:610,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:89, universe:"op", name:"Luffy SEC Romance",set:"Romance Dawn",             number:"OP01-003 SEC", gradingService:"Collectura", grade:"10black",cardType:"SEC", language:"JP", price:1050, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:90, universe:"op", name:"Zoro SEC Romance", set:"Romance Dawn",             number:"OP01-001 SEC", gradingService:"Collectura", grade:"10black",cardType:"SEC", language:"JP", price:980,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    // ── ONE PIECE CCC ──
+    { id:91,  universe:"op", name:"Perona SR",    set:"Paramount War",            number:"OP02-050 SR",  gradingService:"CCC", grade:9,        cardType:"SR",  language:"FR", price:44,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:92,  universe:"op", name:"Moria SR",     set:"Paramount War",            number:"OP02-049 SR",  gradingService:"CCC", grade:9,        cardType:"SR",  language:"FR", price:46,  image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:93,  universe:"op", name:"Kuma SEC",     set:"Paramount War",            number:"OP02-098 SEC", gradingService:"CCC", grade:9.5,      cardType:"SEC", language:"EN", price:155, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:94,  universe:"op", name:"Vegapunk SEC", set:"Awakening of the New Era", number:"OP05-020 SEC", gradingService:"CCC", grade:9.5,      cardType:"SEC", language:"EN", price:168, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:95,  universe:"op", name:"Bonney SR",    set:"Awakening of the New Era", number:"OP05-040 SR",  gradingService:"CCC", grade:10,       cardType:"SR",  language:"FR", price:250, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:96,  universe:"op", name:"Kid SR",       set:"Kingdoms of Intrigue",     number:"OP04-049 SR",  gradingService:"CCC", grade:10,       cardType:"SR",  language:"FR", price:235, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:97,  universe:"op", name:"Killer SEC",   set:"Kingdoms of Intrigue",     number:"OP04-050 SEC", gradingService:"CCC", grade:"10gold", cardType:"SEC", language:"EN", price:490, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:98,  universe:"op", name:"Hawkins SEC",  set:"Kingdoms of Intrigue",     number:"OP04-051 SEC", gradingService:"CCC", grade:"10gold", cardType:"SEC", language:"EN", price:510, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:99,  universe:"op", name:"Drake SEC",    set:"Awakening of the New Era", number:"OP05-080 SEC", gradingService:"CCC", grade:"10black",cardType:"SEC", language:"FR", price:860, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:100, universe:"op", name:"Apoo SEC",     set:"Awakening of the New Era", number:"OP05-081 SEC", gradingService:"CCC", grade:"10black",cardType:"SEC", language:"FR", price:790, image:"", image2:"", featured:false, isNew:false, sold:false, vinted:"", ebay:"", leboncoin:"" },
+    // ── LEAGUE OF LEGENDS ──
+    { id:101, universe:"lol", name:"Ahri",              set:"Base Set", number:"001/165", gradingService:"PSA", grade:9,        cardType:"Champion", language:"EN", price:45,  image:"", image2:"", featured:false, isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:102, universe:"lol", name:"Jinx",              set:"Base Set", number:"012/165", gradingService:"PSA", grade:9,        cardType:"Champion", language:"EN", price:40,  image:"", image2:"", featured:false, isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:103, universe:"lol", name:"Yasuo",             set:"Base Set", number:"018/165", gradingService:"PSA", grade:9.5,      cardType:"Champion", language:"FR", price:75,  image:"", image2:"", featured:false, isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:104, universe:"lol", name:"Thresh",            set:"Base Set", number:"024/165", gradingService:"PSA", grade:10,       cardType:"Champion", language:"FR", price:160, image:"", image2:"", featured:false, isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:105, universe:"lol", name:"Lux",               set:"Base Set", number:"009/165", gradingService:"CCC", grade:9,        cardType:"Champion", language:"FR", price:38,  image:"", image2:"", featured:false, isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:106, universe:"lol", name:"Ezreal",            set:"Base Set", number:"007/165", gradingService:"CCC", grade:9.5,      cardType:"Champion", language:"EN", price:68,  image:"", image2:"", featured:false, isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
+    // ── DRAGON BALL ──
+    { id:107, universe:"db", name:"Son Goku SS",         set:"Fusion World", number:"FB01-001 SR",  gradingService:"PSA", grade:9,        cardType:"SR",  language:"FR", price:55,  image:"", image2:"", featured:false, isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:108, universe:"db", name:"Vegeta SS",           set:"Fusion World", number:"FB01-002 SR",  gradingService:"PSA", grade:9,        cardType:"SR",  language:"FR", price:50,  image:"", image2:"", featured:false, isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:109, universe:"db", name:"Freezer",             set:"Fusion World", number:"FB01-015 SR",  gradingService:"PSA", grade:9.5,      cardType:"SR",  language:"EN", price:85,  image:"", image2:"", featured:false, isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:110, universe:"db", name:"Gohan SS2",           set:"Fusion World", number:"FB02-007 SR",  gradingService:"PSA", grade:10,       cardType:"SR",  language:"FR", price:180, image:"", image2:"", featured:false, isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:111, universe:"db", name:"Broly Légendaire",    set:"Fusion World", number:"FB01-078 SEC", gradingService:"PSA", grade:"10gold", cardType:"SEC", language:"JP", price:520, image:"", image2:"", featured:true,  isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:112, universe:"db", name:"Goku Ultra Instinct", set:"Fusion World", number:"FB03-001 SEC", gradingService:"CCC", grade:9,        cardType:"SEC", language:"FR", price:95,  image:"", image2:"", featured:false, isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
   ];
 
-  // ─────────────────────────────────────────────
-  //  STATE
-  // ─────────────────────────────────────────────
+  // ── STATE ──
   let currentFilter = 'all';
   let searchQuery   = '';
   let gradeFilter   = 'all';
   let graderFilter  = 'all';
+  let sortOrder     = 'default';
 
-  // Globals partagés par renderCard et openModal
   const UNIV_ICON   = { poke:'🃏', op:'⚔️', lol:'🎮', db:'🐉' };
   const UNIV_LABEL  = { poke:'Pokémon', op:'One Piece', lol:'League of Legends', db:'Dragon Ball' };
   const UNIV_COLORS = { poke:'#1d6fe8', op:'#e8271d', lol:'#1a9e2c', db:'#f97316' };
+  const LANG_FLAGS  = { FR:'🇫🇷', EN:'🇬🇧', JP:'🇯🇵', DE:'🇩🇪', ES:'🇪🇸', IT:'🇮🇹', PT:'🇵🇹', KO:'🇰🇷', ZH:'🇨🇳' };
 
-  // ─────────────────────────────────────────────
-  //  HELPERS
-  // ─────────────────────────────────────────────
-  // CSS class for the corner badge
-  function gradeClass(service) {
-    const s = (service || '').toLowerCase();
-    if (s === 'psa')        return 'grade-psa';
-    if (s === 'bgs')        return 'grade-bgs';
-    if (s === 'collectura') return 'grade-collectura';
-    if (s === 'pca')        return 'grade-pca';
-    if (s === 'ccc')        return 'grade-ccc';
+  function gradeClass(s) {
+    s = (s||'').toLowerCase();
+    if (s==='psa') return 'grade-psa';
+    if (s==='bgs') return 'grade-bgs';
+    if (s==='pca') return 'grade-pca';
+    if (s==='ccc') return 'grade-ccc';
+    if (s==='collectura') return 'grade-collectura';
     return 'grade-psa';
   }
 
-  // CSS class for the top grader bar
-  function graderBarClass(service) {
-    const s = (service || '').toLowerCase().replace(' ', '-');
-    return `grader-bar grader-bar-${s || 'none'}`;
+  function mkBtn(url, cls, label) {
+    if (url && url !== '' && url !== '#')
+      return `<a class="btn ${cls} no-modal" href="${url}" target="_blank" rel="noopener">${label}</a>`;
+    return `<span class="btn btn-disabled no-modal" title="Bientôt disponible">🔒 ${label}</span>`;
   }
 
-  // Language flags using unicode regional indicators (work on macOS/iOS/Android; on Windows they show as letters — this is a Windows limitation)
-  const LANG_FLAGS = { FR:'🇫🇷', EN:'🇬🇧', JP:'🇯🇵', DE:'🇩🇪', ES:'🇪🇸', IT:'🇮🇹', PT:'🇵🇹', KO:'🇰🇷', ZH:'🇨🇳' };
-  function langFlag(lang) { return LANG_FLAGS[lang] || '🌐'; }
-
-  function mkBtn(url, cls, label) {
-    if (url && url !== '#' && url !== '') {
-      return `<a class="btn ${cls} no-modal" href="${url}" target="_blank" rel="noopener">${label}</a>`;
-    }
-    return `<span class="btn btn-disabled no-modal" title="Bientôt disponible">🔒 ${label}</span>`;
+  function contactBtn(c) {
+    // Bouton contact/paiement alternatif — remplace le lien Telegram par le tien
+    const link = 'https://t.me/kevinboutique'; // ← TON LIEN TELEGRAM ICI
+    return `<a class="btn btn-contact no-modal" href="${link}" target="_blank" rel="noopener">💬 Contact</a>`;
   }
 
   function renderCard(c) {
     const imgHtml = c.image
       ? `<img src="${c.image}" alt="${c.name}" loading="lazy" />`
-      : `<div class="placeholder-art">${UNIV_ICON[c.universe] || '🃏'}<span>${UNIV_LABEL[c.universe] || c.universe}</span></div>`;
+      : `<div class="placeholder-art">${UNIV_ICON[c.universe]||'🃏'}<span>${UNIV_LABEL[c.universe]||c.universe}</span></div>`;
 
     const soldOverlay = c.sold ? `<div class="sold-overlay"><span class="sold-stamp">VENDU</span></div>` : '';
 
-    // Grade badge (corner of image)
     let badgeHtml = '';
     if (c.gradingService && c.grade !== null && c.grade !== '') {
-      if (c.grade === '10gold') {
-        badgeHtml = `<span class="grade-badge grade-gold">✨ GOLD LABEL</span>`;
-      } else if (c.grade === '10black') {
-        badgeHtml = `<span class="grade-badge grade-black">⚫ BLACK LABEL</span>`;
-      } else {
-        badgeHtml = `<span class="grade-badge ${gradeClass(c.gradingService)}">${c.gradingService === 'Collectura' ? 'CA' : c.gradingService} ${c.grade}</span>`;
-      }
+      if (c.grade === '10gold')  badgeHtml = `<span class="grade-badge grade-gold">✨ GOLD LABEL</span>`;
+      else if (c.grade === '10black') badgeHtml = `<span class="grade-badge grade-black">⚫ BLACK LABEL</span>`;
+      else badgeHtml = `<span class="grade-badge ${gradeClass(c.gradingService)}">${c.gradingService==='Collectura'?'CA':c.gradingService} ${c.grade}</span>`;
     }
+
+    // Badge Nouveau ou Coup de cœur (en haut à gauche)
+    let specialBadge = '';
+    if (c.featured) specialBadge = `<span class="fav-badge">⭐ Coup de cœur</span>`;
+    else if (c.isNew) specialBadge = `<span class="new-badge">✦ Nouveau</span>`;
 
     const actions = c.sold
       ? `<div class="sold-actions-label">Cette carte a été vendue 🎉</div>`
-      : `${mkBtn(c.vinted,'btn-vinted','Vinted')}${mkBtn(c.ebay,'btn-ebay','eBay')}${mkBtn(c.leboncoin,'btn-leboncoin','Le Bon Coin')}${mkBtn(c.cardmarket,'btn-cardmarket','CardMarket')}`;
+      : `${mkBtn(c.vinted,'btn-vinted','Vinted')}${mkBtn(c.ebay,'btn-ebay','eBay')}${mkBtn(c.leboncoin,'btn-leboncoin','Le Bon Coin')}${contactBtn(c)}`;
 
-    const langPill = c.language ? `<span class="meta-pill" title="Langue de la carte">${langFlag(c.language)} ${c.language}</span>` : '';
-
-    // Top bar = couleur de la licence
+    const langPill = c.language ? `<span class="meta-pill" title="Langue">${LANG_FLAGS[c.language]||'🌐'} ${c.language}</span>` : '';
     const barColor = UNIV_COLORS[c.universe] || '#ccc';
     const graderBar = `<div class="grader-bar" style="background:${barColor};"></div>`;
 
     return `
-      <div class="card ${c.universe} ${c.sold ? 'sold-card' : ''}" data-universe="${c.universe}" data-id="${c.id}">
+      <div class="card ${c.universe} ${c.sold?'sold-card':''}" data-universe="${c.universe}" data-id="${c.id}">
         ${graderBar}
         <div class="card-img-wrap">
           ${imgHtml}
           ${soldOverlay}
           ${badgeHtml}
+          ${specialBadge}
         </div>
         <div class="card-body">
-          ${c.cardType ? `<span class="card-type-tag">${c.cardType}</span>` : ''}
-          <div class="univ-tag univ-${c.universe}" style="display:inline-block;margin-bottom:2px;">${UNIV_LABEL[c.universe] || c.universe}</div>
+          ${c.cardType?'<span class="card-type-tag">'+c.cardType+'</span>':''}
+          <div class="univ-tag univ-${c.universe}" style="display:inline-block;margin-bottom:2px;">${UNIV_LABEL[c.universe]||c.universe}</div>
           <div class="card-name">${c.name}</div>
           <div class="card-meta">
             <span class="meta-pill">${c.set}</span>
             <span class="meta-pill">#${c.number}</span>
             ${langPill}
           </div>
-          <div class="card-price"><span class="currency">€ </span>${c.price.toLocaleString('fr-FR')}</div>
+          <div class="card-price"><span class="currency">€</span>${c.price.toLocaleString('fr-FR')}</div>
           <div class="card-actions">${actions}</div>
         </div>
       </div>`;
   }
 
-  // ─────────────────────────────────────────────
-  //  FILTERS
-  // ─────────────────────────────────────────────
-  function cardMatchesGrader(c) { return graderFilter === 'all' || c.gradingService === graderFilter; }
+  // ── FILTERS ──
+  function cardMatchesGrader(c) { return graderFilter==='all' || c.gradingService===graderFilter; }
   function cardMatchesGrade(c) {
-    if (gradeFilter === 'all') return true;
-    if (!c.gradingService || c.grade === null) return false;
-    if (gradeFilter === '10gold')  return c.grade === '10gold';
-    if (gradeFilter === '10black') return c.grade === '10black';
-    return String(c.grade) === gradeFilter;
+    if (gradeFilter==='all') return true;
+    if (!c.gradingService || c.grade===null) return false;
+    if (gradeFilter==='10gold')  return c.grade==='10gold';
+    if (gradeFilter==='10black') return c.grade==='10black';
+    return String(c.grade)===gradeFilter;
   }
   function cardMatchesSearch(c) {
     if (!searchQuery) return true;
-    const haystack = [c.name, c.set, c.number, c.gradingService, c.grade, c.language, c.universe === 'poke' ? 'pokemon' : 'one piece']
-      .filter(Boolean).join(' ').toLowerCase();
-    return searchQuery.split(' ').every(w => haystack.includes(w));
+    const hay = [c.name,c.set,c.number,c.gradingService,c.grade,c.language,c.universe==='poke'?'pokemon':'one piece'].filter(Boolean).join(' ').toLowerCase();
+    return searchQuery.split(' ').every(w=>hay.includes(w));
+  }
+  function sortCards(arr) {
+    if (sortOrder==='asc')  return [...arr].sort((a,b)=>a.price-b.price);
+    if (sortOrder==='desc') return [...arr].sort((a,b)=>b.price-a.price);
+    return arr;
   }
 
   function filterGrader(g, btn) {
     graderFilter = g;
-    document.querySelectorAll('.grader-btn').forEach(b => b.classList.remove('active-grader'));
+    document.querySelectorAll('.grader-btn').forEach(b=>b.classList.remove('active-grader'));
     if (btn) btn.classList.add('active-grader');
     renderAll(currentFilter);
   }
   function filterGrade(g, btn) {
     gradeFilter = g;
-    document.querySelectorAll('.grade-btn:not(.grader-btn)').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.grade-btn:not(.grader-btn)').forEach(b=>b.classList.remove('active'));
     if (btn) btn.classList.add('active');
     renderAll(currentFilter);
   }
   function clearSearch() {
-    document.getElementById('search-input').value = '';
-    searchQuery = '';
+    document.getElementById('search-input').value='';
+    searchQuery='';
     document.getElementById('search-clear').classList.remove('visible');
     renderAll(currentFilter);
   }
 
-  // ─────────────────────────────────────────────
-  //  RENDER
-  // ─────────────────────────────────────────────
+  // ── RENDER ──
   function renderAll(filter) {
     currentFilter = filter;
-    const catalog   = document.getElementById('catalog');
-    const universes = filter === 'all' ? ['poke', 'op', 'lol', 'db'] : [filter];
-    const labels    = { poke: '⚡ Pokémon', op: '☠️ One Piece', lol: '🎮 League of Legends', db: '🐉 Dragon Ball' };
+    const catalog  = document.getElementById('catalog');
+    const universes = filter==='all' ? ['poke','op','lol','db'] : [filter];
+    const labels    = { poke:'⚡ Pokémon', op:'☠️ One Piece', lol:'🎮 League of Legends', db:'🐉 Dragon Ball' };
 
     let html = '';
-    universes.forEach(u => {
-      const cards = CARDS.filter(c => c.universe === u && !c.sold && cardMatchesSearch(c) && cardMatchesGrade(c) && cardMatchesGrader(c));
-      if (!cards.length) return;
-      html += `<h2 class="section-title">${labels[u]}</h2>`;
-      html += `<div class="grid">${cards.map(renderCard).join('')}</div>`;
-    });
 
-    const soldCards = CARDS.filter(c => c.sold && (filter === 'all' || c.universe === filter) && cardMatchesSearch(c));
-    if (soldCards.length) {
-      html += `<h2 class="section-title sold-title">✅ Déjà Vendus</h2>`;
-      html += `<div class="grid">${soldCards.map(renderCard).join('')}</div>`;
+    // Section Coup de cœur (seulement sans filtre actif et sans recherche)
+    if (!searchQuery && gradeFilter==='all' && graderFilter==='all') {
+      const favCards = CARDS.filter(c => c.featured && !c.sold && (filter==='all' || c.universe===filter));
+      if (favCards.length) {
+        html += `<div class="fav-section"><h2 class="section-title fav-title">⭐ Coups de Cœur</h2><div class="grid">${sortCards(favCards).map(renderCard).join('')}</div></div>`;
+      }
     }
 
-    const totalVisible = CARDS.filter(c => !c.sold && (filter === 'all' || c.universe === filter) && cardMatchesSearch(c) && cardMatchesGrade(c) && cardMatchesGrader(c)).length;
-    const countEl = document.getElementById('search-count');
-    if (countEl) countEl.textContent = searchQuery ? `${totalVisible} résultat${totalVisible !== 1 ? 's' : ''}` : '';
+    // Sections normales
+    universes.forEach(u => {
+      const cards = sortCards(CARDS.filter(c => c.universe===u && !c.sold && cardMatchesSearch(c) && cardMatchesGrade(c) && cardMatchesGrader(c)));
+      if (!cards.length) return;
+      html += `<h2 class="section-title">${labels[u]}</h2><div class="grid">${cards.map(renderCard).join('')}</div>`;
+    });
 
-    if (!html) html = searchQuery
-      ? `<div class="grid"><div class="empty"><div class="icon">🔍</div><p>Aucune carte pour "<strong>${searchQuery}</strong>".</p></div></div>`
-      : `<div class="grid"><div class="empty"><div class="icon">📦</div><p>Aucune carte dans cette catégorie.</p></div></div>`;
+    // Vendus
+    const soldCards = CARDS.filter(c => c.sold && (filter==='all'||c.universe===filter) && cardMatchesSearch(c));
+    if (soldCards.length) html += `<h2 class="section-title sold-title">✅ Déjà Vendus</h2><div class="grid">${soldCards.map(renderCard).join('')}</div>`;
+
+    const totalVisible = CARDS.filter(c => !c.sold && (filter==='all'||c.universe===filter) && cardMatchesSearch(c) && cardMatchesGrade(c) && cardMatchesGrader(c)).length;
+    const countEl = document.getElementById('search-count');
+    if (countEl) countEl.textContent = searchQuery ? `${totalVisible} résultat${totalVisible!==1?'s':''}` : '';
+
+    if (!html) html = `<div class="grid"><div class="empty"><div class="icon">${searchQuery?'🔍':'📦'}</div><p>${searchQuery?'Aucune carte pour «'+searchQuery+'».':'Aucune carte dans cette catégorie.'}</p></div></div>`;
     catalog.innerHTML = html;
 
-    const total = CARDS.filter(c => !c.sold).length;
-    const pokeN = CARDS.filter(c => c.universe === 'poke' && !c.sold).length;
-    const opN   = CARDS.filter(c => c.universe === 'op'   && !c.sold).length;
-    const lolN  = CARDS.filter(c => c.universe === 'lol'  && !c.sold).length;
-    const dbN   = CARDS.filter(c => c.universe === 'db'   && !c.sold).length;
-    const soldN = CARDS.filter(c => c.sold).length;
+    const total = CARDS.filter(c=>!c.sold).length;
+    const pokeN = CARDS.filter(c=>c.universe==='poke'&&!c.sold).length;
+    const opN   = CARDS.filter(c=>c.universe==='op'&&!c.sold).length;
+    const lolN  = CARDS.filter(c=>c.universe==='lol'&&!c.sold).length;
+    const dbN   = CARDS.filter(c=>c.universe==='db'&&!c.sold).length;
+    const soldN = CARDS.filter(c=>c.sold).length;
     document.getElementById('stat-total').textContent = total;
     document.getElementById('stat-poke').textContent  = pokeN;
     document.getElementById('stat-op').textContent    = opN;
     document.getElementById('stat-lol').textContent   = lolN;
     document.getElementById('stat-db').textContent    = dbN;
     document.getElementById('stat-sold').textContent  = soldN || 64;
-    document.getElementById('btn-all').textContent   = `Tout (${total})`;
-    document.getElementById('btn-poke').innerHTML    = `<span class="dot-poke"></span> Pokémon (${pokeN})`;
-    document.getElementById('btn-op').innerHTML      = `<span class="dot-op"></span> One Piece (${opN})`;
-    document.getElementById('btn-lol').innerHTML     = `<span class="dot-lol"></span> League of Legends (${lolN})`;
-    document.getElementById('btn-db').innerHTML      = `<span class="dot-db"></span> Dragon Ball (${dbN})`;
+    document.getElementById('btn-all').textContent    = `Tout (${total})`;
+    document.getElementById('btn-poke').innerHTML     = `<span class="dot-poke"></span> Pokémon (${pokeN})`;
+    document.getElementById('btn-op').innerHTML       = `<span class="dot-op"></span> One Piece (${opN})`;
+    document.getElementById('btn-lol').innerHTML      = `<span class="dot-lol"></span> League of Legends (${lolN})`;
+    document.getElementById('btn-db').innerHTML       = `<span class="dot-db"></span> Dragon Ball (${dbN})`;
   }
 
   function filterCards(f, btn) {
-    gradeFilter  = 'all';
-    graderFilter = 'all';
-    document.querySelectorAll('.grade-btn:not(.grader-btn)').forEach(b => b.classList.remove('active'));
-    const firstGradeBtn = document.querySelector('.grade-btn:not(.grader-btn)');
-    if (firstGradeBtn) firstGradeBtn.classList.add('active');
-    document.querySelectorAll('.grader-btn').forEach(b => b.classList.remove('active-grader'));
-    const firstGraderBtn = document.querySelector('.grader-btn');
-    if (firstGraderBtn) firstGraderBtn.classList.add('active-grader');
-    document.querySelectorAll('.tag-btn').forEach(b => b.className = 'tag-btn');
-    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    gradeFilter='all'; graderFilter='all';
+    document.querySelectorAll('.grade-btn:not(.grader-btn)').forEach(b=>b.classList.remove('active'));
+    const fg = document.querySelector('.grade-btn:not(.grader-btn)');
+    if (fg) fg.classList.add('active');
+    document.querySelectorAll('.grader-btn').forEach(b=>b.classList.remove('active-grader'));
+    const fg2 = document.querySelector('.grader-btn');
+    if (fg2) fg2.classList.add('active-grader');
+    document.querySelectorAll('.tag-btn').forEach(b=>b.className='tag-btn');
+    document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
     if (btn) {
-      btn.classList.add(f === 'all' ? 'active-all' : f === 'poke' ? 'active-poke' : f === 'op' ? 'active-op' : f === 'lol' ? 'active-lol' : 'active-db');
+      btn.classList.add(f==='all'?'active-all':f==='poke'?'active-poke':f==='op'?'active-op':f==='lol'?'active-lol':'active-db');
       btn.classList.add('active');
     }
     renderAll(f);
   }
 
-  // Init
-  document.addEventListener('DOMContentLoaded', () => {
-    const input    = document.getElementById('search-input');
-    const clearBtn = document.getElementById('search-clear');
-    input.addEventListener('input', () => {
-      searchQuery = input.value.trim().toLowerCase();
-      clearBtn.classList.toggle('visible', searchQuery.length > 0);
-      renderAll(currentFilter);
-    });
-  });
-
-  renderAll('all');
-
-  // ─────────────────────────────────────────────
-  //  MODAL
-  // ─────────────────────────────────────────────
-  const LANG_FLAGS_MODAL  = { FR:'🇫🇷', EN:'🇬🇧', JP:'🇯🇵', DE:'🇩🇪', ES:'🇪🇸', IT:'🇮🇹' };
-
-  let modalActiveImg = 0;
-  let modalImgs = [];
+  // ── MODAL ──
+  const LANG_FLAGS_MODAL = { FR:'🇫🇷', EN:'🇬🇧', JP:'🇯🇵', DE:'🇩🇪', ES:'🇪🇸', IT:'🇮🇹' };
+  let modalActiveImg=0, modalImgs=[];
 
   function openModal(id) {
-    const c = CARDS.find(x => x.id === id);
+    const c = CARDS.find(x=>x.id===id);
     if (!c) return;
-
-    // Build images list
     modalImgs = [c.image, c.image2].filter(Boolean);
     modalActiveImg = 0;
-
-    // Images panel
     const mainImg = document.getElementById('modal-main-img');
     const thumbsEl = document.getElementById('modal-thumbs');
-
-    if (modalImgs.length > 0) {
-      mainImg.src = modalImgs[0];
-      mainImg.alt = c.name;
-      mainImg.style.display = 'block';
-      document.querySelector('.modal-no-img')?.remove();
-    } else {
-      mainImg.style.display = 'none';
-      const noImg = document.createElement('div');
-      noImg.className = 'modal-no-img';
-      noImg.textContent = c.universe === 'poke' ? '🃏' : c.universe === 'op' ? '⚔️' : c.universe === 'lol' ? '🎮' : '🐉';
-      document.getElementById('modal-images').insertBefore(noImg, thumbsEl);
+    document.querySelector('.modal-no-img')?.remove();
+    if (modalImgs.length > 0) { mainImg.src=modalImgs[0]; mainImg.alt=c.name; mainImg.style.display='block'; }
+    else { mainImg.style.display='none'; const ni=document.createElement('div'); ni.className='modal-no-img'; ni.textContent=UNIV_ICON[c.universe]||'🃏'; document.getElementById('modal-images').insertBefore(ni,thumbsEl); }
+    thumbsEl.innerHTML='';
+    if (modalImgs.length>1) {
+      modalImgs.forEach((src,i)=>{ const img=document.createElement('img'); img.src=src; img.className='modal-thumb'+(i===0?' active':''); img.onclick=e=>{e.stopPropagation();switchModalImg(i);}; thumbsEl.appendChild(img); });
     }
-
-    // Thumbnails (only if 2+ images)
-    thumbsEl.innerHTML = '';
-    if (modalImgs.length > 1) {
-      modalImgs.forEach((src, i) => {
-        const img = document.createElement('img');
-        img.src = src;
-        img.className = 'modal-thumb' + (i === 0 ? ' active' : '');
-        img.onclick = (e) => { e.stopPropagation(); switchModalImg(i); };
-        thumbsEl.appendChild(img);
-      });
-    }
-
-    // Universe tag
+    const univColor = UNIV_COLORS[c.universe]||'#ccc';
     const univTag = document.getElementById('modal-univ-tag');
-    const univLabel = UNIV_LABEL[c.universe] || c.universe;
-    const univColor = UNIV_COLORS[c.universe] || '#ccc';
-    univTag.textContent = univLabel;
-    univTag.style.background = univColor + '20';
+    univTag.textContent = UNIV_LABEL[c.universe]||c.universe;
+    univTag.style.background = univColor+'22';
     univTag.style.color = univColor;
-
-    // Top bar color
     document.getElementById('modal-images').style.borderTop = `5px solid ${univColor}`;
-
-    // Info fields
     document.getElementById('modal-title').textContent  = c.name;
     document.getElementById('modal-set').textContent    = c.set;
-    document.getElementById('modal-number').textContent = '#' + c.number;
-    document.getElementById('modal-type').textContent   = c.cardType || '—';
-    document.getElementById('modal-lang').textContent   = (LANG_FLAGS_MODAL[c.language] || '🌐') + ' ' + (c.language || '—');
-
-    // Grade display
+    document.getElementById('modal-number').textContent = '#'+c.number;
+    document.getElementById('modal-type').textContent   = c.cardType||'—';
+    document.getElementById('modal-lang').textContent   = (LANG_FLAGS_MODAL[c.language]||'🌐')+' '+(c.language||'—');
     const gradeEl = document.getElementById('modal-grade');
     if (c.gradingService && c.grade) {
-      const gradeLabel = c.grade === '10gold' ? '10 ✨ Gold' : c.grade === '10black' ? '10 ⚫ Black' : c.grade;
-      gradeEl.textContent = `${c.gradingService === 'Collectura' ? 'CA' : c.gradingService} — ${gradeLabel}`;
-    } else {
-      gradeEl.textContent = c.condition || 'Non gradée';
-    }
-
-    // Price
+      const gl = c.grade==='10gold'?'10 ✨ Gold':c.grade==='10black'?'10 ⚫ Black':c.grade;
+      gradeEl.textContent = `${c.gradingService==='Collectura'?'CA':c.gradingService} — ${gl}`;
+    } else gradeEl.textContent = '—';
     document.getElementById('modal-price').textContent = c.price.toLocaleString('fr-FR');
-
-    // Actions
     const actEl = document.getElementById('modal-actions');
-    if (c.sold) {
-      actEl.innerHTML = `<div class="modal-sold-label">Cette carte a été vendue 🎉</div>`;
-    } else {
-      const btns = [
-        { url: c.vinted,     cls: 'btn-vinted',     label: 'Vinted' },
-        { url: c.ebay,       cls: 'btn-ebay',        label: 'eBay' },
-        { url: c.leboncoin,  cls: 'btn-leboncoin',   label: 'Le Bon Coin' },
-        { url: c.cardmarket, cls: 'btn-cardmarket',  label: 'CardMarket' },
-      ].map(b => b.url
-        ? `<a class="btn ${b.cls}" href="${b.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${b.label}</a>`
-        : `<span class="btn btn-disabled">🔒 ${b.label}</span>`
-      ).join('');
-      actEl.innerHTML = btns;
+    if (c.sold) { actEl.innerHTML='<div class="modal-sold-label">Cette carte a été vendue 🎉</div>'; }
+    else {
+      const contact = 'https://t.me/kevinboutique'; // ← TON LIEN TELEGRAM ICI
+      actEl.innerHTML = [
+        {url:c.vinted,    cls:'btn-vinted',    label:'Vinted'},
+        {url:c.ebay,      cls:'btn-ebay',       label:'eBay'},
+        {url:c.leboncoin, cls:'btn-leboncoin',  label:'Le Bon Coin'},
+        {url:contact,     cls:'btn-contact',    label:'💬 Contact'},
+      ].map(b=>b.url?`<a class="btn ${b.cls}" href="${b.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${b.label}</a>`:`<span class="btn btn-disabled">🔒 ${b.label}</span>`).join('');
     }
-
-    // Open
     document.getElementById('modal-overlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow='hidden';
   }
 
   function switchModalImg(idx) {
-    modalActiveImg = idx;
-    document.getElementById('modal-main-img').src = modalImgs[idx];
-    document.querySelectorAll('.modal-thumb').forEach((t, i) => t.classList.toggle('active', i === idx));
+    modalActiveImg=idx;
+    document.getElementById('modal-main-img').src=modalImgs[idx];
+    document.querySelectorAll('.modal-thumb').forEach((t,i)=>t.classList.toggle('active',i===idx));
   }
-
   function closeModalDirect() {
     document.getElementById('modal-overlay').classList.remove('open');
-    document.body.style.overflow = '';
+    document.body.style.overflow='';
   }
 
-  // ─────────────────────────────────────────────
-  //  DÉLÉGATION D'ÉVÉNEMENTS — clic sur les cartes
-  // ─────────────────────────────────────────────
-  document.getElementById('catalog').addEventListener('click', function(e) {
-    // Ignorer les clics sur les boutons/liens d'achat
-    if (e.target.closest('.no-modal')) return;
-    // Trouver la carte parente
-    const card = e.target.closest('.card[data-id]');
-    if (!card) return;
-    openModal(parseInt(card.dataset.id));
+  // ── EVENTS ──
+  document.addEventListener('DOMContentLoaded', () => {
+    // Recherche
+    const input = document.getElementById('search-input');
+    const clearBtn = document.getElementById('search-clear');
+    input.addEventListener('input', () => {
+      searchQuery = input.value.trim().toLowerCase();
+      clearBtn.classList.toggle('visible', searchQuery.length>0);
+      renderAll(currentFilter);
+    });
+    clearBtn.addEventListener('click', clearSearch);
+
+    // Tri
+    document.getElementById('sort-select').addEventListener('change', function() {
+      sortOrder = this.value;
+      renderAll(currentFilter);
+    });
+
+    // Clic sur les cartes (délégation)
+    document.getElementById('catalog').addEventListener('click', function(e) {
+      if (e.target.closest('.no-modal')) return;
+      const card = e.target.closest('.card[data-id]');
+      if (!card) return;
+      openModal(parseInt(card.dataset.id));
+    });
+
+    // Fermeture modale
+    document.getElementById('modal-overlay').addEventListener('click', function(e) { if (e.target===this) closeModalDirect(); });
+    document.getElementById('modal-close-btn').addEventListener('click', closeModalDirect);
+    document.addEventListener('keydown', e=>{ if (e.key==='Escape') closeModalDirect(); });
   });
 
-  // Fermeture modale
-  document.getElementById('modal-overlay').addEventListener('click', function(e) {
-    if (e.target === this) closeModalDirect();
-  });
-  document.getElementById('modal-close-btn').addEventListener('click', closeModalDirect);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
+  renderAll('all');
 </script>
 </body>
 </html>
