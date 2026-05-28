@@ -29,7 +29,7 @@
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Nunito', sans-serif; background: var(--white); color: var(--text); min-height: 100vh; }
-
+ 
     /* ── HEADER ── */
     header { background: var(--dark); padding: 0 24px; position: sticky; top: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; height: 64px; box-shadow: 0 2px 16px rgba(0,0,0,0.25); }
     .logo { font-family: 'Bangers', cursive; font-size: 2rem; letter-spacing: 1px; color: var(--white); display: flex; align-items: center; gap: 6px; text-decoration: none; }
@@ -49,7 +49,7 @@
     nav button { background: transparent; border: 2px solid transparent; color: #ccc; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.85rem; padding: 5px 13px; border-radius: 30px; cursor: pointer; transition: all 0.2s; }
     nav button:hover, nav button.active { color: var(--white); border-color: var(--yellow); background: rgba(245,197,24,0.12); }
     nav button.active { color: var(--yellow); }
-
+ 
     /* ── HERO ── */
     .hero { background: linear-gradient(135deg, var(--dark) 0%, #16213e 60%, #0f3460 100%); padding: 60px 24px 48px; text-align: center; position: relative; overflow: hidden; }
     .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(29,111,232,0.18) 0%, transparent 70%), radial-gradient(ellipse at 20% 80%, rgba(245,197,24,0.12) 0%, transparent 60%); pointer-events: none; }
@@ -64,7 +64,7 @@
     .stat { text-align: center; }
     .stat .num { font-family: 'Bangers', cursive; font-size: 2rem; color: var(--yellow); letter-spacing: 1px; display: block; }
     .stat .label { font-size: 0.78rem; color: #7a90a8; text-transform: uppercase; letter-spacing: 1px; }
-
+ 
     /* ── SEARCH ── */
     .search-wrap { background: var(--dark); padding: 16px 24px; display: flex; justify-content: center; }
     .search-box { display: flex; align-items: center; background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.12); border-radius: 50px; padding: 0 20px; gap: 10px; width: 100%; max-width: 520px; transition: border-color 0.2s; }
@@ -76,7 +76,7 @@
     .search-clear.visible { display: block; }
     .search-clear:hover { color: var(--yellow); }
     .search-count { font-size: 0.8rem; color: #7a90a8; white-space: nowrap; font-weight: 600; }
-
+ 
     /* ── FILTERS ── */
     .controls { background: var(--gray); padding: 16px 24px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; border-bottom: 2px solid #e8ecf0; }
     .filter-label { font-weight: 700; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-right: 4px; }
@@ -93,7 +93,7 @@
     .dot-db   { width: 10px; height: 10px; border-radius: 50%; background: var(--db);   flex-shrink:0; }
     .sort-select { margin-left: auto; padding: 7px 12px; border-radius: 30px; border: 2px solid #dde3eb; background: var(--white); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.82rem; color: var(--text); cursor: pointer; outline: none; transition: border-color 0.18s; }
     .sort-select:hover, .sort-select:focus { border-color: var(--blue); }
-
+ 
     /* ── GRADE FILTERS ── */
     .grade-filters { background: var(--gray); padding: 10px 24px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; border-bottom: 1px solid #e8ecf0; }
     .grade-btn { padding: 5px 14px; border-radius: 30px; border: 2px solid #dde3eb; background: var(--white); font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.82rem; cursor: pointer; transition: all 0.18s; color: var(--text); }
@@ -110,25 +110,25 @@
     .pca-btn:hover,        .pca-btn.active-grader        { background: #111; border-color: #111; color: #fff; }
     .ccc-btn:hover,        .ccc-btn.active-grader        { background: var(--ccc); border-color: var(--ccc); color: #fff; }
     .collectura-btn:hover, .collectura-btn.active-grader { background: #4ade80; border-color: #4ade80; color: #14532d; }
-
+ 
     /* ── TOP BAR on cards (couleur de la licence) ── */
     .grader-bar { height: 5px; width: 100%; flex-shrink: 0; display: block; }
     .grader-bar-poke { background: var(--blue); }
     .grader-bar-op   { background: var(--red); }
     .grader-bar-lol  { background: var(--lol); }
     .grader-bar-db   { background: var(--db); }
-
+ 
     /* ── COUP DE CŒUR section ── */
     .fav-section { background: var(--yellow-light); border-top: 2px solid rgba(245,197,24,0.35); border-bottom: 2px solid rgba(245,197,24,0.35); padding-bottom: 8px; }
     .fav-title::after { background: linear-gradient(90deg, var(--yellow), transparent) !important; }
     .fav-badge { position: absolute; top: 10px; left: 10px; z-index: 3; background: var(--yellow); color: var(--dark); font-weight: 900; font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
     .new-badge { position: absolute; top: 10px; left: 10px; z-index: 3; background: var(--green); color: #fff; font-weight: 900; font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
-
+ 
     /* ── GRID ── */
     .section-title { font-family: 'Bangers', cursive; font-size: 1.8rem; letter-spacing: 2px; color: var(--dark); padding: 36px 24px 4px; display: flex; align-items: center; gap: 12px; }
     .section-title::after { content: ''; flex: 1; height: 3px; border-radius: 3px; background: linear-gradient(90deg, var(--yellow), transparent); }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; padding: 20px 24px 48px; max-width: 1200px; margin: 0 auto; }
-
+ 
     /* ── CARD ── */
     .card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: transform 0.22s, box-shadow 0.22s; display: flex; flex-direction: column; position: relative; border: 2px solid transparent; cursor: pointer; }
     .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
@@ -137,7 +137,7 @@
     .card:hover .card-img-wrap img { transform: scale(1.05); }
     .placeholder-art { width: 130px; height: 180px; background: linear-gradient(135deg, #dde3eb, #c8d2de); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #aab; font-size: 2.5rem; }
     .placeholder-art span { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-
+ 
     /* GRADE BADGE */
     .grade-badge { position: absolute; top: 12px; right: 12px; padding: 4px 10px; border-radius: 8px; font-weight: 900; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
     .grade-psa        { background: var(--psa); color: #fff; }
@@ -147,24 +147,24 @@
     .grade-collectura { background: #4ade80; color: #14532d; }
     .grade-gold       { background: linear-gradient(135deg,#f5c518,#e0a800); color: var(--dark); font-weight: 900; }
     .grade-black      { background: #111; color: #fff; border: 1px solid #444; }
-
+ 
     /* UNIV TAG */
     .univ-tag { position: absolute; top: 12px; left: 12px; padding: 3px 10px; border-radius: 8px; font-weight: 800; font-size: 0.7rem; letter-spacing: 1px; }
     .univ-poke { background: var(--blue-light); color: var(--blue); }
     .univ-op   { background: #fdeaea;           color: var(--red); }
     .univ-lol  { background: var(--lol-light);  color: var(--lol); }
     .univ-db   { background: var(--db-light);   color: var(--db); }
-
+ 
     .card-body { padding: 16px 18px 18px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
     .card-type-tag { display: inline-block; background: var(--blue-light); color: var(--blue); font-size: 0.72rem; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 4px; }
     .card-name { font-weight: 900; font-size: 1.05rem; color: var(--dark); line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .meta-pill { background: var(--gray); border-radius: 20px; padding: 3px 10px; font-size: 0.75rem; font-weight: 700; color: var(--muted); }
-
+ 
     /* PRIX — police claire, 1 ≠ 7 */
     .card-price { font-family: 'Nunito', sans-serif; font-weight: 900; font-variant-numeric: tabular-nums; font-size: 1.55rem; color: var(--dark); margin-top: 2px; letter-spacing: -0.5px; }
     .card-price .currency { font-size: 0.9rem; color: var(--muted); margin-right: 2px; font-weight: 900; }
-
+ 
     .card-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 4px; }
     .btn { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 9px 6px; border-radius: 10px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.78rem; text-decoration: none; border: none; cursor: pointer; transition: filter 0.18s, transform 0.15s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
@@ -175,7 +175,7 @@
     .btn-contact   { background: var(--dark); color: #fff; }
     .btn-disabled  { background: #eef0f3; color: #bbb; cursor: not-allowed; border: 2px dashed #dde3eb; font-style: italic; font-size: 0.75rem; }
     .btn-disabled:hover { filter: none; transform: none; }
-
+ 
     /* ── SOLD ── */
     .card.sold-card { opacity: 0.75; filter: grayscale(40%); }
     .sold-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center; z-index: 2; }
@@ -183,12 +183,12 @@
     .sold-actions-label { grid-column: span 2; text-align: center; font-size: 0.85rem; font-weight: 700; color: var(--muted); padding: 8px; background: var(--gray); border-radius: 10px; }
     .sold-title { color: var(--muted); }
     .sold-title::after { background: linear-gradient(90deg, #ccc, transparent); }
-
+ 
     /* ── EMPTY ── */
     .empty { text-align: center; padding: 60px 24px; color: var(--muted); grid-column: 1 / -1; }
     .empty .icon { font-size: 3rem; margin-bottom: 12px; }
     .empty p { font-size: 1.05rem; }
-
+ 
     /* ── MODAL ── */
     .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 500; display: flex; align-items: center; justify-content: center; padding: 16px; backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.22s; }
     .modal-overlay.open { opacity: 1; pointer-events: all; }
@@ -215,11 +215,11 @@
     .modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
     .modal-sold-label { text-align: center; background: var(--gray); border-radius: 12px; padding: 12px; font-weight: 700; color: var(--muted); grid-column: span 2; }
     @media (max-width: 640px) { .modal { grid-template-columns: 1fr; max-height: 95vh; } .modal-images { border-radius: 24px 24px 0 0; min-height: 240px; } .modal-info { padding: 20px; } .modal-title { font-size: 1.6rem; } }
-
+ 
     /* ── FOOTER ── */
     footer { background: var(--dark); color: #7a90a8; text-align: center; padding: 28px 24px; font-size: 0.85rem; line-height: 1.8; }
     footer strong { color: var(--yellow); }
-
+ 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { display: none; }
@@ -253,7 +253,7 @@
       .section-title { font-size: 1.4rem; padding: 24px 16px 4px; }
     }
     @media (max-width: 380px) { .hero h1 { font-size: 2.2rem; } .grid { grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 10px 30px; } .btn { font-size: 0.62rem; } }
-
+ 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .card { animation: fadeUp 0.4s ease both; }
     .card:nth-child(2) { animation-delay: 0.06s; }
@@ -264,7 +264,7 @@
   </style>
 </head>
 <body>
-
+ 
 <!-- HEADER -->
 <header>
   <a href="javascript:location.reload()" class="logo">
@@ -285,7 +285,7 @@
     </nav>
   </div>
 </header>
-
+ 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-badge">✦ Cartes Gradées Certifiées ✦</div>
@@ -309,7 +309,7 @@
     <div class="stat"><span class="num" id="stat-sold">0</span><span class="label">🏆 Déjà vendus</span></div>
   </div>
 </section>
-
+ 
 <!-- SEARCH -->
 <div class="search-wrap">
   <div class="search-box">
@@ -319,7 +319,7 @@
     <button class="search-clear" id="search-clear" title="Effacer">✕</button>
   </div>
 </div>
-
+ 
 <!-- UNIVERSE FILTERS -->
 <div class="controls">
   <span class="filter-label">Univers :</span>
@@ -334,7 +334,7 @@
     <option value="desc">Prix décroissant ↓</option>
   </select>
 </div>
-
+ 
 <!-- GRADE FILTERS -->
 <div class="grade-filters">
   <span class="filter-label">Note :</span>
@@ -353,10 +353,10 @@
   <button class="grade-btn grader-btn collectura-btn"  onclick="filterGrader('Collectura', this)">CA</button>
   <button class="grade-btn grader-btn bgs-btn"         onclick="filterGrader('BGS', this)">BGS</button>
 </div>
-
+ 
 <!-- CATALOG -->
 <div id="catalog"></div>
-
+ 
 <!-- MODAL -->
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal" id="modal-box">
@@ -380,14 +380,14 @@
     </div>
   </div>
 </div>
-
+ 
 <!-- FOOTER -->
 <footer>
   <strong>Kevin Boutique</strong> — Cartes Gradées Pokémon, One Piece, League of Legends &amp; Dragon Ball<br/>
   Toutes les ventes se font via <strong>Vinted</strong>, <strong>eBay</strong> ou <strong>Le Bon Coin</strong> pour votre sécurité.<br/>
   <small>© 2025 Kevin Boutique · Fait avec ❤️</small>
 </footer>
-
+ 
 <script>
   const CARDS = [
     // ── POKÉMON PSA ──
@@ -515,19 +515,19 @@
     { id:111, universe:"db", name:"Broly Légendaire",    set:"Fusion World", number:"FB01-078 SEC", gradingService:"PSA", grade:"10gold", cardType:"SEC", language:"JP", price:520, image:"", image2:"", featured:true,  isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
     { id:112, universe:"db", name:"Goku Ultra Instinct", set:"Fusion World", number:"FB03-001 SEC", gradingService:"CCC", grade:9,        cardType:"SEC", language:"FR", price:95,  image:"", image2:"", featured:false, isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
   ];
-
+ 
   // ── STATE ──
   let currentFilter = 'all';
   let searchQuery   = '';
   let gradeFilter   = 'all';
   let graderFilter  = 'all';
   let sortOrder     = 'default';
-
+ 
   const UNIV_ICON   = { poke:'🃏', op:'⚔️', lol:'🎮', db:'🐉' };
   const UNIV_LABEL  = { poke:'Pokémon', op:'One Piece', lol:'League of Legends', db:'Dragon Ball' };
   const UNIV_COLORS = { poke:'#1d6fe8', op:'#e8271d', lol:'#1a9e2c', db:'#f97316' };
   const LANG_FLAGS  = { FR:'🇫🇷', EN:'🇬🇧', JP:'🇯🇵', DE:'🇩🇪', ES:'🇪🇸', IT:'🇮🇹', PT:'🇵🇹', KO:'🇰🇷', ZH:'🇨🇳' };
-
+ 
   function gradeClass(s) {
     s = (s||'').toLowerCase();
     if (s==='psa') return 'grade-psa';
@@ -537,46 +537,46 @@
     if (s==='collectura') return 'grade-collectura';
     return 'grade-psa';
   }
-
+ 
   function mkBtn(url, cls, label) {
     if (url && url !== '' && url !== '#')
       return `<a class="btn ${cls} no-modal" href="${url}" target="_blank" rel="noopener">${label}</a>`;
     return `<span class="btn btn-disabled no-modal" title="Bientôt disponible">🔒 ${label}</span>`;
   }
-
+ 
   function contactBtn(c) {
     // Bouton contact/paiement alternatif — remplace le lien Telegram par le tien
     const link = 'https://t.me/kevinboutique'; // ← TON LIEN TELEGRAM ICI
     return `<a class="btn btn-contact no-modal" href="${link}" target="_blank" rel="noopener">💬 Contact</a>`;
   }
-
+ 
   function renderCard(c) {
     const imgHtml = c.image
       ? `<img src="${c.image}" alt="${c.name}" loading="lazy" />`
       : `<div class="placeholder-art">${UNIV_ICON[c.universe]||'🃏'}<span>${UNIV_LABEL[c.universe]||c.universe}</span></div>`;
-
+ 
     const soldOverlay = c.sold ? `<div class="sold-overlay"><span class="sold-stamp">VENDU</span></div>` : '';
-
+ 
     let badgeHtml = '';
     if (c.gradingService && c.grade !== null && c.grade !== '') {
       if (c.grade === '10gold')  badgeHtml = `<span class="grade-badge grade-gold">✨ GOLD LABEL</span>`;
       else if (c.grade === '10black') badgeHtml = `<span class="grade-badge grade-black">⚫ BLACK LABEL</span>`;
       else badgeHtml = `<span class="grade-badge ${gradeClass(c.gradingService)}">${c.gradingService==='Collectura'?'CA':c.gradingService} ${c.grade}</span>`;
     }
-
+ 
     // Badge Nouveau ou Coup de cœur (en haut à gauche)
     let specialBadge = '';
     if (c.featured) specialBadge = `<span class="fav-badge">⭐ Coup de cœur</span>`;
     else if (c.isNew) specialBadge = `<span class="new-badge">✦ Nouveau</span>`;
-
+ 
     const actions = c.sold
       ? `<div class="sold-actions-label">Cette carte a été vendue 🎉</div>`
       : `${mkBtn(c.vinted,'btn-vinted','Vinted')}${mkBtn(c.ebay,'btn-ebay','eBay')}${mkBtn(c.leboncoin,'btn-leboncoin','Le Bon Coin')}${contactBtn(c)}`;
-
+ 
     const langPill = c.language ? `<span class="meta-pill" title="Langue">${LANG_FLAGS[c.language]||'🌐'} ${c.language}</span>` : '';
     const barColor = UNIV_COLORS[c.universe] || '#ccc';
     const graderBar = `<div class="grader-bar" style="background:${barColor};"></div>`;
-
+ 
     return `
       <div class="card ${c.universe} ${c.sold?'sold-card':''}" data-universe="${c.universe}" data-id="${c.id}">
         ${graderBar}
@@ -600,7 +600,7 @@
         </div>
       </div>`;
   }
-
+ 
   // ── FILTERS ──
   function cardMatchesGrader(c) { return graderFilter==='all' || c.gradingService===graderFilter; }
   function cardMatchesGrade(c) {
@@ -620,7 +620,7 @@
     if (sortOrder==='desc') return [...arr].sort((a,b)=>b.price-a.price);
     return arr;
   }
-
+ 
   function filterGrader(g, btn) {
     graderFilter = g;
     document.querySelectorAll('.grader-btn').forEach(b=>b.classList.remove('active-grader'));
@@ -639,16 +639,16 @@
     document.getElementById('search-clear').classList.remove('visible');
     renderAll(currentFilter);
   }
-
+ 
   // ── RENDER ──
   function renderAll(filter) {
     currentFilter = filter;
     const catalog  = document.getElementById('catalog');
     const universes = filter==='all' ? ['poke','op','lol','db'] : [filter];
     const labels    = { poke:'⚡ Pokémon', op:'☠️ One Piece', lol:'🎮 League of Legends', db:'🐉 Dragon Ball' };
-
+ 
     let html = '';
-
+ 
     // Section Coup de cœur (seulement sans filtre actif et sans recherche)
     if (!searchQuery && gradeFilter==='all' && graderFilter==='all') {
       const favCards = CARDS.filter(c => c.featured && !c.sold && (filter==='all' || c.universe===filter));
@@ -656,25 +656,25 @@
         html += `<div class="fav-section"><h2 class="section-title fav-title">⭐ Coups de Cœur</h2><div class="grid">${sortCards(favCards).map(renderCard).join('')}</div></div>`;
       }
     }
-
+ 
     // Sections normales
     universes.forEach(u => {
       const cards = sortCards(CARDS.filter(c => c.universe===u && !c.sold && cardMatchesSearch(c) && cardMatchesGrade(c) && cardMatchesGrader(c)));
       if (!cards.length) return;
       html += `<h2 class="section-title">${labels[u]}</h2><div class="grid">${cards.map(renderCard).join('')}</div>`;
     });
-
+ 
     // Vendus
     const soldCards = CARDS.filter(c => c.sold && (filter==='all'||c.universe===filter) && cardMatchesSearch(c));
     if (soldCards.length) html += `<h2 class="section-title sold-title">✅ Déjà Vendus</h2><div class="grid">${soldCards.map(renderCard).join('')}</div>`;
-
+ 
     const totalVisible = CARDS.filter(c => !c.sold && (filter==='all'||c.universe===filter) && cardMatchesSearch(c) && cardMatchesGrade(c) && cardMatchesGrader(c)).length;
     const countEl = document.getElementById('search-count');
     if (countEl) countEl.textContent = searchQuery ? `${totalVisible} résultat${totalVisible!==1?'s':''}` : '';
-
+ 
     if (!html) html = `<div class="grid"><div class="empty"><div class="icon">${searchQuery?'🔍':'📦'}</div><p>${searchQuery?'Aucune carte pour «'+searchQuery+'».':'Aucune carte dans cette catégorie.'}</p></div></div>`;
     catalog.innerHTML = html;
-
+ 
     const total = CARDS.filter(c=>!c.sold).length;
     const pokeN = CARDS.filter(c=>c.universe==='poke'&&!c.sold).length;
     const opN   = CARDS.filter(c=>c.universe==='op'&&!c.sold).length;
@@ -693,7 +693,7 @@
     document.getElementById('btn-lol').innerHTML      = `<span class="dot-lol"></span> League of Legends (${lolN})`;
     document.getElementById('btn-db').innerHTML       = `<span class="dot-db"></span> Dragon Ball (${dbN})`;
   }
-
+ 
   function filterCards(f, btn) {
     gradeFilter='all'; graderFilter='all';
     document.querySelectorAll('.grade-btn:not(.grader-btn)').forEach(b=>b.classList.remove('active'));
@@ -710,11 +710,11 @@
     }
     renderAll(f);
   }
-
+ 
   // ── MODAL ──
   const LANG_FLAGS_MODAL = { FR:'🇫🇷', EN:'🇬🇧', JP:'🇯🇵', DE:'🇩🇪', ES:'🇪🇸', IT:'🇮🇹' };
   let modalActiveImg=0, modalImgs=[];
-
+ 
   function openModal(id) {
     const c = CARDS.find(x=>x.id===id);
     if (!c) return;
@@ -760,7 +760,7 @@
     document.getElementById('modal-overlay').classList.add('open');
     document.body.style.overflow='hidden';
   }
-
+ 
   function switchModalImg(idx) {
     modalActiveImg=idx;
     document.getElementById('modal-main-img').src=modalImgs[idx];
@@ -770,7 +770,7 @@
     document.getElementById('modal-overlay').classList.remove('open');
     document.body.style.overflow='';
   }
-
+ 
   // ── EVENTS ──
   document.addEventListener('DOMContentLoaded', () => {
     // Recherche
@@ -782,13 +782,13 @@
       renderAll(currentFilter);
     });
     clearBtn.addEventListener('click', clearSearch);
-
+ 
     // Tri
     document.getElementById('sort-select').addEventListener('change', function() {
       sortOrder = this.value;
       renderAll(currentFilter);
     });
-
+ 
     // Clic sur les cartes (délégation)
     document.getElementById('catalog').addEventListener('click', function(e) {
       if (e.target.closest('.no-modal')) return;
@@ -796,13 +796,13 @@
       if (!card) return;
       openModal(parseInt(card.dataset.id));
     });
-
+ 
     // Fermeture modale
     document.getElementById('modal-overlay').addEventListener('click', function(e) { if (e.target===this) closeModalDirect(); });
     document.getElementById('modal-close-btn').addEventListener('click', closeModalDirect);
     document.addEventListener('keydown', e=>{ if (e.key==='Escape') closeModalDirect(); });
   });
-
+ 
   renderAll('all');
 </script>
 </body>
