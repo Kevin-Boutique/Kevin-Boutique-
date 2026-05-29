@@ -126,7 +126,7 @@
     .fav-badge { position: absolute; bottom: 10px; left: 10px; z-index: 3; background: #fff; font-size: 0.75rem; padding: 3px 6px; border-radius: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.18); }
     .fav-grid { display: flex !important; overflow-x: auto; gap: 22px; padding: 18px 24px 22px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
     .fav-grid .card { min-width: 240px; max-width: 260px; flex-shrink: 0; scroll-snap-align: start; }
-    .new-badge { position: absolute; top: 10px; left: 10px; z-index: 3; background: var(--green); color: #fff; font-weight: 900; font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+    .new-badge { position: absolute; bottom: 10px; right: 10px; z-index: 3; background: var(--green); color: #fff; font-weight: 900; font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
 
     /* ── GRID ── */
     .section-title { font-family: 'Bangers', cursive; font-size: 1.8rem; letter-spacing: 2px; color: var(--dark); padding: 36px 24px 4px; display: flex; align-items: center; gap: 12px; }
@@ -571,7 +571,8 @@
   let sortOrder     = 'default';
 
   const UNIV_ICON   = { poke:'🃏', op:'⚔️', lol:'🎮', db:'🐉' };
-  const UNIV_LABEL  = { poke:'Pokémon', op:'One Piece', lol:'League of Legends Riftbound', rb:'League of Legends Riftbound', db:'Dragon Ball Z' };
+  const UNIV_LABEL  = { poke:'Pokémon', op:'One Piece', lol:'League of Legends Riftbound', db:'Dragon Ball Z' };
+  const UNIV_SHORT  = { poke:'Pokémon', op:'One Piece', lol:'LoL Riftbound', db:'Dragon Ball Z' };
   const UNIV_COLORS = { poke:'#1d6fe8', op:'#e8271d', lol:'#1a9e2c', db:'#f97316' };
   const LANG_FLAGS  = { FR:'🇫🇷', EN:'🇬🇧', JP:'🇯🇵', DE:'🇩🇪', ES:'🇪🇸', IT:'🇮🇹', PT:'🇵🇹', KO:'🇰🇷', ZH:'🇨🇳' };
 
@@ -600,7 +601,7 @@
   function renderCard(c) {
     const imgHtml = c.image
       ? `<img src="${c.image}" alt="${c.name}" loading="lazy" />`
-      : `<div class="placeholder-art">${UNIV_ICON[c.universe]||'🃏'}<span>${UNIV_LABEL[c.universe]||c.universe}</span></div>`;
+      : `<div class="placeholder-art">${UNIV_ICON[c.universe]||'🃏'}<span>${UNIV_SHORT[c.universe]||c.universe}</span></div>`;
 
     const soldOverlay = c.sold ? `<div class="sold-overlay"><span class="sold-stamp">VENDU</span></div>` : '';
 
@@ -634,7 +635,7 @@
         </div>
         <div class="card-body">
           ${c.cardType?'<span class="card-type-tag">'+c.cardType+'</span>':''}
-          <div class="univ-tag univ-${c.universe}" style="display:inline-block;margin-bottom:2px;">${UNIV_LABEL[c.universe]||c.universe}</div>
+          <div class="univ-tag univ-${c.universe}" style="display:inline-block;margin-bottom:2px;">${UNIV_SHORT[c.universe]||c.universe}</div>
           <div class="card-name">${c.name}</div>
           <div class="card-meta">
             <span class="meta-pill">${c.set}</span>
