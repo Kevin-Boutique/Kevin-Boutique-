@@ -293,8 +293,8 @@
       <button class="active" onclick="filterCards('all', this)">Tout voir</button>
       <button onclick="filterCards('poke', this)">Pokémon</button>
       <button onclick="filterCards('op', this)">One Piece</button>
-      <button onclick="filterCards('lol', this)">League of Legends</button>
-      <button onclick="filterCards('db', this)">Dragon Ball</button>
+      <button onclick="filterCards('lol', this)">League of Legends Riftbound</button>
+  <button onclick="filterCards('db', this)">Dragon Ball Z</button>
     </nav>
   </div>
 </header>
@@ -317,9 +317,9 @@
     <div class="stat"><span class="num" id="stat-total">0</span><span class="label">Cartes</span></div>
     <div class="stat"><span class="num" id="stat-poke">0</span><span class="label">Pokémon</span></div>
     <div class="stat"><span class="num" id="stat-op">0</span><span class="label">One Piece</span></div>
-    <div class="stat"><span class="num" id="stat-lol">0</span><span class="label">League of Legends</span></div>
-    <div class="stat"><span class="num" id="stat-db">0</span><span class="label">Dragon Ball</span></div>
-    <div class="stat"><span class="num" id="stat-sold">0</span><span class="label">🏆 Déjà vendus</span></div>
+    <div class="stat"><span class="num" id="stat-lol">0</span><span class="label">League of Legends<br/>Riftbound</span></div>
+    <div class="stat"><span class="num" id="stat-db">0</span><span class="label">Dragon Ball Z</span></div>
+    <div class="stat"><span class="num" id="stat-sold" style="color:var(--green)">0</span><span class="label">🏆 Déjà vendus</span></div>
   </div>
 </section>
 
@@ -339,8 +339,8 @@
   <button class="tag-btn active-all" id="btn-all"  onclick="filterCards('all', this)">Tout (0)</button>
   <button class="tag-btn" id="btn-poke" onclick="filterCards('poke', this)"><span class="dot-poke"></span> Pokémon (0)</button>
   <button class="tag-btn" id="btn-op"   onclick="filterCards('op', this)"><span class="dot-op"></span> One Piece (0)</button>
-  <button class="tag-btn" id="btn-lol"  onclick="filterCards('lol', this)"><span class="dot-lol"></span> League of Legends (0)</button>
-  <button class="tag-btn" id="btn-db"   onclick="filterCards('db', this)"><span class="dot-db"></span> Dragon Ball (0)</button>
+  <button class="tag-btn" id="btn-lol"  onclick="filterCards('lol', this)"><span class="dot-lol"></span> League of Legends Riftbound (0)</button>
+<button class="tag-btn" id="btn-db"   onclick="filterCards('db', this)"><span class="dot-db"></span> Dragon Ball Z (0)</button>
   <select class="sort-select" id="sort-select">
     <option value="default">Ordre par défaut</option>
     <option value="asc">Prix croissant ↑</option>
@@ -396,7 +396,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <strong>Kevin Boutique</strong> — Cartes Gradées Pokémon, One Piece, League of Legends &amp; Dragon Ball<br/>
+  <strong>Kevin Boutique</strong> — Cartes Gradées Pokémon, One Piece, League of Legends Riftbound &amp; Dragon Ball Z<br/>
   Toutes les ventes se font via <strong>Vinted</strong>, <strong>eBay</strong> ou <strong>Le Bon Coin</strong> pour votre sécurité.<br/>
   <small>© 2025 Kevin Boutique · Fait avec ❤️</small>
 </footer>
@@ -537,7 +537,7 @@
   let sortOrder     = 'default';
 
   const UNIV_ICON   = { poke:'🃏', op:'⚔️', lol:'🎮', db:'🐉' };
-  const UNIV_LABEL  = { poke:'Pokémon', op:'One Piece', lol:'League of Legends', db:'Dragon Ball' };
+  const UNIV_LABEL  = { poke:'Pokémon', op:'One Piece', lol:'League of Legends Riftbound', rb:'League of Legends Riftbound', db:'Dragon Ball Z' };
   const UNIV_COLORS = { poke:'#1d6fe8', op:'#e8271d', lol:'#1a9e2c', db:'#f97316' };
   const LANG_FLAGS  = { FR:'🇫🇷', EN:'🇬🇧', JP:'🇯🇵', DE:'🇩🇪', ES:'🇪🇸', IT:'🇮🇹', PT:'🇵🇹', KO:'🇰🇷', ZH:'🇨🇳' };
 
@@ -572,8 +572,8 @@
 
     let badgeHtml = '';
     if (c.gradingService && c.grade !== null && c.grade !== '') {
-      if (c.grade === '10gold')  badgeHtml = `<span class="grade-badge grade-gold">✨ Gold</span>`;
-      else if (c.grade === '10black') badgeHtml = `<span class="grade-badge grade-black">⚫ Black</span>`;
+      if (c.grade === '10gold')  badgeHtml = `<span class="grade-badge grade-gold">✨ Gold Label</span>`;
+      else if (c.grade === '10black') badgeHtml = `<span class="grade-badge grade-black">⚫ Black Label</span>`;
       else badgeHtml = `<span class="grade-badge ${gradeClass(c.gradingService)}">${c.gradingService==='Collectura'?'CA':c.gradingService} ${c.grade}</span>`;
     }
 
@@ -657,7 +657,7 @@
     currentFilter = filter;
     const catalog  = document.getElementById('catalog');
     const universes = filter==='all' ? ['poke','op','lol','db'] : [filter];
-    const labels    = { poke:'⚡ Pokémon', op:'☠️ One Piece', lol:'🎮 League of Legends', db:'🐉 Dragon Ball' };
+    const labels    = { poke:'⚡ Pokémon', op:'☠️ One Piece', lol:'🎮 League of Legends Riftbound', rb:'⚔️ League of Legends Riftbound', db:'🐉 Dragon Ball Z' };
 
     let html = '';
 
@@ -708,8 +708,8 @@
     document.getElementById('btn-all').textContent    = `Tout (${total})`;
     document.getElementById('btn-poke').innerHTML     = `<span class="dot-poke"></span> Pokémon (${pokeN})`;
     document.getElementById('btn-op').innerHTML       = `<span class="dot-op"></span> One Piece (${opN})`;
-    document.getElementById('btn-lol').innerHTML      = `<span class="dot-lol"></span> League of Legends (${lolN})`;
-    document.getElementById('btn-db').innerHTML       = `<span class="dot-db"></span> Dragon Ball (${dbN})`;
+    document.getElementById('btn-lol').innerHTML      = `<span class="dot-lol"></span> League of Legends Riftbound (${lolN})`;
+    document.getElementById('btn-db').innerHTML       = `<span class="dot-db"></span> Dragon Ball Z (${dbN})`;
   }
 
   function filterCards(f, btn) {
