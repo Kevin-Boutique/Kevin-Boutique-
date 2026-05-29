@@ -29,13 +29,14 @@
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Nunito', sans-serif; background: var(--white); color: var(--text); min-height: 100vh; }
- 
+
     /* ── HEADER ── */
     header { background: var(--dark); padding: 0 24px; position: sticky; top: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; height: 64px; box-shadow: 0 2px 16px rgba(0,0,0,0.25); }
     .logo { font-family: 'Bangers', cursive; font-size: 2rem; letter-spacing: 1px; color: var(--white); display: flex; align-items: center; gap: 6px; text-decoration: none; }
     .logo:hover { opacity: 0.85; }
-    .logo-img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-    .logo span.k   { color: var(--yellow); letter-spacing: 0; }
+    .logo-img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; flex-shrink: 0; mix-blend-mode: screen; }
+    .logo span.k   { color: var(--yellow); }
+    .logo .logo-name { letter-spacing: 1px; }
     .logo span.rest { letter-spacing: 1px; }
     .logo span.dot  { color: var(--red); font-size: 1.4rem; }
     .header-right { display: flex; align-items: center; gap: 6px; }
@@ -49,22 +50,22 @@
     nav button { background: transparent; border: 2px solid transparent; color: #ccc; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.85rem; padding: 5px 13px; border-radius: 30px; cursor: pointer; transition: all 0.2s; }
     nav button:hover, nav button.active { color: var(--white); border-color: var(--yellow); background: rgba(245,197,24,0.12); }
     nav button.active { color: var(--yellow); }
- 
+
     /* ── HERO ── */
-    .hero { background: linear-gradient(135deg, var(--dark) 0%, #16213e 60%, #0f3460 100%); padding: 60px 24px 48px; text-align: center; position: relative; overflow: hidden; }
+    .hero { background: linear-gradient(135deg, var(--dark) 0%, #16213e 60%, #0f3460 100%); padding: 28px 24px 22px; text-align: center; position: relative; overflow: hidden; }
     .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(29,111,232,0.18) 0%, transparent 70%), radial-gradient(ellipse at 20% 80%, rgba(245,197,24,0.12) 0%, transparent 60%); pointer-events: none; }
-    .trust-bar { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 30px; padding: 8px 20px; margin-bottom: 20px; font-size: 0.82rem; color: #e0eaff; backdrop-filter: blur(4px); }
+    .trust-bar { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 30px; padding: 6px 16px; margin-bottom: 10px; font-size: 0.76rem; color: #e0eaff; backdrop-filter: blur(4px); }
     .trust-item strong { color: var(--yellow); }
     .trust-sep { color: rgba(255,255,255,0.25); font-size: 1rem; }
-    .hero-badge { display: inline-block; background: var(--yellow); color: var(--dark); font-weight: 900; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; padding: 4px 14px; border-radius: 30px; margin-bottom: 16px; }
-    .hero h1 { font-family: 'Bangers', cursive; font-size: clamp(2.8rem, 7vw, 5rem); color: var(--white); letter-spacing: 3px; line-height: 1.05; margin-bottom: 12px; }
+    .hero-badge { display: none; }
+    .hero h1 { font-family: 'Bangers', cursive; font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--white); letter-spacing: 3px; line-height: 1.05; margin-bottom: 8px; }
     .hero h1 em { font-style: normal; color: var(--yellow); }
-    .hero p { color: #a0b4cc; font-size: 1.05rem; max-width: 480px; margin: 0 auto 28px; line-height: 1.6; }
-    .hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+    .hero p { display: none; }
+    .hero-stats { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 10px; }
     .stat { text-align: center; }
-    .stat .num { font-family: 'Bangers', cursive; font-size: 2rem; color: var(--yellow); letter-spacing: 1px; display: block; }
+    .stat .num { font-family: 'Bangers', cursive; font-size: 1.5rem; color: var(--yellow); letter-spacing: 1px; display: block; }
     .stat .label { font-size: 0.78rem; color: #7a90a8; text-transform: uppercase; letter-spacing: 1px; }
- 
+
     /* ── SEARCH ── */
     .search-wrap { background: var(--dark); padding: 16px 24px; display: flex; justify-content: center; }
     .search-box { display: flex; align-items: center; background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.12); border-radius: 50px; padding: 0 20px; gap: 10px; width: 100%; max-width: 520px; transition: border-color 0.2s; }
@@ -76,7 +77,7 @@
     .search-clear.visible { display: block; }
     .search-clear:hover { color: var(--yellow); }
     .search-count { font-size: 0.8rem; color: #7a90a8; white-space: nowrap; font-weight: 600; }
- 
+
     /* ── FILTERS ── */
     .controls { background: var(--gray); padding: 16px 24px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; border-bottom: 2px solid #e8ecf0; }
     .filter-label { font-weight: 700; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-right: 4px; }
@@ -93,42 +94,54 @@
     .dot-db   { width: 10px; height: 10px; border-radius: 50%; background: var(--db);   flex-shrink:0; }
     .sort-select { margin-left: auto; padding: 7px 12px; border-radius: 30px; border: 2px solid #dde3eb; background: var(--white); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.82rem; color: var(--text); cursor: pointer; outline: none; transition: border-color 0.18s; }
     .sort-select:hover, .sort-select:focus { border-color: var(--blue); }
- 
+
     /* ── GRADE FILTERS ── */
     .grade-filters { background: var(--gray); padding: 10px 24px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; border-bottom: 1px solid #e8ecf0; }
     .grade-btn { padding: 5px 14px; border-radius: 30px; border: 2px solid #dde3eb; background: var(--white); font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.82rem; cursor: pointer; transition: all 0.18s; color: var(--text); }
-    .grade-btn:hover { border-color: var(--green); color: var(--green); }
-    .grade-btn.active { background: var(--green); border-color: var(--green); color: #fff; }
+    .grade-btn:hover { border-color: var(--dark); color: var(--dark); }
+    .grade-btn.active { background: var(--dark); border-color: var(--dark); color: #fff; }
     .grade-btn.gold  { background: linear-gradient(135deg, #f5c518, #e0a800); border-color: #e0a800; color: var(--dark); }
     .grade-btn.gold:hover, .grade-btn.gold.active { background: linear-gradient(135deg, #e0a800, #c8960a); border-color: #c8960a; color: #fff; }
     .grade-btn.black { background: var(--dark); border-color: var(--dark); color: #fff; }
     .grade-btn.black:hover, .grade-btn.black.active { background: #000; border-color: #000; }
-    .grade-separator { width: 1px; height: 24px; background: #dde3eb; margin: 0 6px; flex-shrink: 0; }
+    .grade-separator { width: 2px; height: 28px; background: #dde3eb; margin: 0 16px; flex-shrink: 0; border-radius: 2px; }
     .grader-btn { font-size: 0.78rem; }
+    .all-grader-btn:hover, .all-grader-btn.active-grader { background: var(--dark); border-color: var(--dark); color: #fff; }
     .psa-btn:hover,        .psa-btn.active-grader        { background: var(--psa); border-color: var(--psa); color: #fff; }
     .bgs-btn:hover,        .bgs-btn.active-grader        { background: linear-gradient(135deg,#c8c8c8,#909090); border-color: #a8a9ad; color: #fff; }
     .pca-btn:hover,        .pca-btn.active-grader        { background: #111; border-color: #111; color: #fff; }
     .ccc-btn:hover,        .ccc-btn.active-grader        { background: var(--ccc); border-color: var(--ccc); color: #fff; }
     .collectura-btn:hover, .collectura-btn.active-grader { background: #4ade80; border-color: #4ade80; color: #14532d; }
- 
+
     /* ── TOP BAR on cards (couleur de la licence) ── */
-    .grader-bar { height: 5px; width: 100%; flex-shrink: 0; display: block; }
-    .grader-bar-poke { background: var(--blue); }
-    .grader-bar-op   { background: var(--red); }
-    .grader-bar-lol  { background: var(--lol); }
-    .grader-bar-db   { background: var(--db); }
- 
+    .grader-bar { height: 4px; width: 100%; flex-shrink: 0; display: block; background: var(--blue); }
+    
+    
+    
+    
+
     /* ── COUP DE CŒUR section ── */
     .fav-section { background: var(--yellow-light); border-top: 2px solid rgba(245,197,24,0.35); border-bottom: 2px solid rgba(245,197,24,0.35); padding-bottom: 8px; }
     .fav-title::after { background: linear-gradient(90deg, var(--yellow), transparent) !important; }
-    .fav-badge { position: absolute; top: 10px; left: 10px; z-index: 3; background: var(--yellow); color: var(--dark); font-weight: 900; font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+    .fav-badge { position: absolute; bottom: 10px; left: 10px; z-index: 3; background: #fff; font-size: 0.75rem; padding: 3px 6px; border-radius: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.18); }
+    .fav-grid { display: flex !important; overflow-x: auto; gap: 22px; padding: 18px 24px 22px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+    .fav-grid .card { min-width: 240px; max-width: 260px; flex-shrink: 0; scroll-snap-align: start; }
     .new-badge { position: absolute; top: 10px; left: 10px; z-index: 3; background: var(--green); color: #fff; font-weight: 900; font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
- 
+
     /* ── GRID ── */
     .section-title { font-family: 'Bangers', cursive; font-size: 1.8rem; letter-spacing: 2px; color: var(--dark); padding: 36px 24px 4px; display: flex; align-items: center; gap: 12px; }
     .section-title::after { content: ''; flex: 1; height: 3px; border-radius: 3px; background: linear-gradient(90deg, var(--yellow), transparent); }
+    .section-header { display: flex; align-items: center; justify-content: space-between; padding: 32px 24px 4px; gap: 12px; }
+    .section-header .section-title { padding: 0; flex: 1; }
+    .see-all-btn { flex-shrink: 0; background: var(--dark); color: #fff; border: none; border-radius: 30px; padding: 7px 16px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.8rem; cursor: pointer; white-space: nowrap; transition: background 0.18s, transform 0.15s; }
+    .see-all-btn:hover { background: var(--blue); transform: translateY(-1px); }
+    .scroll-grid { display: flex; overflow-x: auto; gap: 18px; padding: 16px 24px 24px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+    .scroll-grid::-webkit-scrollbar { height: 4px; }
+    .scroll-grid::-webkit-scrollbar-track { background: #f0f0f0; border-radius: 2px; }
+    .scroll-grid::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
+    .scroll-grid .card { min-width: 240px; max-width: 260px; flex-shrink: 0; scroll-snap-align: start; animation: none; }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; padding: 20px 24px 48px; max-width: 1200px; margin: 0 auto; }
- 
+
     /* ── CARD ── */
     .card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: transform 0.22s, box-shadow 0.22s; display: flex; flex-direction: column; position: relative; border: 2px solid transparent; cursor: pointer; }
     .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
@@ -137,7 +150,7 @@
     .card:hover .card-img-wrap img { transform: scale(1.05); }
     .placeholder-art { width: 130px; height: 180px; background: linear-gradient(135deg, #dde3eb, #c8d2de); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #aab; font-size: 2.5rem; }
     .placeholder-art span { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
- 
+
     /* GRADE BADGE */
     .grade-badge { position: absolute; top: 12px; right: 12px; padding: 4px 10px; border-radius: 8px; font-weight: 900; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
     .grade-psa        { background: var(--psa); color: #fff; }
@@ -145,26 +158,26 @@
     .grade-pca        { background: #111; color: #fff; border: 1px solid #444; }
     .grade-ccc        { background: var(--ccc); color: #fff; }
     .grade-collectura { background: #4ade80; color: #14532d; }
-    .grade-gold       { background: linear-gradient(135deg,#f5c518,#e0a800); color: var(--dark); font-weight: 900; }
-    .grade-black      { background: #111; color: #fff; border: 1px solid #444; }
- 
+    .grade-gold  { background: linear-gradient(135deg,#f5c518,#e0a800); color: var(--dark); font-weight: 900; font-size: 0.68rem; padding: 3px 7px; }
+    .grade-black { background: #111; color: #fff; border: 1px solid #444; font-size: 0.68rem; padding: 3px 7px; }
+
     /* UNIV TAG */
     .univ-tag { position: absolute; top: 12px; left: 12px; padding: 3px 10px; border-radius: 8px; font-weight: 800; font-size: 0.7rem; letter-spacing: 1px; }
     .univ-poke { background: var(--blue-light); color: var(--blue); }
     .univ-op   { background: #fdeaea;           color: var(--red); }
     .univ-lol  { background: var(--lol-light);  color: var(--lol); }
     .univ-db   { background: var(--db-light);   color: var(--db); }
- 
+
     .card-body { padding: 16px 18px 18px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
     .card-type-tag { display: inline-block; background: var(--blue-light); color: var(--blue); font-size: 0.72rem; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 4px; }
     .card-name { font-weight: 900; font-size: 1.05rem; color: var(--dark); line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .meta-pill { background: var(--gray); border-radius: 20px; padding: 3px 10px; font-size: 0.75rem; font-weight: 700; color: var(--muted); }
- 
+
     /* PRIX — police claire, 1 ≠ 7 */
     .card-price { font-family: 'Nunito', sans-serif; font-weight: 900; font-variant-numeric: tabular-nums; font-size: 1.55rem; color: var(--dark); margin-top: 2px; letter-spacing: -0.5px; }
     .card-price .currency { font-size: 0.9rem; color: var(--muted); margin-right: 2px; font-weight: 900; }
- 
+
     .card-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 4px; }
     .btn { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 9px 6px; border-radius: 10px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.78rem; text-decoration: none; border: none; cursor: pointer; transition: filter 0.18s, transform 0.15s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
@@ -175,7 +188,7 @@
     .btn-contact   { background: var(--dark); color: #fff; }
     .btn-disabled  { background: #eef0f3; color: #bbb; cursor: not-allowed; border: 2px dashed #dde3eb; font-style: italic; font-size: 0.75rem; }
     .btn-disabled:hover { filter: none; transform: none; }
- 
+
     /* ── SOLD ── */
     .card.sold-card { opacity: 0.75; filter: grayscale(40%); }
     .sold-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center; z-index: 2; }
@@ -183,12 +196,12 @@
     .sold-actions-label { grid-column: span 2; text-align: center; font-size: 0.85rem; font-weight: 700; color: var(--muted); padding: 8px; background: var(--gray); border-radius: 10px; }
     .sold-title { color: var(--muted); }
     .sold-title::after { background: linear-gradient(90deg, #ccc, transparent); }
- 
+
     /* ── EMPTY ── */
     .empty { text-align: center; padding: 60px 24px; color: var(--muted); grid-column: 1 / -1; }
     .empty .icon { font-size: 3rem; margin-bottom: 12px; }
     .empty p { font-size: 1.05rem; }
- 
+
     /* ── MODAL ── */
     .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 500; display: flex; align-items: center; justify-content: center; padding: 16px; backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.22s; }
     .modal-overlay.open { opacity: 1; pointer-events: all; }
@@ -215,11 +228,11 @@
     .modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
     .modal-sold-label { text-align: center; background: var(--gray); border-radius: 12px; padding: 12px; font-weight: 700; color: var(--muted); grid-column: span 2; }
     @media (max-width: 640px) { .modal { grid-template-columns: 1fr; max-height: 95vh; } .modal-images { border-radius: 24px 24px 0 0; min-height: 240px; } .modal-info { padding: 20px; } .modal-title { font-size: 1.6rem; } }
- 
+
     /* ── FOOTER ── */
     footer { background: var(--dark); color: #7a90a8; text-align: center; padding: 28px 24px; font-size: 0.85rem; line-height: 1.8; }
     footer strong { color: var(--yellow); }
- 
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { display: none; }
@@ -253,7 +266,7 @@
       .section-title { font-size: 1.4rem; padding: 24px 16px 4px; }
     }
     @media (max-width: 380px) { .hero h1 { font-size: 2.2rem; } .grid { grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 10px 30px; } .btn { font-size: 0.62rem; } }
- 
+
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .card { animation: fadeUp 0.4s ease both; }
     .card:nth-child(2) { animation-delay: 0.06s; }
@@ -264,12 +277,12 @@
   </style>
 </head>
 <body>
- 
+
 <!-- HEADER -->
 <header>
   <a href="javascript:location.reload()" class="logo">
     <img class="logo-img" src="data:image/png;base64,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" alt="Kevin Boutique" />
-    <span class="k">K</span><span class="rest">evin</span><span class="dot"> ● </span><span class="rest">Boutique</span>
+    <span class="logo-name"><span class="k">K</span>evin</span><span class="dot"> ● </span><span class="rest">Boutique</span>
   </a>
   <div class="header-right">
     <a class="platform-btn btn-vinted-h"  href="https://www.vinted.fr/member/87640273" target="_blank" rel="noopener">Vinted</a>
@@ -285,7 +298,7 @@
     </nav>
   </div>
 </header>
- 
+
 <!-- HERO -->
 <section class="hero">
   <div class="hero-badge">✦ Cartes Gradées Certifiées ✦</div>
@@ -309,7 +322,7 @@
     <div class="stat"><span class="num" id="stat-sold">0</span><span class="label">🏆 Déjà vendus</span></div>
   </div>
 </section>
- 
+
 <!-- SEARCH -->
 <div class="search-wrap">
   <div class="search-box">
@@ -319,7 +332,7 @@
     <button class="search-clear" id="search-clear" title="Effacer">✕</button>
   </div>
 </div>
- 
+
 <!-- UNIVERSE FILTERS -->
 <div class="controls">
   <span class="filter-label">Univers :</span>
@@ -334,7 +347,7 @@
     <option value="desc">Prix décroissant ↓</option>
   </select>
 </div>
- 
+
 <!-- GRADE FILTERS -->
 <div class="grade-filters">
   <span class="filter-label">Note :</span>
@@ -346,17 +359,17 @@
   <button class="grade-btn black" onclick="filterGrade('10black', this)">⚫ Black</button>
   <div class="grade-separator"></div>
   <span class="filter-label">Gradeur :</span>
-  <button class="grade-btn grader-btn psa-btn active-grader" onclick="filterGrader('all', this)">Tous</button>
+  <button class="grade-btn grader-btn all-grader-btn active-grader" onclick="filterGrader('all', this)">Tous</button>
   <button class="grade-btn grader-btn psa-btn"         onclick="filterGrader('PSA', this)">PSA</button>
   <button class="grade-btn grader-btn ccc-btn"         onclick="filterGrader('CCC', this)">CCC</button>
   <button class="grade-btn grader-btn pca-btn"         onclick="filterGrader('PCA', this)">PCA</button>
   <button class="grade-btn grader-btn collectura-btn"  onclick="filterGrader('Collectura', this)">CA</button>
   <button class="grade-btn grader-btn bgs-btn"         onclick="filterGrader('BGS', this)">BGS</button>
 </div>
- 
+
 <!-- CATALOG -->
 <div id="catalog"></div>
- 
+
 <!-- MODAL -->
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal" id="modal-box">
@@ -380,14 +393,14 @@
     </div>
   </div>
 </div>
- 
+
 <!-- FOOTER -->
 <footer>
   <strong>Kevin Boutique</strong> — Cartes Gradées Pokémon, One Piece, League of Legends &amp; Dragon Ball<br/>
   Toutes les ventes se font via <strong>Vinted</strong>, <strong>eBay</strong> ou <strong>Le Bon Coin</strong> pour votre sécurité.<br/>
   <small>© 2025 Kevin Boutique · Fait avec ❤️</small>
 </footer>
- 
+
 <script>
   const CARDS = [
     // ── POKÉMON PSA ──
@@ -515,19 +528,19 @@
     { id:111, universe:"db", name:"Broly Légendaire",    set:"Fusion World", number:"FB01-078 SEC", gradingService:"PSA", grade:"10gold", cardType:"SEC", language:"JP", price:520, image:"", image2:"", featured:true,  isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
     { id:112, universe:"db", name:"Goku Ultra Instinct", set:"Fusion World", number:"FB03-001 SEC", gradingService:"CCC", grade:9,        cardType:"SEC", language:"FR", price:95,  image:"", image2:"", featured:false, isNew:true,  sold:false, vinted:"", ebay:"", leboncoin:"" },
   ];
- 
+
   // ── STATE ──
   let currentFilter = 'all';
   let searchQuery   = '';
   let gradeFilter   = 'all';
   let graderFilter  = 'all';
   let sortOrder     = 'default';
- 
+
   const UNIV_ICON   = { poke:'🃏', op:'⚔️', lol:'🎮', db:'🐉' };
   const UNIV_LABEL  = { poke:'Pokémon', op:'One Piece', lol:'League of Legends', db:'Dragon Ball' };
   const UNIV_COLORS = { poke:'#1d6fe8', op:'#e8271d', lol:'#1a9e2c', db:'#f97316' };
   const LANG_FLAGS  = { FR:'🇫🇷', EN:'🇬🇧', JP:'🇯🇵', DE:'🇩🇪', ES:'🇪🇸', IT:'🇮🇹', PT:'🇵🇹', KO:'🇰🇷', ZH:'🇨🇳' };
- 
+
   function gradeClass(s) {
     s = (s||'').toLowerCase();
     if (s==='psa') return 'grade-psa';
@@ -537,46 +550,45 @@
     if (s==='collectura') return 'grade-collectura';
     return 'grade-psa';
   }
- 
+
   function mkBtn(url, cls, label) {
     if (url && url !== '' && url !== '#')
       return `<a class="btn ${cls} no-modal" href="${url}" target="_blank" rel="noopener">${label}</a>`;
     return `<span class="btn btn-disabled no-modal" title="Bientôt disponible">🔒 ${label}</span>`;
   }
- 
+
   function contactBtn(c) {
     // Bouton contact/paiement alternatif — remplace le lien Telegram par le tien
     const link = 'https://t.me/kevinboutique'; // ← TON LIEN TELEGRAM ICI
     return `<a class="btn btn-contact no-modal" href="${link}" target="_blank" rel="noopener">💬 Contact</a>`;
   }
- 
+
   function renderCard(c) {
     const imgHtml = c.image
       ? `<img src="${c.image}" alt="${c.name}" loading="lazy" />`
       : `<div class="placeholder-art">${UNIV_ICON[c.universe]||'🃏'}<span>${UNIV_LABEL[c.universe]||c.universe}</span></div>`;
- 
+
     const soldOverlay = c.sold ? `<div class="sold-overlay"><span class="sold-stamp">VENDU</span></div>` : '';
- 
+
     let badgeHtml = '';
     if (c.gradingService && c.grade !== null && c.grade !== '') {
-      if (c.grade === '10gold')  badgeHtml = `<span class="grade-badge grade-gold">✨ GOLD LABEL</span>`;
-      else if (c.grade === '10black') badgeHtml = `<span class="grade-badge grade-black">⚫ BLACK LABEL</span>`;
+      if (c.grade === '10gold')  badgeHtml = `<span class="grade-badge grade-gold">✨ Gold</span>`;
+      else if (c.grade === '10black') badgeHtml = `<span class="grade-badge grade-black">⚫ Black</span>`;
       else badgeHtml = `<span class="grade-badge ${gradeClass(c.gradingService)}">${c.gradingService==='Collectura'?'CA':c.gradingService} ${c.grade}</span>`;
     }
- 
+
     // Badge Nouveau ou Coup de cœur (en haut à gauche)
     let specialBadge = '';
-    if (c.featured) specialBadge = `<span class="fav-badge">⭐ Coup de cœur</span>`;
+    if (c.featured) specialBadge = `<span class="fav-badge">❤️</span>`;
     else if (c.isNew) specialBadge = `<span class="new-badge">✦ Nouveau</span>`;
- 
+
     const actions = c.sold
       ? `<div class="sold-actions-label">Cette carte a été vendue 🎉</div>`
       : `${mkBtn(c.vinted,'btn-vinted','Vinted')}${mkBtn(c.ebay,'btn-ebay','eBay')}${mkBtn(c.leboncoin,'btn-leboncoin','Le Bon Coin')}${contactBtn(c)}`;
- 
+
     const langPill = c.language ? `<span class="meta-pill" title="Langue">${LANG_FLAGS[c.language]||'🌐'} ${c.language}</span>` : '';
-    const barColor = UNIV_COLORS[c.universe] || '#ccc';
-    const graderBar = `<div class="grader-bar" style="background:${barColor};"></div>`;
- 
+    const graderBar = `<div class="grader-bar"></div>`;
+
     return `
       <div class="card ${c.universe} ${c.sold?'sold-card':''}" data-universe="${c.universe}" data-id="${c.id}">
         ${graderBar}
@@ -600,7 +612,7 @@
         </div>
       </div>`;
   }
- 
+
   // ── FILTERS ──
   function cardMatchesGrader(c) { return graderFilter==='all' || c.gradingService===graderFilter; }
   function cardMatchesGrade(c) {
@@ -620,7 +632,7 @@
     if (sortOrder==='desc') return [...arr].sort((a,b)=>b.price-a.price);
     return arr;
   }
- 
+
   function filterGrader(g, btn) {
     graderFilter = g;
     document.querySelectorAll('.grader-btn').forEach(b=>b.classList.remove('active-grader'));
@@ -639,42 +651,49 @@
     document.getElementById('search-clear').classList.remove('visible');
     renderAll(currentFilter);
   }
- 
+
   // ── RENDER ──
   function renderAll(filter) {
     currentFilter = filter;
     const catalog  = document.getElementById('catalog');
     const universes = filter==='all' ? ['poke','op','lol','db'] : [filter];
     const labels    = { poke:'⚡ Pokémon', op:'☠️ One Piece', lol:'🎮 League of Legends', db:'🐉 Dragon Ball' };
- 
+
     let html = '';
- 
+
     // Section Coup de cœur (seulement sans filtre actif et sans recherche)
     if (!searchQuery && gradeFilter==='all' && graderFilter==='all') {
       const favCards = CARDS.filter(c => c.featured && !c.sold && (filter==='all' || c.universe===filter));
       if (favCards.length) {
-        html += `<div class="fav-section"><h2 class="section-title fav-title">⭐ Coups de Cœur</h2><div class="grid">${sortCards(favCards).map(renderCard).join('')}</div></div>`;
+        html += `<div class="fav-section">
+          <div class="section-header"><h2 class="section-title fav-title">❤️ Coups de Cœur</h2></div>
+          <div class="scroll-grid fav-grid">${sortCards(favCards).map(renderCard).join('')}</div>
+        </div>`;
       }
     }
- 
+
     // Sections normales
     universes.forEach(u => {
       const cards = sortCards(CARDS.filter(c => c.universe===u && !c.sold && cardMatchesSearch(c) && cardMatchesGrade(c) && cardMatchesGrader(c)));
       if (!cards.length) return;
-      html += `<h2 class="section-title">${labels[u]}</h2><div class="grid">${cards.map(renderCard).join('')}</div>`;
+      const showAll = filter !== 'all' || searchQuery || gradeFilter !== 'all' || graderFilter !== 'all';
+      const seeAllBtn = !showAll ? `<button class="see-all-btn" onclick="goToUniverse('${u}')">Voir tout →</button>` : '';
+      const displayCards = (filter === 'all') ? cards.slice(0, 4) : cards;
+      const gridClass = (filter === 'all') ? 'scroll-grid' : 'grid';
+      html += `<div class="section-header"><h2 class="section-title">${labels[u]}</h2>${seeAllBtn}</div><div class="${gridClass}">${displayCards.map(renderCard).join('')}</div>`;
     });
- 
+
     // Vendus
     const soldCards = CARDS.filter(c => c.sold && (filter==='all'||c.universe===filter) && cardMatchesSearch(c));
-    if (soldCards.length) html += `<h2 class="section-title sold-title">✅ Déjà Vendus</h2><div class="grid">${soldCards.map(renderCard).join('')}</div>`;
- 
+    if (soldCards.length) html += `<div class="section-header"><h2 class="section-title sold-title">✅ Déjà Vendus</h2></div><div class="${filter==='all'?'scroll-grid':'grid'}">${soldCards.map(renderCard).join('')}</div>`;
+
     const totalVisible = CARDS.filter(c => !c.sold && (filter==='all'||c.universe===filter) && cardMatchesSearch(c) && cardMatchesGrade(c) && cardMatchesGrader(c)).length;
     const countEl = document.getElementById('search-count');
     if (countEl) countEl.textContent = searchQuery ? `${totalVisible} résultat${totalVisible!==1?'s':''}` : '';
- 
+
     if (!html) html = `<div class="grid"><div class="empty"><div class="icon">${searchQuery?'🔍':'📦'}</div><p>${searchQuery?'Aucune carte pour «'+searchQuery+'».':'Aucune carte dans cette catégorie.'}</p></div></div>`;
     catalog.innerHTML = html;
- 
+
     const total = CARDS.filter(c=>!c.sold).length;
     const pokeN = CARDS.filter(c=>c.universe==='poke'&&!c.sold).length;
     const opN   = CARDS.filter(c=>c.universe==='op'&&!c.sold).length;
@@ -693,7 +712,7 @@
     document.getElementById('btn-lol').innerHTML      = `<span class="dot-lol"></span> League of Legends (${lolN})`;
     document.getElementById('btn-db').innerHTML       = `<span class="dot-db"></span> Dragon Ball (${dbN})`;
   }
- 
+
   function filterCards(f, btn) {
     gradeFilter='all'; graderFilter='all';
     document.querySelectorAll('.grade-btn:not(.grader-btn)').forEach(b=>b.classList.remove('active'));
@@ -710,11 +729,11 @@
     }
     renderAll(f);
   }
- 
+
   // ── MODAL ──
   const LANG_FLAGS_MODAL = { FR:'🇫🇷', EN:'🇬🇧', JP:'🇯🇵', DE:'🇩🇪', ES:'🇪🇸', IT:'🇮🇹' };
   let modalActiveImg=0, modalImgs=[];
- 
+
   function openModal(id) {
     const c = CARDS.find(x=>x.id===id);
     if (!c) return;
@@ -760,7 +779,7 @@
     document.getElementById('modal-overlay').classList.add('open');
     document.body.style.overflow='hidden';
   }
- 
+
   function switchModalImg(idx) {
     modalActiveImg=idx;
     document.getElementById('modal-main-img').src=modalImgs[idx];
@@ -770,7 +789,7 @@
     document.getElementById('modal-overlay').classList.remove('open');
     document.body.style.overflow='';
   }
- 
+
   // ── EVENTS ──
   document.addEventListener('DOMContentLoaded', () => {
     // Recherche
@@ -782,13 +801,13 @@
       renderAll(currentFilter);
     });
     clearBtn.addEventListener('click', clearSearch);
- 
+
     // Tri
     document.getElementById('sort-select').addEventListener('change', function() {
       sortOrder = this.value;
       renderAll(currentFilter);
     });
- 
+
     // Clic sur les cartes (délégation)
     document.getElementById('catalog').addEventListener('click', function(e) {
       if (e.target.closest('.no-modal')) return;
@@ -796,13 +815,20 @@
       if (!card) return;
       openModal(parseInt(card.dataset.id));
     });
- 
+
     // Fermeture modale
     document.getElementById('modal-overlay').addEventListener('click', function(e) { if (e.target===this) closeModalDirect(); });
     document.getElementById('modal-close-btn').addEventListener('click', closeModalDirect);
     document.addEventListener('keydown', e=>{ if (e.key==='Escape') closeModalDirect(); });
   });
- 
+
+  function goToUniverse(u) {
+    const navBtns = document.querySelectorAll('nav button');
+    const map = { all:0, poke:1, op:2, lol:3, db:4 };
+    filterCards(u, navBtns[map[u]] || null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   renderAll('all');
 </script>
 </body>
