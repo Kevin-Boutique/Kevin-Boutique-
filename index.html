@@ -815,6 +815,24 @@
       openModal(parseInt(card.dataset.id));
     });
 
+    // Support tactile mobile — distingue tap vs scroll
+    let _tx = 0, _ty = 0;
+    document.getElementById('catalog').addEventListener('touchstart', function(e) {
+      _tx = e.touches[0].clientX;
+      _ty = e.touches[0].clientY;
+    }, { passive: true });
+
+    document.getElementById('catalog').addEventListener('touchend', function(e) {
+      const dx = Math.abs(e.changedTouches[0].clientX - _tx);
+      const dy = Math.abs(e.changedTouches[0].clientY - _ty);
+      if (dx > 8 || dy > 8) return; // scroll, pas un tap
+      if (e.target.closest('.no-modal')) return;
+      const card = e.target.closest('.card[data-id]');
+      if (!card) return;
+      e.preventDefault();
+      openModal(parseInt(card.dataset.id));
+    }, { passive: false });
+
     // Fermeture modale
     document.getElementById('modal-overlay').addEventListener('click', function(e) { if (e.target===this) closeModalDirect(); });
     document.getElementById('modal-close-btn').addEventListener('click', closeModalDirect);
