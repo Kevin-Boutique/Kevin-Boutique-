@@ -247,6 +247,9 @@
     .modal-price .currency { font-size: 1.1rem; color: var(--muted); margin-right: 2px; font-weight: 900; }
     .modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
     .modal-sold-label { text-align: center; background: var(--gray); border-radius: 12px; padding: 12px; font-weight: 700; color: var(--muted); grid-column: span 2; }
+    .btn-share { width: 100%; margin-top: 8px; background: var(--gray); border: 2px solid #dde3eb; border-radius: 10px; padding: 9px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.82rem; color: var(--dark); cursor: pointer; transition: background 0.18s, border-color 0.18s; }
+    .btn-share:hover { background: #e8f1fd; border-color: var(--blue); color: var(--blue); }
+    .btn-share.copied { background: var(--green); border-color: var(--green); color: #fff; }
     @media (max-width: 640px) { .modal { grid-template-columns: 1fr; max-height: 95vh; } .modal-images { border-radius: 24px 24px 0 0; min-height: 240px; } .modal-info { padding: 20px; } .modal-title { font-size: 1.6rem; } }
 
     /* ── FOOTER ── */
@@ -409,6 +412,7 @@
       <div class="modal-divider"></div>
       <div class="modal-price"><span class="currency">€</span><span id="modal-price"></span></div>
       <div class="modal-actions" id="modal-actions"></div>
+      <button class="btn-share" id="modal-share-btn" onclick="shareCard()">🔗 Partager cette carte</button>
     </div>
   </div>
 </div>
@@ -447,6 +451,21 @@
     </div>
   </div>
 </div>
+
+<!-- À PROPOS -->
+<section style="background:var(--dark);padding:48px 24px;text-align:center;">
+  <h2 style="font-family:'Bangers',cursive;font-size:2rem;letter-spacing:2px;color:var(--yellow);margin-bottom:16px;">À Propos de Kevin Boutique</h2>
+  <p style="color:#a0b4cc;max-width:560px;margin:0 auto 28px;line-height:1.8;font-size:0.95rem;">
+    Passionné de cartes à collectionner depuis plusieurs années, je propose des cartes <strong style="color:#fff;">Pokémon, One Piece, League of Legends Riftbound et Dragon Ball Z</strong> soigneusement sélectionnées et gradées par les meilleurs services du marché.<br/><br/>
+    Chaque carte est authentique, expédiée en boîte rigide et la préparation est filmée pour votre sécurité. Avec <strong style="color:var(--yellow);">64 ventes</strong> réalisées et une note de <strong style="color:var(--yellow);">5/5 sur Vinted</strong>, votre satisfaction est ma priorité.
+  </p>
+  <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+    <a href="https://www.vinted.fr/member/87640273" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#09b1ba;color:#fff;padding:10px 20px;border-radius:30px;font-family:'Nunito',sans-serif;font-weight:800;font-size:0.85rem;text-decoration:none;">Vinted</a>
+    <a href="https://www.ebay.fr/usr/kevin-boutique" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--yellow);color:var(--dark);padding:10px 20px;border-radius:30px;font-family:'Nunito',sans-serif;font-weight:800;font-size:0.85rem;text-decoration:none;">eBay</a>
+    <a href="https://www.leboncoin.fr/profile/21c66d3e-759e-40fd-a008-a85dad801cb3" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#f56b2a;color:#fff;padding:10px 20px;border-radius:30px;font-family:'Nunito',sans-serif;font-weight:800;font-size:0.85rem;text-decoration:none;">LeBonCoin</a>
+    <button onclick="document.getElementById('contact-modal').classList.add('open')" style="display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--yellow);border:2px solid var(--yellow);padding:10px 20px;border-radius:30px;font-family:'Nunito',sans-serif;font-weight:800;font-size:0.85rem;cursor:pointer;">💬 Contact & Paiement</button>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
@@ -767,7 +786,7 @@
     document.getElementById('stat-op').textContent    = opN;
     document.getElementById('stat-lol').textContent   = lolN;
     document.getElementById('stat-db').textContent    = dbN;
-    document.getElementById('stat-sold').textContent  = soldN || 64;
+    document.getElementById('stat-sold').textContent  = 64 + soldN;
     document.getElementById('btn-all').textContent    = `Tout (${total})`;
     document.getElementById('btn-poke').innerHTML     = `<span class="dot-poke"></span> Pokémon (${pokeN})`;
     document.getElementById('btn-op').innerHTML       = `<span class="dot-op"></span> One Piece (${opN})`;
@@ -796,9 +815,11 @@
   const LANG_FLAGS_MODAL = { FR:'🇫🇷', EN:'🇬🇧', JP:'🇯🇵', DE:'🇩🇪', ES:'🇪🇸', IT:'🇮🇹' };
   let modalActiveImg=0, modalImgs=[];
 
+  let currentModalCard = null;
   function openModal(id) {
     const c = CARDS.find(x=>x.id===id);
     if (!c) return;
+    currentModalCard = c;
     modalImgs = [c.image, c.image2].filter(Boolean);
     modalActiveImg = 0;
     const mainImg = document.getElementById('modal-main-img');
@@ -912,6 +933,23 @@
   function scrollCarousel(id, dir) {
     const el = document.getElementById(id);
     if (el) el.scrollBy({ left: dir * 280, behavior: 'smooth' });
+  }
+
+  function shareCard() {
+    if (!currentModalCard) return;
+    const c = currentModalCard;
+    const text = `${c.name} — ${c.set} #${c.number} | ${c.gradingService} ${c.grade} | €${c.price} | Kevin Boutique TCG`;
+    const url = window.location.href;
+    const btn = document.getElementById('modal-share-btn');
+    if (navigator.share) {
+      navigator.share({ title: 'Kevin Boutique TCG', text, url });
+    } else {
+      navigator.clipboard.writeText(`${text}\n${url}`).then(() => {
+        btn.textContent = '✅ Lien copié !';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = '🔗 Partager cette carte'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
   }
 
   function goToSold() {
