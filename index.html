@@ -35,6 +35,9 @@
     .logo { font-family: 'Bangers', cursive; font-size: 2rem; letter-spacing: 1px; color: var(--white); display: flex; align-items: center; gap: 6px; text-decoration: none; }
     .logo:hover { opacity: 0.85; }
     .logo-img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; flex-shrink: 0; mix-blend-mode: screen; }
+    
+    
+
     .logo span.k   { color: var(--yellow); }
     .logo .logo-name { letter-spacing: 1px; }
     .logo span.rest { letter-spacing: 1px; }
@@ -62,6 +65,9 @@
     .hero h1 em { font-style: normal; color: var(--yellow); }
     .hero p { display: none; }
     .hero-stats { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 10px; }
+    .clickable-stat { cursor: pointer; transition: transform 0.15s, opacity 0.15s; }
+    .clickable-stat:hover { transform: translateY(-3px); opacity: 0.85; }
+    .clickable-stat:hover .num { text-decoration: underline; text-underline-offset: 3px; }
     .stat { text-align: center; }
     .stat .num { font-family: 'Bangers', cursive; font-size: 1.5rem; color: var(--yellow); letter-spacing: 1px; display: block; }
     .stat .label { font-size: 0.78rem; color: #7a90a8; text-transform: uppercase; letter-spacing: 1px; }
@@ -327,12 +333,12 @@
   <h1>Kevin<br/><em>Boutique</em></h1>
   <p>Cartes à collectionner gradées — certifiées par les meilleurs gradeurs du marché. Disponibles sur toutes les grandes plateformes. Chaque commande soigneusement préparée et filmée.</p>
   <div class="hero-stats">
-    <div class="stat"><span class="num" id="stat-total">0</span><span class="label">Cartes</span></div>
-    <div class="stat"><span class="num" id="stat-poke">0</span><span class="label">Pokémon</span></div>
-    <div class="stat"><span class="num" id="stat-op">0</span><span class="label">One Piece</span></div>
-    <div class="stat"><span class="num" id="stat-lol">0</span><span class="label">League of Legends<br/>Riftbound</span></div>
-    <div class="stat"><span class="num" id="stat-db">0</span><span class="label">Dragon Ball Z</span></div>
-    <div class="stat"><span class="num" id="stat-sold" style="color:var(--green)">0</span><span class="label">🏆 Déjà vendus</span></div>
+    <div class="stat clickable-stat" onclick="goToUniverse('all')"><span class="num" id="stat-total">0</span><span class="label">Cartes</span></div>
+    <div class="stat clickable-stat" onclick="goToUniverse('poke')"><span class="num" id="stat-poke">0</span><span class="label">Pokémon</span></div>
+    <div class="stat clickable-stat" onclick="goToUniverse('op')"><span class="num" id="stat-op">0</span><span class="label">One Piece</span></div>
+    <div class="stat clickable-stat" onclick="goToUniverse('lol')"><span class="num" id="stat-lol">0</span><span class="label">League of Legends<br/>Riftbound</span></div>
+    <div class="stat clickable-stat" onclick="goToUniverse('db')"><span class="num" id="stat-db">0</span><span class="label">Dragon Ball Z</span></div>
+    <div class="stat clickable-stat" onclick="goToSold()"><span class="num" id="stat-sold" style="color:var(--green)">0</span><span class="label">🏆 Déjà vendus</span></div>
   </div>
 </section>
 
@@ -906,6 +912,16 @@
   function scrollCarousel(id, dir) {
     const el = document.getElementById(id);
     if (el) el.scrollBy({ left: dir * 280, behavior: 'smooth' });
+  }
+
+  function goToSold() {
+    // S'assurer qu'on est en vue "tout" pour voir les vendus
+    filterCards('all', null);
+    // Petit délai pour laisser le rendu se faire puis scroller
+    setTimeout(() => {
+      const soldTitle = [...document.querySelectorAll('.section-title')].find(el => el.textContent.includes('Déjà Vendus'));
+      if (soldTitle) soldTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   }
 
   function goToUniverse(u) {
