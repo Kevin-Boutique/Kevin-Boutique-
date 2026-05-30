@@ -135,11 +135,25 @@
     .section-header .section-title { padding: 0; flex: 1; }
     .see-all-btn { flex-shrink: 0; background: var(--dark); color: #fff; border: none; border-radius: 30px; padding: 7px 16px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.8rem; cursor: pointer; white-space: nowrap; transition: background 0.18s, transform 0.15s; }
     .see-all-btn:hover { background: var(--blue); transform: translateY(-1px); }
-    .scroll-grid { display: flex; overflow-x: auto; gap: 18px; padding: 16px 24px 24px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+    .scroll-grid { display: flex; overflow-x: auto; gap: 18px; padding: 16px 24px 24px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scroll-behavior: smooth; }
     .scroll-grid::-webkit-scrollbar { height: 4px; }
     .scroll-grid::-webkit-scrollbar-track { background: #f0f0f0; border-radius: 2px; }
     .scroll-grid::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
     .scroll-grid .card { min-width: 240px; max-width: 260px; flex-shrink: 0; scroll-snap-align: start; animation: none; }
+    .carousel-wrap { position: relative; }
+    .carousel-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      z-index: 10; background: rgba(255,255,255,0.85);
+      border: none; border-radius: 50%; width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem; color: var(--dark);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      transition: background 0.18s, transform 0.15s, opacity 0.2s;
+      opacity: 0.7;
+    }
+    .carousel-arrow:hover { background: #fff; opacity: 1; transform: translateY(-50%) scale(1.08); }
+    .carousel-arrow.left  { left: 4px; }
+    .carousel-arrow.right { right: 4px; }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; padding: 20px 24px 48px; max-width: 1200px; margin: 0 auto; }
 
     /* ── CARD ── */
@@ -702,7 +716,7 @@
       if (favCards.length) {
         html += `<div class="fav-section">
           <div class="section-header"><h2 class="section-title fav-title">❤️ Coups de Cœur</h2></div>
-          <div class="scroll-grid fav-grid">${sortCards(favCards).map(renderCard).join('')}</div>
+          ${carouselWrap('carousel-fav', sortCards(favCards).map(renderCard).join(''))}
         </div>`;
       }
     }
@@ -714,12 +728,20 @@
       const showAll = filter !== 'all' || searchQuery || gradeFilter !== 'all' || graderFilter !== 'all';
       const seeAllBtn = !showAll ? `<button class="see-all-btn" onclick="goToUniverse('${u}')">Voir tout →</button>` : '';
       const gridClass = (filter === 'all') ? 'scroll-grid' : 'grid';
-      html += `<div class="section-header"><h2 class="section-title">${labels[u]}</h2>${seeAllBtn}</div><div class="${gridClass}">${cards.map(renderCard).join('')}</div>`;
+      const gridContent = filter === 'all'
+        ? carouselWrap(`carousel-${u}`, cards.map(renderCard).join(''))
+        : `<div class="${gridClass}">${cards.map(renderCard).join('')}</div>`;
+      html += `<div class="section-header"><h2 class="section-title">${labels[u]}</h2>${seeAllBtn}</div>${gridContent}`;
     });
 
     // Vendus
     const soldCards = CARDS.filter(c => c.sold && (filter==='all'||c.universe===filter) && cardMatchesSearch(c));
-    if (soldCards.length) html += `<div class="section-header"><h2 class="section-title sold-title">✅ Déjà Vendus</h2></div><div class="${filter==='all'?'scroll-grid':'grid'}">${soldCards.map(renderCard).join('')}</div>`;
+    if (soldCards.length) {
+      const soldContent = filter==='all'
+        ? carouselWrap('carousel-sold', soldCards.map(renderCard).join(''))
+        : `<div class="grid">${soldCards.map(renderCard).join('')}</div>`;
+      html += `<div class="section-header"><h2 class="section-title sold-title">✅ Déjà Vendus</h2></div>${soldContent}`;
+    }
 
     const totalVisible = CARDS.filter(c => !c.sold && (filter==='all'||c.universe===filter) && cardMatchesSearch(c) && cardMatchesGrade(c) && cardMatchesGrader(c)).length;
     const countEl = document.getElementById('search-count');
@@ -873,6 +895,18 @@
     document.getElementById('modal-close-btn').addEventListener('click', closeModalDirect);
     document.addEventListener('keydown', e=>{ if (e.key==='Escape') closeModalDirect(); });
   });
+
+  function carouselWrap(id, innerHtml) {
+    return `<div class="carousel-wrap">
+      <button class="carousel-arrow left"  onclick="scrollCarousel('${id}',-1)">&#8249;</button>
+      <div class="scroll-grid" id="${id}">${innerHtml}</div>
+      <button class="carousel-arrow right" onclick="scrollCarousel('${id}', 1)">&#8250;</button>
+    </div>`;
+  }
+  function scrollCarousel(id, dir) {
+    const el = document.getElementById(id);
+    if (el) el.scrollBy({ left: dir * 280, behavior: 'smooth' });
+  }
 
   function goToUniverse(u) {
     const navBtns = document.querySelectorAll('nav button');
