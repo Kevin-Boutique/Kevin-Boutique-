@@ -479,8 +479,8 @@
   <div class="modal" style="grid-template-columns:1fr;max-width:480px;">
     <button class="modal-close" onclick="document.getElementById('contact-modal').classList.remove('open')">✕</button>
     <div class="modal-info" style="padding:36px 32px 28px;">
-      <div style="font-family:'Bangers',cursive;font-size:1.8rem;letter-spacing:2px;color:var(--dark);margin-bottom:4px;">💬 Paiement & Contact</div>
-      <p style="color:var(--muted);font-size:0.88rem;margin-bottom:18px;">Tu veux payer autrement que via les plateformes ? Contacte-moi directement pour ces options :</p>
+      <div style="font-family:'Bangers',cursive;font-size:1.8rem;letter-spacing:2px;color:var(--dark);margin-bottom:4px;">💬 Contact & Paiement</div>
+      <p style="color:var(--muted);font-size:0.88rem;margin-bottom:18px;">Paiement alternatif disponible via Telegram :</p>
 
       <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:22px;">
         <div style="display:flex;align-items:center;gap:12px;background:var(--gray);border-radius:12px;padding:12px 16px;">
@@ -488,23 +488,14 @@
           <div><div style="font-weight:900;font-size:0.9rem;color:var(--dark);">Crypto</div><div style="font-size:0.78rem;color:var(--muted);">Bitcoin, Ethereum, USDT et autres</div></div>
         </div>
         <div style="display:flex;align-items:center;gap:12px;background:var(--gray);border-radius:12px;padding:12px 16px;">
-          <span style="font-size:1.4rem;">🏦</span>
-          <div><div style="font-weight:900;font-size:0.9rem;color:var(--dark);">Virement bancaire</div><div style="font-size:0.78rem;color:var(--muted);">Virement SEPA classique</div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;background:var(--gray);border-radius:12px;padding:12px 16px;">
           <span style="font-size:1.4rem;">🔄</span>
           <div><div style="font-weight:900;font-size:0.9rem;color:var(--dark);">Échange de cartes</div><div style="font-size:0.78rem;color:var(--muted);">Trade possible selon les cartes</div></div>
         </div>
-        <div style="display:flex;align-items:center;gap:12px;background:var(--gray);border-radius:12px;padding:12px 16px;">
-          <span style="font-size:1.4rem;">💳</span>
-          <div><div style="font-weight:900;font-size:0.9rem;color:var(--dark);">Autre</div><div style="font-size:0.78rem;color:var(--muted);">Contacte-moi pour toute autre demande</div></div>
-        </div>
       </div>
 
-      <a class="btn btn-vinted" href="https://t.me/kevinboutique" target="_blank" rel="noopener" style="width:100%;justify-content:center;padding:12px;font-size:0.9rem;border-radius:12px;">
-        ✈️ Me contacter sur Telegram
+      <a class="btn btn-vinted" href="https://t.me/+To_od9u0p9c2N2E0" target="_blank" rel="noopener" style="width:100%;justify-content:center;padding:12px;font-size:0.9rem;border-radius:12px;">
+        ✈️ Rejoindre sur Telegram
       </a>
-      <p style="text-align:center;font-size:0.72rem;color:var(--muted);margin-top:10px;">Remplace le lien Telegram par le tien dans le code</p>
     </div>
   </div>
 </div>
@@ -704,7 +695,7 @@
 
   function contactBtn(c) {
     // Bouton contact/paiement alternatif — remplace le lien Telegram par le tien
-    const link = 'https://t.me/kevinboutique'; // ← TON LIEN TELEGRAM ICI
+    const link = 'https://t.me/+To_od9u0p9c2N2E0'; // ← TON LIEN TELEGRAM ICI
     return `<button class="btn btn-contact no-modal" onclick="document.getElementById('contact-modal').classList.add('open')">💬 Contact</button>`;
   }
 
@@ -929,7 +920,7 @@
     const actEl = document.getElementById('modal-actions');
     if (c.sold) { actEl.innerHTML='<div class="modal-sold-label">Cette carte a été vendue 🎉</div>'; }
     else {
-      const contact = 'https://t.me/kevinboutique'; // ← TON LIEN TELEGRAM ICI
+      const contact = 'https://t.me/+To_od9u0p9c2N2E0'; // ← TON LIEN TELEGRAM ICI
       actEl.innerHTML = [
         {url:c.vinted,    cls:'btn-vinted',    label:'Vinted'},
         {url:c.ebay,      cls:'btn-ebay',       label:'eBay'},
