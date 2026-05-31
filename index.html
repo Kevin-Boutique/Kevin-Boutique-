@@ -38,7 +38,7 @@
     
     
 
-    .logo span.k   { color: var(--yellow); }
+    .logo span.k   { color: var(--yellow) !important; }
     .logo .logo-name { letter-spacing: 1px; }
     .logo span.rest { letter-spacing: 1px; }
     .logo span.dot  { color: var(--red); font-size: 1.4rem; }
@@ -383,7 +383,7 @@
     <span class="trust-sep">·</span>
     <span class="trust-item">📦 Envoi soigné en boîte rigide · 🎥 Préparation filmée</span>
   </div>
-  <h1>Kard<br/><em>Collect</em></h1>
+  <h1><span style="color:var(--yellow)">K</span>ard<br/><em>Collect</em></h1>
   <p>Cartes à collectionner gradées — certifiées par les meilleurs gradeurs du marché. Disponibles sur toutes les grandes plateformes. Chaque commande soigneusement préparée et filmée.</p>
   <div class="hero-stats">
     <div class="stat clickable-stat" onclick="goToUniverse('all')"><span class="num" id="stat-total">0</span><span class="label">Cartes</span></div>
@@ -419,7 +419,7 @@
   <button class="tag-btn lang-btn" onclick="filterLang('FR',this)">🇫🇷 FR</button>
   <button class="tag-btn lang-btn" onclick="filterLang('JP',this)">🇯🇵 JP</button>
   <button class="tag-btn lang-btn" onclick="filterLang('EN',this)">🇬🇧 EN</button>
-  <button class="tag-btn lang-btn" onclick="filterLang('CN',this)">🇨🇳 CN</button>
+  <button class="tag-btn lang-btn" onclick="filterLang('CN',this)">🇨🇳 CH</button>
   <select class="sort-select" id="sort-select">
     <option value="default">Ordre par défaut</option>
     <option value="asc">Prix croissant ↑</option>
