@@ -43,6 +43,17 @@
     .logo span.rest { letter-spacing: 1px; }
     .logo span.dot  { color: var(--red); font-size: 1.4rem; }
     .header-right { display: flex; align-items: center; gap: 6px; }
+    .cat-tabs { display: flex; gap: 4px; margin: 0 16px; }
+    .cat-tab {
+      background: transparent; border: 2px solid rgba(255,255,255,0.15);
+      color: #aab; font-family: 'Nunito', sans-serif; font-weight: 800;
+      font-size: 0.8rem; padding: 6px 14px; border-radius: 8px;
+      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .cat-tab:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+    .cat-tab.active-cat { background: rgba(255,255,255,0.12); border-color: var(--yellow); color: var(--yellow); }
+    .tag-btn.active-lang { background: var(--dark); border-color: var(--dark); color: #fff; }
+    @media (max-width: 900px) { nav { display: none; } }
     .platform-btn { display: inline-flex; align-items: center; padding: 6px 11px; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.73rem; text-decoration: none; border: none; cursor: pointer; transition: filter 0.18s, transform 0.15s; white-space: nowrap; }
     .platform-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
     .btn-vinted-h  { background: #09b1ba; color: #fff; }
@@ -258,37 +269,72 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      nav { display: none; }
-      .logo { font-size: 1.5rem; }
-      header { height: 52px; padding: 0 14px; }
-      .platform-btn { font-size: 0.65rem; padding: 5px 8px; }
+      /* HEADER MOBILE — 2 lignes */
+      header { height: auto; flex-wrap: wrap; padding: 8px 14px 0; gap: 0; }
+      .logo { font-size: 1.3rem; flex: 1; }
+      .header-right { display: flex; align-items: center; gap: 4px; }
+      .platform-btn { font-size: 0.6rem; padding: 4px 7px; }
       .btn-contact-h { display: none; }
-      .hero { padding: 36px 16px 32px; }
-      .hero h1 { font-size: 2.8rem; }
-      .hero p { font-size: 0.92rem; }
-      .hero-stats { gap: 16px; }
-      .stat .num { font-size: 1.6rem; }
-      .trust-bar { font-size: 0.75rem; gap: 6px; padding: 6px 12px; }
+      nav { display: none; }
+      .cat-tabs { order: 3; width: 100%; justify-content: center; margin: 6px 0 8px; gap: 6px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; }
+      .cat-tab { font-size: 0.78rem; padding: 6px 14px; }
+
+      /* HERO */
+      .hero { padding: 20px 14px 18px; }
+      .hero h1 { font-size: 2rem; margin-top: 14px; margin-bottom: 6px; }
+      .trust-bar { font-size: 0.68rem; gap: 5px; padding: 5px 10px; }
       .trust-sep { display: none; }
-      .trust-item { display: block; text-align: center; }
-      .search-wrap { padding: 12px 16px; }
-      .controls { padding: 12px 16px; gap: 8px; }
-      .tag-btn { font-size: 0.78rem; padding: 6px 12px; }
-      .sort-select { margin-left: 0; }
-      .grade-filters { padding: 10px 16px; gap: 6px; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
-      .grade-btn { font-size: 0.75rem; padding: 5px 10px; white-space: nowrap; }
-      .grade-separator { display: none; }
+      .trust-item { text-align: center; }
+      .hero-stats { gap: 12px; margin-top: 10px; }
+      .stat .num { font-size: 1.3rem; }
+      .stat .label { font-size: 0.6rem; letter-spacing: 0.5px; }
+      .hero-badge { font-size: 0.65rem; padding: 3px 10px; margin-bottom: 6px; }
+
+      /* SEARCH */
+      .search-wrap { padding: 10px 12px; }
+
+      /* CONTROLS — scroll horizontal */
+      .controls { padding: 10px 12px; gap: 6px; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; border-bottom: 1px solid #e8ecf0; }
+      .controls::-webkit-scrollbar { display: none; }
+      .tag-btn { font-size: 0.72rem; padding: 5px 10px; white-space: nowrap; }
+      .sort-select { margin-left: 0; font-size: 0.72rem; padding: 5px 8px; white-space: nowrap; flex-shrink: 0; }
       .filter-label { display: none; }
-      .grid { grid-template-columns: repeat(2, 1fr); padding: 12px 12px 36px; gap: 12px; }
-      .card-name { font-size: 0.9rem; }
-      .card-price { font-size: 1.25rem; }
-      .card-actions { gap: 5px; }
-      .btn { font-size: 0.68rem; padding: 7px 4px; }
-      .card-img-wrap { min-height: 150px; padding: 14px; }
-      .card-img-wrap img { max-height: 140px; }
-      .section-title { font-size: 1.4rem; padding: 24px 16px 4px; }
+
+      /* GRADE FILTERS */
+      .grade-filters { padding: 8px 12px; gap: 5px; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
+      .grade-filters::-webkit-scrollbar { display: none; }
+      .grade-btn { font-size: 0.72rem; padding: 5px 10px; white-space: nowrap; }
+      .grade-separator { display: none; }
+
+      /* GRID */
+      .grid { grid-template-columns: repeat(2, 1fr); padding: 10px 10px 32px; gap: 10px; }
+      .scroll-grid { padding: 10px 10px 18px; gap: 12px; }
+      .scroll-grid .card { min-width: 200px; max-width: 220px; }
+      .card-img-wrap { min-height: 140px; padding: 12px; }
+      .card-img-wrap img { max-height: 130px; }
+      .card-name { font-size: 0.85rem; }
+      .card-price { font-size: 1.15rem; }
+      .card-actions { gap: 4px; }
+      .btn { font-size: 0.65rem; padding: 6px 3px; }
+      .section-title { font-size: 1.3rem; padding: 20px 12px 2px; }
+      .section-header { padding: 20px 12px 2px; }
+      .see-all-btn { font-size: 0.72rem; padding: 5px 10px; }
+
+      /* MODAL */
+      .modal { grid-template-columns: 1fr; max-height: 95vh; }
+      .modal-images { border-radius: 24px 24px 0 0; min-height: 200px; padding: 20px; }
+      .modal-info { padding: 16px; gap: 8px; }
+      .modal-title { font-size: 1.5rem; }
+      .modal-price { font-size: 1.8rem; }
     }
-    @media (max-width: 380px) { .hero h1 { font-size: 2.2rem; } .grid { grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 10px 30px; } .btn { font-size: 0.62rem; } }
+
+    @media (max-width: 380px) {
+      .logo { font-size: 1.1rem; }
+      .hero h1 { font-size: 1.7rem; }
+      .grid { grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px 8px 28px; }
+      .btn { font-size: 0.58rem; }
+      .scroll-grid .card { min-width: 175px; }
+    }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .card { animation: fadeUp 0.4s ease both; }
@@ -307,6 +353,10 @@
     <img class="logo-img" src="data:image/png;base64,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" alt="Kevin Boutique" />
     <span class="logo-name"><span class="k">K</span>evin</span><span class="dot"> ● </span><span class="rest">Boutique</span>
   </a>
+  <div class="cat-tabs">
+    <button class="cat-tab active-cat" id="cat-graded" onclick="switchView('graded')">🃏 Cartes Gradées</button>
+    <button class="cat-tab" id="cat-sealed" onclick="switchView('sealed')">📦 Scellées</button>
+  </div>
   <div class="header-right">
     <a class="platform-btn btn-vinted-h"  href="https://www.vinted.fr/member/87640273" target="_blank" rel="noopener">Vinted</a>
     <a class="platform-btn btn-ebay-h"    href="https://www.ebay.fr/usr/kevin-boutique" target="_blank" rel="noopener">eBay</a>
@@ -363,6 +413,13 @@
   <button class="tag-btn" id="btn-op"   onclick="filterCards('op', this)"><span class="dot-op"></span> One Piece (0)</button>
   <button class="tag-btn" id="btn-lol"  onclick="filterCards('lol', this)"><span class="dot-lol"></span> League of Legends Riftbound (0)</button>
 <button class="tag-btn" id="btn-db"   onclick="filterCards('db', this)"><span class="dot-db"></span> Dragon Ball Z (0)</button>
+  <div style="width:1px;height:24px;background:#dde3eb;margin:0 4px;flex-shrink:0;"></div>
+  <span class="filter-label">Langue :</span>
+  <button class="tag-btn lang-btn active-lang" id="lang-all" onclick="filterLang('all',this)">Toutes</button>
+  <button class="tag-btn lang-btn" onclick="filterLang('FR',this)">🇫🇷 FR</button>
+  <button class="tag-btn lang-btn" onclick="filterLang('JP',this)">🇯🇵 JP</button>
+  <button class="tag-btn lang-btn" onclick="filterLang('EN',this)">🇬🇧 EN</button>
+  <button class="tag-btn lang-btn" onclick="filterLang('CN',this)">🇨🇳 CN</button>
   <select class="sort-select" id="sort-select">
     <option value="default">Ordre par défaut</option>
     <option value="asc">Prix croissant ↑</option>
@@ -603,17 +660,31 @@
   ];
 
   // ── STATE ──
+  // ─────────────────────────────────────────────
+  //  PRODUITS SCELLÉS
+  // ─────────────────────────────────────────────
+  const SEALED = [
+    { id:201, universe:"poke", name:"Booster Box Écarlate et Violet",      edition:"Écarlate et Violet",       language:"FR", condition:"Neuf Scellé", price:99,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:202, universe:"poke", name:"ETB Mascarade Crépusculaire",          edition:"Mascarade Crépusculaire",  language:"FR", condition:"Neuf Scellé", price:55,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:203, universe:"poke", name:"Booster Box Flammes Fantasmagoriques", edition:"Flammes Fantasmagoriques", language:"FR", condition:"Neuf Scellé", price:105, image:"", sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:204, universe:"op",   name:"Booster Box Romance Dawn",             edition:"Romance Dawn",             language:"FR", condition:"Neuf Scellé", price:89,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:205, universe:"op",   name:"Booster Box Paramount War",            edition:"Paramount War",            language:"EN", condition:"Neuf Scellé", price:95,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:206, universe:"db",   name:"Booster Box Fusion World",             edition:"Fusion World",             language:"FR", condition:"Neuf Scellé", price:79,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"" },
+  ];
+
+  let currentView   = 'graded';
   let currentFilter = 'all';
   let searchQuery   = '';
   let gradeFilter   = 'all';
   let graderFilter  = 'all';
+  let langFilter    = 'all';
   let sortOrder     = 'default';
 
   const UNIV_ICON   = { poke:'🃏', op:'⚔️', lol:'🎮', db:'🐉' };
   const UNIV_LABEL  = { poke:'Pokémon', op:'One Piece', lol:'League of Legends Riftbound', db:'Dragon Ball Z' };
   const UNIV_SHORT  = { poke:'Pokémon', op:'One Piece', lol:'LoL Riftbound', db:'Dragon Ball Z' };
   const UNIV_COLORS = { poke:'#1d6fe8', op:'#e8271d', lol:'#1a9e2c', db:'#f97316' };
-  const LANG_FLAGS  = { FR:'🇫🇷', EN:'🇬🇧', JP:'🇯🇵', DE:'🇩🇪', ES:'🇪🇸', IT:'🇮🇹', PT:'🇵🇹', KO:'🇰🇷', ZH:'🇨🇳' };
+  const LANG_FLAGS  = { FR:'🇫🇷', EN:'🇬🇧', JP:'🇯🇵', DE:'🇩🇪', ES:'🇪🇸', IT:'🇮🇹', PT:'🇵🇹', KO:'🇰🇷', ZH:'🇨🇳', CN:'🇨🇳' };
 
   function gradeClass(s) {
     s = (s||'').toLowerCase();
@@ -660,7 +731,7 @@
       ? `<div class="sold-actions-label">Cette carte a été vendue 🎉</div>`
       : `${mkBtn(c.vinted,'btn-vinted','Vinted')}${mkBtn(c.ebay,'btn-ebay','eBay')}${mkBtn(c.leboncoin,'btn-leboncoin','Le Bon Coin')}${contactBtn(c)}`;
 
-    const langPill = c.language ? `<span class="meta-pill" title="Langue">${LANG_FLAGS[c.language]||'🌐'} ${c.language}</span>` : '';
+    const langPill = c.language ? `<span class="meta-pill" title="Langue">${LANG_FLAGS[c.language]||c.language}</span>` : '';
     const graderBar = `<div class="grader-bar"></div>`;
 
     return `
@@ -689,6 +760,13 @@
 
   // ── FILTERS ──
   function cardMatchesGrader(c) { return graderFilter==='all' || c.gradingService===graderFilter; }
+  function cardMatchesLang(c)   { return langFilter==='all' || c.language===langFilter; }
+  function filterLang(l, btn) {
+    langFilter = l;
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active-lang'));
+    if (btn) btn.classList.add('active-lang');
+    renderAll(currentFilter);
+  }
   function cardMatchesGrade(c) {
     if (gradeFilter==='all') return true;
     if (!c.gradingService || c.grade===null) return false;
@@ -737,7 +815,7 @@
 
     // Section Coup de cœur (seulement sans filtre actif et sans recherche)
     if (!searchQuery && gradeFilter==='all' && graderFilter==='all') {
-      const favCards = CARDS.filter(c => c.featured && !c.sold && (filter==='all' || c.universe===filter));
+      const favCards = CARDS.filter(c => c.featured && !c.sold && (filter==='all' || c.universe===filter) && cardMatchesLang(c));
       if (favCards.length) {
         html += `<div class="fav-section">
           <div class="section-header"><h2 class="section-title fav-title">❤️ Coups de Cœur</h2></div>
@@ -748,7 +826,7 @@
 
     // Sections normales
     universes.forEach(u => {
-      const cards = sortCards(CARDS.filter(c => c.universe===u && !c.sold && cardMatchesSearch(c) && cardMatchesGrade(c) && cardMatchesGrader(c)));
+      const cards = sortCards(CARDS.filter(c => c.universe===u && !c.sold && cardMatchesSearch(c) && cardMatchesGrade(c) && cardMatchesGrader(c) && cardMatchesLang(c)));
       if (!cards.length) return;
       const showAll = filter !== 'all' || searchQuery || gradeFilter !== 'all' || graderFilter !== 'all';
       const seeAllBtn = !showAll ? `<button class="see-all-btn" onclick="goToUniverse('${u}')">Voir tout →</button>` : '';
@@ -768,7 +846,7 @@
       html += `<div class="section-header"><h2 class="section-title sold-title">✅ Déjà Vendus</h2></div>${soldContent}`;
     }
 
-    const totalVisible = CARDS.filter(c => !c.sold && (filter==='all'||c.universe===filter) && cardMatchesSearch(c) && cardMatchesGrade(c) && cardMatchesGrader(c)).length;
+    const totalVisible = CARDS.filter(c => !c.sold && (filter==='all'||c.universe===filter) && cardMatchesSearch(c) && cardMatchesGrade(c) && cardMatchesGrader(c) && cardMatchesLang(c)).length;
     const countEl = document.getElementById('search-count');
     if (countEl) countEl.textContent = searchQuery ? `${totalVisible} résultat${totalVisible!==1?'s':''}` : '';
 
@@ -896,7 +974,12 @@
       if (e.target.closest('.no-modal')) return;
       const card = e.target.closest('.card[data-id]');
       if (!card) return;
-      openModal(parseInt(card.dataset.id));
+      const rawId = card.dataset.id;
+      if (rawId && rawId.startsWith('s')) {
+        openSealedModal(parseInt(rawId.slice(1)));
+      } else {
+        openModal(parseInt(rawId));
+      }
     });
 
     // Support tactile mobile — distingue tap vs scroll
@@ -909,12 +992,14 @@
     document.getElementById('catalog').addEventListener('touchend', function(e) {
       const dx = Math.abs(e.changedTouches[0].clientX - _tx);
       const dy = Math.abs(e.changedTouches[0].clientY - _ty);
-      if (dx > 8 || dy > 8) return; // scroll, pas un tap
+      if (dx > 8 || dy > 8) return;
       if (e.target.closest('.no-modal')) return;
       const card = e.target.closest('.card[data-id]');
       if (!card) return;
       e.preventDefault();
-      openModal(parseInt(card.dataset.id));
+      const rawId = card.dataset.id;
+      if (rawId && rawId.startsWith('s')) openSealedModal(parseInt(rawId.slice(1)));
+      else openModal(parseInt(rawId));
     }, { passive: false });
 
     // Fermeture modale
@@ -935,6 +1020,35 @@
     if (el) el.scrollBy({ left: dir * 280, behavior: 'smooth' });
   }
 
+  function openSealedModal(id) {
+    const c = SEALED.find(x => x.id === id);
+    if (!c) return;
+    currentModalCard = c;
+    const mainImg = document.getElementById('modal-main-img');
+    const thumbsEl = document.getElementById('modal-thumbs');
+    thumbsEl.innerHTML = '';
+    if (c.image) { mainImg.src = c.image; mainImg.style.display = 'block'; }
+    else { mainImg.style.display = 'none'; }
+    const univColor = UNIV_COLORS[c.universe] || '#ccc';
+    const univTag = document.getElementById('modal-univ-tag');
+    univTag.textContent = UNIV_SHORT[c.universe] || c.universe;
+    univTag.style.background = univColor + '20';
+    univTag.style.color = univColor;
+    document.getElementById('modal-images').style.borderTop = `5px solid ${univColor}`;
+    document.getElementById('modal-title').textContent   = c.name;
+    document.getElementById('modal-set').textContent     = c.edition;
+    document.getElementById('modal-number').textContent  = '📦 Scellé';
+    document.getElementById('modal-type').textContent    = c.condition;
+    document.getElementById('modal-lang').textContent    = (LANG_FLAGS[c.language]||'') + ' ' + (c.language||'—');
+    document.getElementById('modal-grade').textContent   = '💬 Contact uniquement';
+    document.getElementById('modal-price').textContent   = c.price.toLocaleString('fr-FR');
+    document.getElementById('modal-actions').innerHTML   = c.sold
+      ? `<div class="modal-sold-label">Ce produit a été vendu 🎉</div>`
+      : `<button class="btn btn-contact" style="grid-column:span 2;background:var(--dark);color:#fff;border-radius:10px;padding:10px;font-family:'Nunito',sans-serif;font-weight:800;font-size:0.85rem;border:none;cursor:pointer;width:100%;" onclick="document.getElementById('modal-overlay').classList.remove('open');document.getElementById('contact-modal').classList.add('open');">💬 Contact — Crypto · Liquide · Échange</button>`;
+    document.getElementById('modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
   function shareCard() {
     if (!currentModalCard) return;
     const c = currentModalCard;
@@ -950,6 +1064,62 @@
         setTimeout(() => { btn.textContent = '🔗 Partager cette carte'; btn.classList.remove('copied'); }, 2000);
       });
     }
+  }
+
+  function renderSealedCard(c) {
+    const imgHtml = c.image
+      ? `<img src="${c.image}" alt="${c.name}" loading="lazy" />`
+      : `<div class="placeholder-art">${UNIV_ICON[c.universe]||'📦'}<span>${UNIV_SHORT[c.universe]||c.universe}</span></div>`;
+    const soldOverlay = c.sold ? `<div class="sold-overlay"><span class="sold-stamp">VENDU</span></div>` : '';
+    const actions = c.sold
+      ? `<div class="sold-actions-label">Ce produit a été vendu 🎉</div>`
+      : `<button class="btn btn-contact no-modal" onclick="document.getElementById('contact-modal').classList.add('open')" style="grid-column:span 2;background:var(--dark);color:#fff;">💬 Contact — Crypto · Liquide · Échange</button>`;
+    const langPill = c.language ? `<span class="meta-pill">${LANG_FLAGS[c.language]||c.language}</span>` : '';
+    return `
+      <div class="card ${c.universe} ${c.sold?'sold-card':''}" data-universe="${c.universe}" data-id="s${c.id}">
+        <div class="grader-bar"></div>
+        <div class="card-img-wrap">${imgHtml}${soldOverlay}</div>
+        <div class="card-body">
+          <span class="card-type-tag">📦 Scellé</span>
+          <div class="univ-tag univ-${c.universe}" style="display:inline-block;margin-bottom:2px;">${UNIV_SHORT[c.universe]||c.universe}</div>
+          <div class="card-name">${c.name}</div>
+          <div class="card-meta">
+            <span class="meta-pill">${c.edition}</span>
+            ${langPill}
+            <span class="meta-pill">✨ ${c.condition}</span>
+          </div>
+          <div class="card-price"><span class="currency">€</span>${c.price.toLocaleString('fr-FR')}</div>
+          <div class="card-actions">${actions}</div>
+        </div>
+      </div>`;
+  }
+
+  function renderSealed(filter) {
+    const catalog = document.getElementById('catalog');
+    const universes = filter==='all' ? ['poke','op','lol','db'] : [filter];
+    const labels = { poke:'⚡ Pokémon', op:'☠️ One Piece', lol:'🎮 LoL Riftbound', db:'🐉 Dragon Ball Z' };
+    let html = '';
+    universes.forEach(u => {
+      const items = SEALED.filter(c => c.universe===u && !c.sold);
+      if (!items.length) return;
+      html += `<div class="section-header"><h2 class="section-title">${labels[u]}</h2></div><div class="scroll-grid">${items.map(renderSealedCard).join('')}</div>`;
+    });
+    const soldItems = SEALED.filter(c => c.sold && (filter==='all'||c.universe===filter));
+    if (soldItems.length) html += `<div class="section-header"><h2 class="section-title sold-title">✅ Déjà Vendus</h2></div><div class="grid">${soldItems.map(renderSealedCard).join('')}</div>`;
+    if (!html) html = `<div class="grid"><div class="empty"><div class="icon">📦</div><p>Aucun produit scellé pour l'instant. Bientôt disponible !</p></div></div>`;
+    catalog.innerHTML = html;
+  }
+
+  function switchView(view) {
+    currentView = view;
+    document.getElementById('cat-graded').classList.toggle('active-cat', view==='graded');
+    document.getElementById('cat-sealed').classList.toggle('active-cat', view==='sealed');
+    // Afficher/masquer les filtres selon la vue
+    document.querySelector('.controls').style.display     = view==='graded' ? '' : 'none';
+    document.querySelector('.grade-filters').style.display = view==='graded' ? '' : 'none';
+    if (view==='graded') renderAll(currentFilter);
+    else renderSealed('all');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function goToSold() {
