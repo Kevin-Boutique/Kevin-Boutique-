@@ -110,7 +110,8 @@
     .dot-lol  { width: 10px; height: 10px; border-radius: 50%; background: var(--lol);  flex-shrink:0; }
     .dot-db   { width: 10px; height: 10px; border-radius: 50%; background: var(--db);   flex-shrink:0; }
     .sort-select { margin-left: auto; padding: 7px 12px; border-radius: 30px; border: 2px solid #dde3eb; background: var(--white); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.82rem; color: var(--text); cursor: pointer; outline: none; transition: border-color 0.18s; }
-    .sort-select:hover, .sort-select:focus { border-color: var(--blue); }
+    .notif-btn { background: #0088cc; color: #fff; border: none; border-radius: 30px; padding: 7px 14px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.82rem; cursor: pointer; text-decoration: none; white-space: nowrap; transition: background 0.18s, transform 0.15s; flex-shrink: 0; }
+    .notif-btn:hover { background: #006fa3; transform: translateY(-1px); }
 
     /* ── GRADE FILTERS ── */
     .grade-filters { background: var(--gray); padding: 10px 24px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; border-bottom: 1px solid #e8ecf0; }
@@ -356,12 +357,13 @@
   <div class="cat-tabs">
     <button class="cat-tab active-cat" id="cat-graded" onclick="switchView('graded')">🃏 Cartes Gradées</button>
     <button class="cat-tab" id="cat-sealed" onclick="switchView('sealed')">📦 Scellées</button>
+    <button class="cat-tab" id="cat-loose"  onclick="switchView('loose')">🎴 Loose</button>
   </div>
   <div class="header-right">
     <a class="platform-btn btn-vinted-h"  href="https://www.vinted.fr/member/87640273" target="_blank" rel="noopener">Vinted</a>
     <a class="platform-btn btn-ebay-h"    href="https://www.ebay.fr/usr/kardcollect" target="_blank" rel="noopener">eBay</a>
     <a class="platform-btn btn-lbc-h"     href="https://www.leboncoin.fr/profile/21c66d3e-759e-40fd-a008-a85dad801cb3" target="_blank" rel="noopener">LeBonCoin</a>
-    <button class="platform-btn btn-contact-h" onclick="document.getElementById('contact-modal').classList.add('open')">💬 Contact</button>
+    <button class="platform-btn btn-contact-h" onclick="document.getElementById('contact-modal').classList.add('open')">💬 Contact & Notif</button>
     <nav>
       <button onclick="filterCards('poke', this)">Pokémon</button>
       <button onclick="filterCards('op', this)">One Piece</button>
@@ -425,6 +427,7 @@
     <option value="asc">Prix croissant ↑</option>
     <option value="desc">Prix décroissant ↓</option>
   </select>
+  <a href="https://t.me/+To_od9u0p9c2N2E0" target="_blank" rel="noopener" class="notif-btn" style="display:none;">🔔 Notifications</a>
 </div>
 
 <!-- GRADE FILTERS -->
@@ -496,9 +499,29 @@
       <a class="btn btn-vinted" href="https://t.me/+To_od9u0p9c2N2E0" target="_blank" rel="noopener" style="width:100%;justify-content:center;padding:12px;font-size:0.9rem;border-radius:12px;">
         ✈️ Rejoindre sur Telegram
       </a>
+      <a class="btn" href="#" target="_blank" rel="noopener" id="discord-link" style="width:100%;justify-content:center;padding:12px;font-size:0.9rem;border-radius:12px;background:#5865f2;color:#fff;margin-top:6px;display:flex;">
+        🎮 Rejoindre sur Discord
+      </a>
+      <p style="text-align:center;font-size:0.72rem;color:var(--muted);margin-top:8px;">🔔 Rejoins les groupes pour être notifié à chaque nouvel arrivage !</p>
     </div>
   </div>
 </div>
+
+<!-- TELEGRAM BANNER -->
+<section style="background:linear-gradient(135deg,#0088cc 0%,#005f8e 100%);padding:32px 24px;text-align:center;">
+  <div style="max-width:560px;margin:0 auto;">
+    <div style="font-size:2.2rem;margin-bottom:8px;">✈️</div>
+    <h2 style="font-family:'Bangers',cursive;font-size:1.9rem;letter-spacing:2px;color:#fff;margin-bottom:8px;">Sois le premier informé !</h2>
+    <p style="color:rgba(255,255,255,0.85);font-size:0.92rem;line-height:1.7;margin-bottom:20px;">
+      Rejoins le groupe Telegram <strong style="color:#fff;">KardCollect</strong> pour être alerté en avant-première à chaque nouvel arrivage, résultat de gradation et offre exclusive.
+    </p>
+    <a href="https://t.me/+To_od9u0p9c2N2E0" target="_blank" rel="noopener"
+       style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0088cc;font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;padding:14px 28px;border-radius:30px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,0.2);">
+      ✈️ Rejoindre le groupe
+    </a>
+    <p style="color:rgba(255,255,255,0.55);font-size:0.72rem;margin-top:12px;">Gratuit · Notifications instantanées · 0 spam</p>
+  </div>
+</section>
 
 <!-- À PROPOS -->
 <section style="background:var(--dark);padding:48px 24px;text-align:center;">
@@ -661,6 +684,14 @@
     { id:204, universe:"op",   name:"Booster Box Romance Dawn",             edition:"Romance Dawn",             language:"FR", condition:"Neuf Scellé", price:89,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"" },
     { id:205, universe:"op",   name:"Booster Box Paramount War",            edition:"Paramount War",            language:"EN", condition:"Neuf Scellé", price:95,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"" },
     { id:206, universe:"db",   name:"Booster Box Fusion World",             edition:"Fusion World",             language:"FR", condition:"Neuf Scellé", price:79,  image:"", sold:false, vinted:"", ebay:"", leboncoin:"" },
+  ];
+
+  // ─────────────────────────────────────────────
+  //  CARTES LOOSE — non gradées
+  // ─────────────────────────────────────────────
+  const LOOSE = [
+    { id:301, universe:"poke", name:"Exemple Dracaufeu EX", set:"Flammes Écarlates", number:"006/198", cardType:"EX", language:"FR", condition:"Near Mint", price:15, image:"", image2:"", sold:false, vinted:"", ebay:"", leboncoin:"" },
+    { id:302, universe:"op",   name:"Exemple Luffy SR",     set:"Romance Dawn",      number:"OP01-003 SR", cardType:"SR", language:"FR", condition:"Near Mint", price:12, image:"", image2:"", sold:false, vinted:"", ebay:"", leboncoin:"" },
   ];
 
   let currentView   = 'graded';
@@ -864,6 +895,7 @@
   }
 
   function filterCards(f, btn) {
+    currentFilter = f;
     gradeFilter='all'; graderFilter='all';
     document.querySelectorAll('.grade-btn:not(.grader-btn)').forEach(b=>b.classList.remove('active'));
     const fg = document.querySelector('.grade-btn:not(.grader-btn)');
@@ -871,13 +903,15 @@
     document.querySelectorAll('.grader-btn').forEach(b=>b.classList.remove('active-grader'));
     const fg2 = document.querySelector('.grader-btn');
     if (fg2) fg2.classList.add('active-grader');
-    document.querySelectorAll('.tag-btn').forEach(b=>b.className='tag-btn');
+    document.querySelectorAll('.tag-btn:not(.lang-btn)').forEach(b=>b.className='tag-btn');
     document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
     if (btn) {
       btn.classList.add(f==='all'?'active-all':f==='poke'?'active-poke':f==='op'?'active-op':f==='lol'?'active-lol':'active-db');
       btn.classList.add('active');
     }
-    renderAll(f);
+    if (currentView==='loose')  renderLoose(f);
+    else if (currentView==='sealed') renderSealed(f);
+    else renderAll(f);
   }
 
   // ── MODAL ──
@@ -966,11 +1000,9 @@
       const card = e.target.closest('.card[data-id]');
       if (!card) return;
       const rawId = card.dataset.id;
-      if (rawId && rawId.startsWith('s')) {
-        openSealedModal(parseInt(rawId.slice(1)));
-      } else {
-        openModal(parseInt(rawId));
-      }
+      if (rawId && rawId.startsWith('s')) openSealedModal(parseInt(rawId.slice(1)));
+      else if (rawId && rawId.startsWith('l')) openLooseModal(parseInt(rawId.slice(1)));
+      else openModal(parseInt(rawId));
     });
 
     // Support tactile mobile — distingue tap vs scroll
@@ -990,6 +1022,7 @@
       e.preventDefault();
       const rawId = card.dataset.id;
       if (rawId && rawId.startsWith('s')) openSealedModal(parseInt(rawId.slice(1)));
+      else if (rawId && rawId.startsWith('l')) openLooseModal(parseInt(rawId.slice(1)));
       else openModal(parseInt(rawId));
     }, { passive: false });
 
@@ -1009,6 +1042,52 @@
   function scrollCarousel(id, dir) {
     const el = document.getElementById(id);
     if (el) el.scrollBy({ left: dir * 280, behavior: 'smooth' });
+  }
+
+  function openLooseModal(id) {
+    const c = LOOSE.find(x => x.id === id);
+    if (!c) return;
+    currentModalCard = c;
+    modalImgs = [c.image, c.image2].filter(Boolean);
+    const mainImg = document.getElementById('modal-main-img');
+    const thumbsEl = document.getElementById('modal-thumbs');
+    thumbsEl.innerHTML = '';
+    if (modalImgs.length > 0) { mainImg.src = modalImgs[0]; mainImg.style.display = 'block'; }
+    else { mainImg.style.display = 'none'; }
+    if (modalImgs.length > 1) {
+      modalImgs.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src; img.className = 'modal-thumb'+(i===0?' active':'');
+        img.onclick = (e) => { e.stopPropagation(); switchModalImg(i); };
+        thumbsEl.appendChild(img);
+      });
+    }
+    const univColor = UNIV_COLORS[c.universe] || '#ccc';
+    const univTag = document.getElementById('modal-univ-tag');
+    univTag.textContent = UNIV_SHORT[c.universe] || c.universe;
+    univTag.style.background = univColor+'20'; univTag.style.color = univColor;
+    document.getElementById('modal-images').style.borderTop = `5px solid ${univColor}`;
+    document.getElementById('modal-title').textContent   = c.name;
+    document.getElementById('modal-set').textContent     = c.set;
+    document.getElementById('modal-number').textContent  = '#'+c.number;
+    document.getElementById('modal-type').textContent    = c.cardType || '—';
+    document.getElementById('modal-lang').textContent    = (LANG_FLAGS[c.language]||'')+' '+(c.language||'—');
+    document.getElementById('modal-grade').textContent   = '🎴 Non gradée — '+c.condition;
+    document.getElementById('modal-price').textContent   = c.price.toLocaleString('fr-FR');
+    const actEl = document.getElementById('modal-actions');
+    actEl.innerHTML = c.sold
+      ? `<div class="modal-sold-label">Cette carte a été vendue 🎉</div>`
+      : [
+          {url:c.vinted,    cls:'btn-vinted',    label:'Vinted'},
+          {url:c.ebay,      cls:'btn-ebay',       label:'eBay'},
+          {url:c.leboncoin, cls:'btn-leboncoin',  label:'Le Bon Coin'},
+        ].map(b => b.url
+          ? `<a class="btn ${b.cls}" href="${b.url}" target="_blank" rel="noopener">${b.label}</a>`
+          : `<span class="btn btn-disabled">🔒 ${b.label}</span>`
+        ).join('')
+        + `<button class="btn btn-contact" style="grid-column:span 2;background:var(--dark);color:#fff;" onclick="document.getElementById('modal-overlay').classList.remove('open');document.getElementById('contact-modal').classList.add('open');">💬 Contact</button>`;
+    document.getElementById('modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
   }
 
   function openSealedModal(id) {
@@ -1087,17 +1166,54 @@
 
   function renderSealed(filter) {
     const catalog = document.getElementById('catalog');
-    const universes = filter==='all' ? ['poke','op','lol','db'] : [filter];
-    const labels = { poke:'⚡ Pokémon', op:'☠️ One Piece', lol:'🎮 LoL Riftbound', db:'🐉 Dragon Ball Z' };
+    const items = SEALED.filter(c => !c.sold && (filter==='all'||c.universe===filter) && cardMatchesLang(c));
     let html = '';
-    universes.forEach(u => {
-      const items = SEALED.filter(c => c.universe===u && !c.sold);
-      if (!items.length) return;
-      html += `<div class="section-header"><h2 class="section-title">${labels[u]}</h2></div><div class="scroll-grid">${items.map(renderSealedCard).join('')}</div>`;
-    });
+    if (items.length) html = `<div class="grid">${items.map(renderSealedCard).join('')}</div>`;
     const soldItems = SEALED.filter(c => c.sold && (filter==='all'||c.universe===filter));
     if (soldItems.length) html += `<div class="section-header"><h2 class="section-title sold-title">✅ Déjà Vendus</h2></div><div class="grid">${soldItems.map(renderSealedCard).join('')}</div>`;
     if (!html) html = `<div class="grid"><div class="empty"><div class="icon">📦</div><p>Aucun produit scellé pour l'instant. Bientôt disponible !</p></div></div>`;
+    catalog.innerHTML = html;
+  }
+
+  function renderLooseCard(c) {
+    const imgHtml = c.image
+      ? `<img src="${c.image}" alt="${c.name}" loading="lazy" />`
+      : `<div class="placeholder-art">${UNIV_ICON[c.universe]||'🎴'}<span>${UNIV_SHORT[c.universe]||c.universe}</span></div>`;
+    const soldOverlay = c.sold ? `<div class="sold-overlay"><span class="sold-stamp">VENDU</span></div>` : '';
+    const actions = c.sold
+      ? `<div class="sold-actions-label">Cette carte a été vendue 🎉</div>`
+      : `${mkBtn(c.vinted,'btn-vinted','Vinted')}${mkBtn(c.ebay,'btn-ebay','eBay')}${mkBtn(c.leboncoin,'btn-leboncoin','Le Bon Coin')}<button class="btn btn-contact no-modal" onclick="document.getElementById('contact-modal').classList.add('open')">💬 Contact</button>`;
+    const langPill = c.language ? `<span class="meta-pill">${LANG_FLAGS[c.language]||c.language}</span>` : '';
+    return `
+      <div class="card ${c.universe} ${c.sold?'sold-card':''}" data-universe="${c.universe}" data-id="l${c.id}">
+        <div class="grader-bar"></div>
+        <div class="card-img-wrap">${imgHtml}${soldOverlay}</div>
+        <div class="card-body">
+          ${c.cardType ? `<span class="card-type-tag">${c.cardType}</span>` : ''}
+          <div class="univ-tag univ-${c.universe}" style="display:inline-block;margin-bottom:2px;">${UNIV_SHORT[c.universe]||c.universe}</div>
+          <div class="card-name">${c.name}</div>
+          <div class="card-meta">
+            <span class="meta-pill">${c.set}</span>
+            <span class="meta-pill">#${c.number}</span>
+            ${langPill}
+            <span class="meta-pill">✨ ${c.condition}</span>
+          </div>
+          <div class="card-price"><span class="currency">€</span>${c.price.toLocaleString('fr-FR')}</div>
+          <div class="card-actions">${actions}</div>
+        </div>
+      </div>`;
+  }
+
+  function renderLoose(filter) {
+    const catalog = document.getElementById('catalog');
+    let items = LOOSE.filter(c => !c.sold && (filter==='all' || c.universe===filter) && cardMatchesLang(c));
+    let html = '';
+    if (items.length) {
+      html = `<div class="grid">${items.map(renderLooseCard).join('')}</div>`;
+    }
+    const soldItems = LOOSE.filter(c => c.sold && (filter==='all'||c.universe===filter));
+    if (soldItems.length) html += `<div class="section-header"><h2 class="section-title sold-title">✅ Déjà Vendus</h2></div><div class="grid">${soldItems.map(renderLooseCard).join('')}</div>`;
+    if (!html) html = `<div class="grid"><div class="empty"><div class="icon">🎴</div><p>Aucune carte loose pour l'instant.</p></div></div>`;
     catalog.innerHTML = html;
   }
 
@@ -1105,11 +1221,12 @@
     currentView = view;
     document.getElementById('cat-graded').classList.toggle('active-cat', view==='graded');
     document.getElementById('cat-sealed').classList.toggle('active-cat', view==='sealed');
-    // Afficher/masquer les filtres selon la vue
-    document.querySelector('.controls').style.display     = view==='graded' ? '' : 'none';
+    document.getElementById('cat-loose').classList.toggle('active-cat',  view==='loose');
+    document.querySelector('.controls').style.display      = '';
     document.querySelector('.grade-filters').style.display = view==='graded' ? '' : 'none';
     if (view==='graded') renderAll(currentFilter);
-    else renderSealed('all');
+    else if (view==='sealed') renderSealed('all');
+    else renderLoose(currentFilter);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
