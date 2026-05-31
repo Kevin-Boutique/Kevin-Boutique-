@@ -1044,7 +1044,7 @@
     document.getElementById('modal-price').textContent   = c.price.toLocaleString('fr-FR');
     document.getElementById('modal-actions').innerHTML   = c.sold
       ? `<div class="modal-sold-label">Ce produit a été vendu 🎉</div>`
-      : `<button class="btn btn-contact" style="grid-column:span 2;background:var(--dark);color:#fff;border-radius:10px;padding:10px;font-family:'Nunito',sans-serif;font-weight:800;font-size:0.85rem;border:none;cursor:pointer;width:100%;" onclick="document.getElementById('modal-overlay').classList.remove('open');document.getElementById('contact-modal').classList.add('open');">💬 Contact — Crypto · Liquide · Échange</button>`;
+      : `<button class="btn btn-contact" style="grid-column:span 2;background:var(--dark);color:#fff;border-radius:10px;padding:10px;font-family:'Nunito',sans-serif;font-weight:800;font-size:0.85rem;border:none;cursor:pointer;width:100%;" onclick="document.getElementById('modal-overlay').classList.remove('open');document.getElementById('contact-modal').classList.add('open');">💬 Contact</button>`;
     document.getElementById('modal-overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -1073,7 +1073,7 @@
     const soldOverlay = c.sold ? `<div class="sold-overlay"><span class="sold-stamp">VENDU</span></div>` : '';
     const actions = c.sold
       ? `<div class="sold-actions-label">Ce produit a été vendu 🎉</div>`
-      : `<button class="btn btn-contact no-modal" onclick="document.getElementById('contact-modal').classList.add('open')" style="grid-column:span 2;background:var(--dark);color:#fff;">💬 Contact — Crypto · Liquide · Échange</button>`;
+      : `<button class="btn btn-contact no-modal" onclick="document.getElementById('contact-modal').classList.add('open')" style="grid-column:span 2;background:var(--dark);color:#fff;">💬 Contact</button>`;
     const langPill = c.language ? `<span class="meta-pill">${LANG_FLAGS[c.language]||c.language}</span>` : '';
     return `
       <div class="card ${c.universe} ${c.sold?'sold-card':''}" data-universe="${c.universe}" data-id="s${c.id}">
