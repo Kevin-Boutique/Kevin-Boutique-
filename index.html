@@ -954,13 +954,12 @@
     const actEl = document.getElementById('modal-actions');
     if (c.sold) { actEl.innerHTML='<div class="modal-sold-label">Cette carte a été vendue 🎉</div>'; }
     else {
-      const contact = 'https://t.me/+To_od9u0p9c2N2E0'; // ← TON LIEN TELEGRAM ICI
       actEl.innerHTML = [
         {url:c.vinted,    cls:'btn-vinted',    label:'Vinted'},
         {url:c.ebay,      cls:'btn-ebay',       label:'eBay'},
         {url:c.leboncoin, cls:'btn-leboncoin',  label:'Le Bon Coin'},
-        {url:contact,     cls:'btn-contact',    label:'💬 Contact'},
-      ].map(b=>b.url?`<a class="btn ${b.cls}" href="${b.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${b.label}</a>`:`<span class="btn btn-disabled">🔒 ${b.label}</span>`).join('');
+      ].map(b=>b.url?`<a class="btn ${b.cls}" href="${b.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${b.label}</a>`:`<span class="btn btn-disabled">🔒 ${b.label}</span>`).join('')
+      + `<button class="btn btn-contact" style="background:var(--dark);color:#fff;" onclick="closeModalDirect();document.getElementById('contact-modal').classList.add('open')">💬 Contact</button>`;
     }
     document.getElementById('modal-overlay').classList.add('open');
     document.body.style.overflow='hidden';
