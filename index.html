@@ -759,11 +759,20 @@
     document.getElementById('stat-lol').textContent   = lolN;
     document.getElementById('stat-db').textContent    = dbN;
     document.getElementById('stat-sold').textContent  = 64 + soldN;
-    document.getElementById('btn-all').textContent    = `Tout (${total})`;
-    document.getElementById('btn-poke').innerHTML     = `<span class="dot-poke"></span> Pokémon (${pokeN})`;
-    document.getElementById('btn-op').innerHTML       = `<span class="dot-op"></span> One Piece (${opN})`;
-    document.getElementById('btn-lol').innerHTML      = `<span class="dot-lol"></span> League of Legends Riftbound (${lolN})`;
-    document.getElementById('btn-db').innerHTML       = `<span class="dot-db"></span> Dragon Ball Z (${dbN})`;
+    updateFilterButtons(CARDS);
+  }
+
+  function updateFilterButtons(source) {
+    const t = source.filter(c=>!c.sold).length;
+    const p = source.filter(c=>c.universe==='poke'&&!c.sold).length;
+    const o = source.filter(c=>c.universe==='op'&&!c.sold).length;
+    const l = source.filter(c=>c.universe==='lol'&&!c.sold).length;
+    const d = source.filter(c=>c.universe==='db'&&!c.sold).length;
+    document.getElementById('btn-all').textContent   = `Tout (${t})`;
+    document.getElementById('btn-poke').innerHTML    = `<span class="dot-poke"></span> Pokémon (${p})`;
+    document.getElementById('btn-op').innerHTML      = `<span class="dot-op"></span> One Piece (${o})`;
+    document.getElementById('btn-lol').innerHTML     = `<span class="dot-lol"></span> League of Legends Riftbound (${l})`;
+    document.getElementById('btn-db').innerHTML      = `<span class="dot-db"></span> Dragon Ball Z (${d})`;
   }
 
   function filterCards(f, btn) {
@@ -1044,6 +1053,7 @@
     if (soldItems.length) html += `<div class="section-header"><h2 class="section-title sold-title">✅ Déjà Vendus</h2></div><div class="grid">${soldItems.map(renderSealedCard).join('')}</div>`;
     if (!html) html = `<div class="grid"><div class="empty"><div class="icon">📦</div><p>Aucun produit scellé pour l'instant. Bientôt disponible !</p></div></div>`;
     catalog.innerHTML = html;
+    updateFilterButtons(SEALED);
   }
 
   function renderLooseCard(c) {
@@ -1086,6 +1096,7 @@
     if (soldItems.length) html += `<div class="section-header"><h2 class="section-title sold-title">✅ Déjà Vendus</h2></div><div class="grid">${soldItems.map(renderLooseCard).join('')}</div>`;
     if (!html) html = `<div class="grid"><div class="empty"><div class="icon">🎴</div><p>Aucune carte loose pour l'instant.</p></div></div>`;
     catalog.innerHTML = html;
+    updateFilterButtons(LOOSE);
   }
 
   function switchView(view) {
