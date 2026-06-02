@@ -393,6 +393,7 @@
     <div class="stat clickable-stat" onclick="goToUniverse('op')"><span class="num" id="stat-op">0</span><span class="label">One Piece</span></div>
     <div class="stat clickable-stat" onclick="goToUniverse('lol')"><span class="num" id="stat-lol">0</span><span class="label">League of Legends<br/>Riftbound</span></div>
     <div class="stat clickable-stat" onclick="goToUniverse('db')"><span class="num" id="stat-db">0</span><span class="label">Dragon Ball Z</span></div>
+    <div class="stat clickable-stat" onclick="switchView('sealed')"><span class="num" id="stat-sealed">0</span><span class="label">📦 Scellées</span></div>
     <div class="stat clickable-stat" onclick="goToSold()"><span class="num" id="stat-sold" style="color:var(--green)">0</span><span class="label">🏆 Déjà vendus</span></div>
   </div>
 </section>
@@ -746,23 +747,20 @@
 
     if (!html) html = `<div class="grid"><div class="empty"><div class="icon">${searchQuery?'🔍':'📦'}</div><p>${searchQuery?'Aucune carte pour «'+searchQuery+'».':'Aucune carte dans cette catégorie.'}</p></div></div>`;
     catalog.innerHTML = html;
-
-    const total = CARDS.filter(c=>!c.sold).length;
-    const pokeN = CARDS.filter(c=>c.universe==='poke'&&!c.sold).length;
-    const opN   = CARDS.filter(c=>c.universe==='op'&&!c.sold).length;
-    const lolN  = CARDS.filter(c=>c.universe==='lol'&&!c.sold).length;
-    const dbN   = CARDS.filter(c=>c.universe==='db'&&!c.sold).length;
-    const soldN = CARDS.filter(c=>c.sold).length;
-    document.getElementById('stat-total').textContent = total;
-    document.getElementById('stat-poke').textContent  = pokeN;
-    document.getElementById('stat-op').textContent    = opN;
-    document.getElementById('stat-lol').textContent   = lolN;
-    document.getElementById('stat-db').textContent    = dbN;
-    document.getElementById('stat-sold').textContent  = 64 + soldN;
+    updateHeroStats();
     updateFilterButtons(CARDS);
   }
 
-  function updateFilterButtons(source) {
+  function updateHeroStats() {
+    const ALL = [...CARDS, ...LOOSE];
+    document.getElementById('stat-total').textContent  = ALL.filter(c=>!c.sold).length;
+    document.getElementById('stat-poke').textContent   = ALL.filter(c=>c.universe==='poke'&&!c.sold).length;
+    document.getElementById('stat-op').textContent     = ALL.filter(c=>c.universe==='op'&&!c.sold).length;
+    document.getElementById('stat-lol').textContent    = ALL.filter(c=>c.universe==='lol'&&!c.sold).length;
+    document.getElementById('stat-db').textContent     = ALL.filter(c=>c.universe==='db'&&!c.sold).length;
+    document.getElementById('stat-sealed').textContent = SEALED.filter(c=>!c.sold).length;
+    document.getElementById('stat-sold').textContent   = 64 + [...ALL,...SEALED].filter(c=>c.sold).length;
+  }
     const t = source.filter(c=>!c.sold).length;
     const p = source.filter(c=>c.universe==='poke'&&!c.sold).length;
     const o = source.filter(c=>c.universe==='op'&&!c.sold).length;
@@ -1053,6 +1051,7 @@
     if (soldItems.length) html += `<div class="section-header"><h2 class="section-title sold-title">✅ Déjà Vendus</h2></div><div class="grid">${soldItems.map(renderSealedCard).join('')}</div>`;
     if (!html) html = `<div class="grid"><div class="empty"><div class="icon">📦</div><p>Aucun produit scellé pour l'instant. Bientôt disponible !</p></div></div>`;
     catalog.innerHTML = html;
+    updateHeroStats();
     updateFilterButtons(SEALED);
   }
 
@@ -1096,6 +1095,7 @@
     if (soldItems.length) html += `<div class="section-header"><h2 class="section-title sold-title">✅ Déjà Vendus</h2></div><div class="grid">${soldItems.map(renderLooseCard).join('')}</div>`;
     if (!html) html = `<div class="grid"><div class="empty"><div class="icon">🎴</div><p>Aucune carte loose pour l'instant.</p></div></div>`;
     catalog.innerHTML = html;
+    updateHeroStats();
     updateFilterButtons(LOOSE);
   }
 
