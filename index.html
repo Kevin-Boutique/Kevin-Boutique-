@@ -428,7 +428,7 @@
     <option value="asc">Prix croissant ↑</option>
     <option value="desc">Prix décroissant ↓</option>
   </select>
-  <a href="https://t.me/+To_od9u0p9c2N2E0" target="_blank" rel="noopener" class="notif-btn" style="display:none;">🔔 Notifications</a>
+  <a href="https://t.me/+RisBsJjasXhmYjVk" target="_blank" rel="noopener" class="notif-btn" style="display:none;">🔔 Notifications</a>
 </div>
 
 <!-- GRADE FILTERS -->
@@ -497,10 +497,10 @@
         </div>
       </div>
 
-      <a class="btn btn-vinted" href="https://t.me/+To_od9u0p9c2N2E0" target="_blank" rel="noopener" style="width:100%;justify-content:center;padding:12px;font-size:0.9rem;border-radius:12px;">
+      <a class="btn btn-vinted" href="https://t.me/+RisBsJjasXhmYjVk" target="_blank" rel="noopener" style="width:100%;justify-content:center;padding:12px;font-size:0.9rem;border-radius:12px;">
         ✈️ Rejoindre sur Telegram
       </a>
-      <a class="btn" href="#" target="_blank" rel="noopener" id="discord-link" style="width:100%;justify-content:center;padding:12px;font-size:0.9rem;border-radius:12px;background:#5865f2;color:#fff;margin-top:6px;display:flex;">
+      <a class="btn" href="https://discord.gg/XhXhCXXvU" id="discord-link" style="width:100%;justify-content:center;padding:12px;font-size:0.9rem;border-radius:12px;background:#5865f2;color:#fff;margin-top:6px;display:flex;">
         🎮 Rejoindre sur Discord
       </a>
       <p style="text-align:center;font-size:0.72rem;color:var(--muted);margin-top:8px;">🔔 Rejoins les groupes pour être notifié à chaque nouvel arrivage !</p>
@@ -508,19 +508,34 @@
   </div>
 </div>
 
-<!-- TELEGRAM BANNER -->
-<section style="background:linear-gradient(135deg,#0088cc 0%,#005f8e 100%);padding:32px 24px;text-align:center;">
-  <div style="max-width:560px;margin:0 auto;">
-    <div style="font-size:2.2rem;margin-bottom:8px;">✈️</div>
-    <h2 style="font-family:'Bangers',cursive;font-size:1.9rem;letter-spacing:2px;color:#fff;margin-bottom:8px;">Sois le premier informé !</h2>
-    <p style="color:rgba(255,255,255,0.85);font-size:0.92rem;line-height:1.7;margin-bottom:20px;">
-      Rejoins le groupe Telegram <strong style="color:#fff;">KardCollect</strong> pour être alerté en avant-première à chaque nouvel arrivage, résultat de gradation et offre exclusive.
-    </p>
-    <a href="https://t.me/+To_od9u0p9c2N2E0" target="_blank" rel="noopener"
-       style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0088cc;font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;padding:14px 28px;border-radius:30px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,0.2);">
-      ✈️ Rejoindre le groupe
-    </a>
-    <p style="color:rgba(255,255,255,0.55);font-size:0.72rem;margin-top:12px;">Gratuit · Notifications instantanées · 0 spam</p>
+<!-- TELEGRAM + DISCORD BANNER -->
+<section style="background:var(--dark);padding:36px 24px;">
+  <div style="max-width:800px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+
+    <!-- Telegram -->
+    <div style="background:linear-gradient(135deg,#0088cc,#005f8e);border-radius:16px;padding:28px 24px;text-align:center;">
+      <div style="font-size:2rem;margin-bottom:8px;">✈️</div>
+      <h3 style="font-family:'Bangers',cursive;font-size:1.5rem;letter-spacing:2px;color:#fff;margin-bottom:8px;">Telegram</h3>
+      <p style="color:rgba(255,255,255,0.8);font-size:0.82rem;line-height:1.6;margin-bottom:16px;">Arrivages & offres exclusives en avant-première</p>
+      <a href="https://t.me/+RisBsJjasXhmYjVk" target="_blank" rel="noopener"
+         style="display:inline-block;background:#fff;color:#0088cc;font-family:'Nunito',sans-serif;font-weight:900;font-size:0.85rem;padding:10px 22px;border-radius:30px;text-decoration:none;">
+        Rejoindre →
+      </a>
+      <p style="color:rgba(255,255,255,0.45);font-size:0.68rem;margin-top:10px;">Gratuit · 0 spam</p>
+    </div>
+
+    <!-- Discord -->
+    <div style="background:linear-gradient(135deg,#5865f2,#3a45c9);border-radius:16px;padding:28px 24px;text-align:center;">
+      <div style="font-size:2rem;margin-bottom:8px;">🎮</div>
+      <h3 style="font-family:'Bangers',cursive;font-size:1.5rem;letter-spacing:2px;color:#fff;margin-bottom:8px;">Discord</h3>
+      <p style="color:rgba(255,255,255,0.8);font-size:0.82rem;line-height:1.6;margin-bottom:16px;">Communauté, échanges & discussions TCG</p>
+      <a href="https://discord.gg/XhXhCXXvU" id="discord-banner-btn" target="_blank" rel="noopener"
+         style="display:inline-block;background:#fff;color:#5865f2;font-family:'Nunito',sans-serif;font-weight:900;font-size:0.85rem;padding:10px 22px;border-radius:30px;text-decoration:none;">
+        Rejoindre →
+      </a>
+      <p style="color:rgba(255,255,255,0.45);font-size:0.68rem;margin-top:10px;">Rejoindre →</p>
+    </div>
+
   </div>
 </section>
 
@@ -594,12 +609,12 @@
   function mkBtn(url, cls, label) {
     if (url && url !== '' && url !== '#')
       return `<a class="btn ${cls} no-modal" href="${url}" target="_blank" rel="noopener">${label}</a>`;
-    return `<span class="btn btn-disabled no-modal" title="Bientôt disponible">🔒 ${label}</span>`;
+    return `<span class="btn btn-disabled no-modal" title="Rejoindre →">🔒 ${label}</span>`;
   }
 
   function contactBtn(c) {
     // Bouton contact/paiement alternatif — remplace le lien Telegram par le tien
-    const link = 'https://t.me/+To_od9u0p9c2N2E0'; // ← TON LIEN TELEGRAM ICI
+    const link = 'https://t.me/+RisBsJjasXhmYjVk'; // ← TON LIEN TELEGRAM ICI
     return `<button class="btn btn-contact no-modal" onclick="document.getElementById('contact-modal').classList.add('open')">💬 Contact</button>`;
   }
 
@@ -761,6 +776,8 @@
     document.getElementById('stat-sealed').textContent = SEALED.filter(c=>!c.sold).length;
     document.getElementById('stat-sold').textContent   = 64 + [...ALL,...SEALED].filter(c=>c.sold).length;
   }
+
+  function updateFilterButtons(source) {
     const t = source.filter(c=>!c.sold).length;
     const p = source.filter(c=>c.universe==='poke'&&!c.sold).length;
     const o = source.filter(c=>c.universe==='op'&&!c.sold).length;
@@ -1049,7 +1066,7 @@
     if (items.length) html = `<div class="grid">${items.map(renderSealedCard).join('')}</div>`;
     const soldItems = SEALED.filter(c => c.sold && (filter==='all'||c.universe===filter));
     if (soldItems.length) html += `<div class="section-header"><h2 class="section-title sold-title">✅ Déjà Vendus</h2></div><div class="grid">${soldItems.map(renderSealedCard).join('')}</div>`;
-    if (!html) html = `<div class="grid"><div class="empty"><div class="icon">📦</div><p>Aucun produit scellé pour l'instant. Bientôt disponible !</p></div></div>`;
+    if (!html) html = `<div class="grid"><div class="empty"><div class="icon">📦</div><p>Aucun produit scellé pour l'instant. Rejoindre → !</p></div></div>`;
     catalog.innerHTML = html;
     updateHeroStats();
     updateFilterButtons(SEALED);
